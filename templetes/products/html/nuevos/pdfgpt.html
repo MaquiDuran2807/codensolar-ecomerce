@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Cotización de Kit de Equipos Solares</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Cotización de Kit de Equipos Solares</h1>
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Imagen</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Precio Total</th>
+        </tr>
+        <tr>
+            <td>PANEL SOLAR 24V 380W</td>
+            <td><img src="http://127.0.0.1:8000/media/pdf/Panel_solar.png" alt="Panel Solar"></td>
+            <td>1</td>
+            <td>836000</td>
+            <td>836000</td>
+        </tr>
+        <tr>
+            <td>BATERIA SELLADA 12V-100AH</td>
+            <td><img src="{% static 'bateria.png' %}" alt="Batería Sellada"></td>
+            <td>2</td>
+            <td>933647</td>
+            <td>1867294</td>
+        </tr>
+        <!-- Agrega más filas para cada producto aquí -->
+    </table>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<link rel="stylesheet" type="text/css" href=" {% static 'products/css/main.css' %} ">
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/nuevocss.css/css/Vlogin.css' %}">
+    <title>registrate</title>
+</head>
+
+<body class="body" >
+
+<div class=volver>
+    <div class="volver1">
+        <a href="home.html">Volver</a>
+    </div>
+</div>
+
+
+<div class="login">
+<input type="checkbox" id="check">
+    <div class="container">
+        <div class="login page">
+            <div class="heading"> </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="entryarea">
+                    {{form.email}}
+                    <div class="labelline">Ingresa tu Correo</div>
+                </div>
+    
+                
+                <input type="submit" value="enviar" id="btn">
+            </form>
+        </div>
+
+
+
+        <!-- <div class="signup page">
+            <div class="heading">Registrarse</div>
+            <form action="#">
+                <div class="entryarea">
+                    <input type="text" required>
+                    <div class="labelline">Ingresa tu Nombre</div>
+                </div>
+                <div class="entryarea">
+                    <input type="email" required>
+                    <div class="labelline">Ingresa tu Correo</div>
+                </div>
+                <div class="entryarea">
+                    <input type="password" required>
+                    <div class="labelline">Ingresa tu Contraseña</div>
+                </div>
+                <input type="submit" value="ingresar" id="btn">
+                <div class="switch">
+                    <span>¿Ya tienes cuenta?</span>
+                    <label for="check">Ingresa AHORA</label>
+                </div>
+            </form>
+        </div> -->
+    </div>
+
+</div>
+<script src="{% static 'products/js/register.js' %}"></script>
+
+</body>
+</html>

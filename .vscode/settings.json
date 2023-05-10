@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b11226ed-b554-41c9-83b0-f95be9f82535/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/cotizadorcodensolar",
+    "appService.deploySubpath": "."
+}

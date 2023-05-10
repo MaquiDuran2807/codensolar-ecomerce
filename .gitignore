@@ -1,152 +1,160 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Archivos compilados por bytes / optimizados / DLL
+__pycache__ /
+* .py [ bacalao ]
+* $py.clase
 
-# C extensions
-*.so
+# Extensiones C
+* .así
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# Distribución / embalaje
+.Pitón
+construir /
+desarrollar-huevos /
+dist /
+descargas /
+huevos /
+.huevos /
+libre /
+lib64 /
+partes /
+dist /
+var /
+ruedas /
+compartir / ruedas de pitón /
+* .huevo-info /
+.instalado.cfg
+* .huevo
+MANIFIESTO
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+#   Por lo general, estos archivos están escritos por un script de python a partir de una plantilla
+#   antes de que PyInstaller construya el exe, para inyectarle fecha/otra información.
+* .manifiesto
+* .spec
 
-# Installer logs
+# Registros del instalador
 pip-log.txt
-pip-delete-this-directory.txt
+pip-eliminar-este-directorio.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
+# Pruebas unitarias / informes de cobertura
+htmlcov /
+.tox /
+.nox /
+.cobertura
+.cobertura. *
 .cache
 nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+cobertura.xml
+* .portada
+* .py, portada
+.hipótesis /
+.pytest_cache /
+cubrir /
 
-# Translations
-*.mo
-*.pot
+# Traducciones
+* .mo
+* .olla
 
-# Django stuff:
-*.log
-local_settings.py
+# Cosas de Django:
+* .registro
+configuración_local.py
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
-instance/
-.webassets-cache
+# Cosas del matraz:
+instancia /
+.webassets-caché
 
-# Scrapy stuff:
+# Cosas chatarra:
 .scrapy
 
-# Sphinx documentation
-docs/_build/
+# documentación de la esfinge
+documentos / _build /
 
 # PyBuilder
-.pybuilder/
-target/
+.pybuilder /
+objetivo /
 
-# Jupyter Notebook
-.ipynb_checkpoints
+#Cuaderno Jupyter
+.ipynb_puntos de control
 
-# IPython
-profile_default/
+#IPython _
+perfil_predeterminado /
 ipython_config.py
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
+#pyenv _
+#    Para una biblioteca o paquete, es posible que desee ignorar estos archivos ya que el código es
+#    destinado a ejecutarse en múltiples entornos; de lo contrario, consúltalos en:
 # .python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+#    De acuerdo con pypa/pipenv#598, se recomienda incluir Pipfile.lock en el control de versiones.
+#    Sin embargo, en caso de colaboración, si tiene dependencias específicas de la plataforma o dependencias
+#    al no tener soporte multiplataforma, pipenv puede instalar dependencias que no funcionan, o no
+#    instalar todas las dependencias necesarias.
+# Pipfile.lock
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
+#poesia _
+#    Similar a Pipfile.lock, generalmente se recomienda incluir poetic.lock en el control de versiones.
+#    Esto se recomienda especialmente para paquetes binarios para garantizar la reproducibilidad, y es más
+#    comúnmente ignorado por las bibliotecas.
+#    https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+# poesia.lock
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
+#pm _
+#    Similar a Pipfile.lock, generalmente se recomienda incluir pdm.lock en el control de versiones.
+# pdm.bloquear
+#    pdm almacena configuraciones de todo el proyecto en .pdm.toml, pero se recomienda no incluirlo
+#    en el control de versiones.
+#    https://pdm.fming.dev/#usar-con-ide
+.pdm.toml
 
-# Celery stuff
-celerybeat-schedule
+#PEP 582; utilizado por, por ejemplo, github.com/David-OConnor/pyflow y github.com/pdm-project/pdm
+__pypackages__ /
+
+# cosas de apio
+celerybeat-horario
 celerybeat.pid
 
-# SageMath parsed files
-*.sage.py
+# SageMath analiza archivos
+* .sage.py
 
-# Environments
+# Ambientes
 .env
 .venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+env /
+venv /
+ENV /
+env.bak /
+venv.bak /
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# Configuración del proyecto Spyder
+proyecto .spyder
+.proyecto espía
 
-# Rope project settings
+# Configuración del proyecto de cuerda
 .ropeproject
 
-# mkdocs documentation
-/site
+# documentación mkdocs
+/ sitio
 
-# mypy
-.mypy_cache/
+# mipy
+.mypy_cache /
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
-.pyre/
+# Comprobador de tipo Pyre
+.pira /
 
-# pytype static type analyzer
-.pytype/
+# analizador de tipo estático pytype
+.pytype /
 
-# Cython debug symbols
-cython_debug/
+# Símbolos de depuración de Cython
+cython_debug /
 
-# PyCharm
-#  JetBrains specific template is maintainted in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+#PyCharm _
+#   La plantilla específica de JetBrains se mantiene en un JetBrains.gitignore separado que puede
+#   se encuentra en https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#   y se puede agregar al gitignore global o fusionarse en este archivo. Por una más nuclear
+#   opción (no recomendada) puede descomentar lo siguiente para ignorar toda la carpeta de ideas.
+# .idea/

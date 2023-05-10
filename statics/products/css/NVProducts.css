@@ -1,0 +1,306 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.body{
+    padding: 0;
+    background-color: rgb(80, 99, 105);
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.navbar a{
+    color: azure;
+}
+
+.navbar a:hover{
+    color: #40C92A;
+}
+
+
+
+.navbar-brand{
+    font-weight: bold;
+    font-size: 35px;
+    margin-left: 10px;
+}
+.btn2{
+    margin-left: 10px;
+}
+
+.form{
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.footer{
+    background-color:#1dc299;
+}
+
+.anun1{
+    color: #0F172A;
+    background-color: #545554;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 0%;
+    padding-bottom: 0px;
+    letter-spacing: 2px;
+}
+
+.anun2{
+    color: #0F172A;
+    text-align: center;
+    font-weight: bolder;
+    padding-bottom: 0px;
+    letter-spacing: 3px;
+}
+.navbar-toggler{
+    color: #40C92A;
+}
+
+
+
+.container-fluid{
+}
+
+
+/* 
+.producto{
+    width: 450px;
+    border-radius: 5px;
+} */
+
+.informacion-producto{
+    height: 100%;
+}
+
+
+
+.contenido-carrusel{
+    background-color: rgba(31, 211, 25, 0.514);
+    color: black;
+    border-radius: 10px;
+    border: 1px solid rgb(20, 32, 46);
+}
+
+
+
+.logic{
+    display: flex;
+    background:rgba(31, 211, 25, 0.473);
+    /* margin: 10px; */
+    /* padding: 20px; */
+    border: 3px solid #40C92A;
+    /* height: 100%;
+} */
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.padre{
+    width: 55%;
+    border-radius: 10px;
+}
+
+.cotizador1{
+    width: 45%;
+    overflow-y:auto;  
+    height:630px;
+    border-radius: 10px;
+    position: sticky;
+    top:5px;
+    text-align: center;
+    border: 2px solid #40C92A;
+}
+
+.cotizador1::-webkit-scrollbar{
+    display: none;
+}
+
+
+    .producto{
+        border: 3px solid #545554;
+        color: white;
+        background-color: #DDE0E5;
+        text-align: center;
+        /* margin-right: 10px; */
+        
+    }
+
+    .informacion-producto{
+        padding: 2px 2px;
+        margin: 2px 2px;
+    }
+
+        .img{
+            background:#DDE0E5 ;
+            color: white;
+            border-radius: 5px;
+
+        }
+
+        .img-producto{
+            background:#DDE0E5 ;
+            padding-right: 10px;
+            margin-right: 0px;
+        }
+
+        .informacion-producto-caracteristicas{
+            background: azure;
+            border: 1px solid #40C92A;
+            color:  #0F172A;
+            border-radius: 10px;
+            margin-left: 0px;
+        }
+
+            .img-producto{
+                background:azure ;
+                border: 3px solid #40C92A;
+                color: white;
+                border-radius: 3px;
+
+            }
+
+            .titulo-producto{
+                background:azure;
+                color: #0F172A;
+                font-weight: bolder;
+            }
+
+    .cotizador{
+        background:rgb(73, 114, 160) ;
+        border: 3px solid rgb(39, 209, 209);
+        color: white;
+        text-align: center;
+        padding-right: 0;
+    }     
+
+    
+    .acumulador-cotizador{
+        background-color: #0F172A;
+        color:azure;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        padding: 10px 10px;
+        margin:  10px 10px;
+        text-align: center;
+        border-radius: 10px;
+        border: 3px solid green;
+    }
+
+        .quote {
+            padding: 2px 2px;
+            border: 2px solid #545554;
+            padding: 10px 10px;
+            border-radius: 5px;
+        }
+
+    .primary-cotizador{
+        border: 2px solid #545554 ;
+        border-radius: 10px;
+        text-align: center;
+        margin: 0px 1px;
+    }
+    
+    .eliminar-cotizador{
+        border: px solid #545554 ;
+        border-radius: 10px;
+        text-align: center;
+        margin: 0px 0px;
+    }
+
+    .eliminar-cotizador:hover{
+        background-color: #ffffff;
+        border: px solid #00ff00 ;
+        border-radius: 10px;
+    }
+    
+    .titulo-producto-cotizador{
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .precio-unitario{
+        border-radius: 10px;
+        text-align: center;
+    }
+
+.secundary-cotizador{
+        border: 2px solid #545554 ;
+        border-radius: 10px;
+        text-align: center;
+        margin: 0px 1px;
+    }
+
+        .horas-uso-cotizador{
+
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .consumo-hora-cotizado{
+
+            border-radius: 10px;
+            text-align: center;
+        }
+
+.tertiary-cotizador{
+        border: 2px solid #545554 ;
+        border-radius: 10px;
+        text-align: center;
+                margin: 0px 1px;
+    }
+
+        .consumo-dia-cotizador{
+
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .porcentaje-perdidas-cotizador{
+
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .total-consumo-cotizado{
+
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .acumulador-precio{
+            background-color: #0F172A;
+            color: azure;
+            border: 2px solid #00ff00;
+            font-weight: bolder;
+            padding: 10px 10px;
+            padding: 10px 10px;
+            border-radius: 5px;
+            
+        }
+
+    .descargar-pdf a{
+        margin: 10px 10px;
+    }
+
+
+
+
+
+
+    /* .reguladores-precio-requeridos{
+        border:  2px solid #0F172A;
+    }
+    .reguladores-requeridos{
+        border:  2px solid #0F172A;
+    }
+    .precio-producto{
+        border:  2px solid #0F172A;
+    }
+    .precio-unitario{
+        border:  2px solid #0F172A;
+    } */
