@@ -15,20 +15,19 @@
             <th>Precio Unitario</th>
             <th>Precio Total</th>
         </tr>
+        
+        {% for p in productos %}
         <tr>
-            <td>PANEL SOLAR 24V 380W</td>
-            <td><img src="http://127.0.0.1:8000/media/pdf/Panel_solar.png" alt="Panel Solar"></td>
-            <td>1</td>
-            <td>836000</td>
-            <td>836000</td>
+            <td>{{p.name}}</td>
+            <td><img src="{{p.imagen}}" alt="Panel Solar"></td>
+            <td>{{p.amount}} </td>
+            <td>{{p.price}} </td>
+            <td>{{p.total}} </td>
         </tr>
-        <tr>
-            <td>BATERIA SELLADA 12V-100AH</td>
-            <td><img src="{% static 'bateria.png' %}" alt="Batería Sellada"></td>
-            <td>2</td>
-            <td>933647</td>
-            <td>1867294</td>
-        </tr>
+        {% endfor %}
+            
+        
+       
         <!-- Agrega más filas para cada producto aquí -->
     </table>
 </body>
