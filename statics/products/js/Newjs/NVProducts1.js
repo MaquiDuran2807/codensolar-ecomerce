@@ -4,7 +4,7 @@ const quoteContainer = document.querySelector(".acumulador-cotizador");
 let contador=0;
 let productsToquote = [];
 let cotizacion_enviar;
-
+let mas_cantidad=false
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
@@ -20,15 +20,22 @@ async function addToQuote(product,hours_used=24) {
   console.log(product.id,"=======================================");
   hours_used =  parseInt((document.getElementById(`product°${product.id}`)).querySelector("input").value);
   // console.log(hours_used)
-  productsToquote.push(
-    {
-      product_id:product.id,
-      hours:hours_used
-    }
-  );
-  
-
-  
+  if (productsToquote.find((obj) => obj.product_id == product.id)) {
+    console.log("ya existe",product.id);
+    new_amount = productsToquote.find((obj) => obj.product_id == product.id);
+    new_amount.amount ++;
+    console.log(new_amount,"new_amount",productsToquote,"productsToquote");
+    mas_cantidad=true;
+  }else{
+    productsToquote.push(
+      {
+        amount:1,
+        product_id:product.id,
+        hours:hours_used
+      }
+    );
+  }
+  console.log(productsToquote,"productsToquote");
 
   const consumptions = await fetch("http://127.0.0.1:8000/products/vista_prueba",{
           method: "POST",
@@ -55,7 +62,9 @@ async function makeQuote(quotation,product,hours_used) {
   let quoteReturn;
       // datos productos
       
-      
+      if (mas_cantidad==false) {
+        console.log("mas cantidad");
+        
         let consumptions=quotation.consumptions[contador]
         contador++;
         console.log(consumptions,"consumption en makeQuote",contador);
@@ -70,6 +79,11 @@ async function makeQuote(quotation,product,hours_used) {
       clone.querySelector(".porcentaje-perdidas-cotizador").textContent += consumptions.loss_percentaje+" % perdidas: "+consumptions.loss_consumption;
       clone.querySelector(".total-consumo-cotizador").textContent += consumptions.total_consumption_day;
       quoteContainer.appendChild(clone);
+      }
+      mas_cantidad=false;
+        
+      
+        
 
       
       //

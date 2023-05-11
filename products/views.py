@@ -36,16 +36,18 @@ class vistaprueba(View):
             print(d)
             product=Products.objects.get(id=d["product_id"])
             calculo_diario=product.consume*d["hours"]
-            porcentaje_perdidas=(Category.objects.get(id=product.category_id).perdida/100)
-            calculo_perdidas=calculo_diario*porcentaje_perdidas
-            total_consumo_productos+=calculo_diario+calculo_perdidas
+            porcentaje_perdidas=(Category.objects.get(id=product.category_id).perdida)
+            calculo_perdidas=(calculo_diario*porcentaje_perdidas)/100
+            total_consumo_productos+=(calculo_diario+calculo_perdidas)*d["amount"]
             comsumtion={
                 "consumption_hr":product.consume,
                 "consumption_day":calculo_diario,
-                "loss_percentaje":Category.objects.get(id=product.category_id).perdida,
+                "loss_percentaje":porcentaje_perdidas,
                 "loss_consumption":calculo_perdidas,
-                "total_consumption_day":calculo_diario+calculo_perdidas
+                "total_consumption_day":calculo_diario+calculo_perdidas,
+                "tota_xcantidad":(calculo_diario+calculo_perdidas)*d["amount"],
             }
+            print(comsumtion,"comsumtion=====================")
             products_consumptions.append(comsumtion)
         # traer una lista de todos los paneles
         paneles=list(SolarPanel.objects.all().values())
@@ -82,9 +84,9 @@ class vistaprueba(View):
         while bateria_apropiada==0:
             contardor_baterias +=1
             for b in baterias:
-                capacidad=(b["capacity"]*voltage_sistema)*contardor_baterias
-                print(b,"bateria ====================== ",capacidad, Voltage.objects.get(id=b["voltage_id"]).voltage,total_consumo_productos*2)
-                if Voltage.objects.get(id=b["voltage_id"]).voltage==12 and capacidad>=calculo_diario*2+loss_bat :
+                capacidad=b["capacity"]*voltage_sistema*contardor_baterias
+                print(b,"bateria ====================== ",capacidad, Voltage.objects.get(id=b["voltage_id"]).voltage,total_consumo_productos*2,contardor_baterias)
+                if Voltage.objects.get(id=b["voltage_id"]).voltage==12 and capacidad>=total_consumo_productos*2 :
                     bateria_apropiada=b
                     break
         if voltage_sistema==24:
@@ -100,13 +102,15 @@ class vistaprueba(View):
         reguladores=list(Reguladores.objects.all().values())
         reguladores=sorted(reguladores, key=lambda regulador: regulador["amperios"],reverse=False)
         regulador_apropiado=0
-        amp_requerido=panel_apropiado["production"]/voltage_sistema
+        amp_requerido=(panel_apropiado["production"]/voltage_sistema)*contador_paneles
         print(amp_requerido,"amp_requerido")
-        while regulador_apropiado==0:
-            for r in reguladores:
-                if r["amperios"]>=amp_requerido:
-                    regulador_apropiado=r
-                    break
+        
+        for r in reguladores:
+            if r["amperios"]>=amp_requerido:
+                regulador_apropiado=r
+                break
+        if regulador_apropiado==0:
+            regulador_apropiado=reguladores[-1]
         regulador_apropiado={
             "amount": 1,
             "name": regulador_apropiado["name"],
@@ -116,11 +120,12 @@ class vistaprueba(View):
         breakers=list(Breakers.objects.all().values())
         breakers=sorted(breakers, key=lambda breaker: breaker["amps"],reverse=False)
         breaker_apropiado=0
-        while breaker_apropiado==0:
-            for be in breakers:
-                if be["amps"]>=amp_requerido:
-                    breaker_apropiado=be
-                    break
+        for be in breakers:
+            if be["amps"]>=amp_requerido:
+                breaker_apropiado=be
+                break
+        if breaker_apropiado==0:
+            breaker_apropiado=breakers[-1]
         breaker_apropiado={
             "amount": 3,
             "name": breaker_apropiado["name"],
@@ -284,6 +289,7 @@ class vistaprueba(View):
                              "vehicle_cable_needed":cable_vehicular_apropiado,
                              "electric_materials_needed":electric_material,
                              "ground_security_kit_needed":groundCable,
+                             "products":data,
                              },safe=False)
 
 # prueba
