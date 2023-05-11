@@ -24,6 +24,3 @@ def generate_pdf(email,templete,data):
     email.attach('archivo.pdf', result.getvalue(), 'application/pdf')
     email.send()
     return "PDF generado y enviado por correo electrónico."
-
-   
-  

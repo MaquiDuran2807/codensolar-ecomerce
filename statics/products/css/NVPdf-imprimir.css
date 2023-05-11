@@ -1,4 +1,5 @@
 
+
 .Cotizador-pdf{
     text-align: center;
     background-color: lightgoldenrodyellow;
@@ -17,12 +18,15 @@
 .primary-pdf{
     background-color: azure;
     color: #0F172A;
+    
 }
 
 .logo-pdf{
     max-width: 150px;
     max-height: 150px;
     padding: 15px 15px;
+
+    
 }
 
 .Cotizador-pdf p{
@@ -44,6 +48,7 @@
         background:rgb(114, 131, 151) ;
         border: 3px solid rgb(51, 122, 122);
         color: white;
+        justify-self: center;
     }
 
     .informacion-producto-caracteristicas{
