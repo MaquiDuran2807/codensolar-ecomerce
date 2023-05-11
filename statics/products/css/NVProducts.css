@@ -20,6 +20,7 @@
 
 
 
+
 .navbar-brand{
     font-weight: bold;
     font-size: 35px;
@@ -35,7 +36,7 @@
 }
 
 .footer{
-    background-color:#0F172A;
+    background-color: #0F172A ;
 }
 
 .anun1{
@@ -78,12 +79,34 @@
 
 
 .contenido-carrusel{
-    background-color: rgba(31, 211, 25, 0.514);
+    background-color: #1fd31983;
     color: black;
     border-radius: 10px;
     border: 1px solid rgb(20, 32, 46);
 }
 
+
+.categorias{
+    background-color: #545554;
+    color: #0F172A;
+    justify-content: space-around;
+    padding: 0px;
+}
+
+.filtrador{
+    padding: 10px 10px;
+    margin: 0px 0px;
+    color: white;
+    font-weight: bolder;
+}
+
+.categorias-hijo1{
+    padding: 10px 10px;
+    margin: 7px 0px;
+    background-color: #0F172A;
+    color: white;
+    font-weight: bolder;
+}
 
 
 .logic{
@@ -101,16 +124,17 @@
 }
 
 .padre{
-    width: 55%;
+    width: 50%;
     border-radius: 10px;
 }
 
 .cotizador1{
     width: 45%;
     overflow-y:auto;  
-    height:630px;
+    height: auto;
+    /* height:630px; */
     border-radius: 10px;
-    position: sticky;
+    /* position: sticky; */
     top:5px;
     text-align: center;
     border: 2px solid #40C92A;
@@ -298,9 +322,11 @@
     .reguladores-requeridos{
         border:  2px solid #0F172A;
     }
+
     .precio-producto{
         border:  2px solid #0F172A;
     }
+
     .precio-unitario{
         border:  2px solid #0F172A;
     } */
