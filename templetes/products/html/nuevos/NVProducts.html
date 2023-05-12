@@ -17,12 +17,12 @@
         <nav class="row">
             <div class="row anun1">
                 <div class="col-12">
-                    <p>Descuentos  del 200% Paneles solares | Descuento del 15% en neveras  | descuento del 5% kits</p>
+                    <h6>Descuentos  del 200% Paneles solares | Descuento del 15% en neveras  | descuento del 5% kits</h6>
                 </div>
             </div>
             <div class="row anun2">
                 <div class="col-12 ">
-                    <p>Por registrarte e ingresar tendras un descuento del 5% en paneles Policristalinos</p>
+                    <h6>Por registrarte e ingresar tendras un descuento del 5% en paneles Policristalinos</h6>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light fixed-10" style="background-color:#0F172A;">
@@ -105,7 +105,7 @@
                         <div class="contenido-carrusel">
                             <h5 class="">First slide labelaa
                             </h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <h6>Some representative placeholder content for the first slide.</h6>
                         </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                         <div class="carousel-caption d-none d-md-block">
                             <div class="contenido-carrusel">
                                 <h5 class="">First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+                                <h6>Some representative placeholder content for the first slide.</h6>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         <div class="carousel-caption d-none d-md-block">
                             <div class="contenido-carrusel">
                                 <h5 class="">First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+                                <h6>Some representative placeholder content for the first slide.</h6>
                             </div>
                         </div>
                     </div>
@@ -208,80 +208,88 @@
                 {% comment %} products {% endcomment %}
                 <!-- <div  class="padre" style="width: 50%"> -->
                 <div  class="padre">
-                    {% for p in products %}
-                    <div class=" producto  mb-2" id="product°{{p.id}}" >
+                    {% for h6 in products %}
+                    <div class=" producto  mb-2" id="product°{{h6.id}}" >
                         <div class="row informacion-producto">
                             <div class="col-md-5 img-producto">
-                                <!-- <img style="max-height: 100%; max-width: 100%; border-radius:10px; border: 2px solid #40C92A;" class="img-fluid" src="../media/{{p.image}}" alt=""> -->
-                                <img style="border-radius:10px; border: 2px solid #40C92A; margin:50px 0px;" class="img-fluid max-width: 100%; max-height:100%;" src="../media/{{p.image}}" alt="">
-                                <!-- <img style="max-height: 15em" class="img-fluid rounded-3 p-1 border-success border border-2 d-block mx-auto mb-2 my-md-0 " src="img/bg.jpg" alt=""> -->
+                                <!-- <img style="max-height: 100%; max-width: 100%; border-radius:10px; border: 2px solid #40C92A;" class="img-fluid" src="../media/{{h6.image}}" alt=""> -->
+                                <img style="border-radius:10px; border: 2px solid #40C92A; margin:50px 0px;" class="img-fluid max-width: 100%; max-height:100%;" src="../media/{{h6.image}}" alt="">
+                                <!-- <img style="max-height: 15em" class="img-fluid rounded-3 h6-1 border-success border border-2 d-block mx-auto mb-2 my-md-0 " src="img/bg.jpg" alt=""> -->
                             </div>
                             <div class="col-md-7 informacion-producto-caracteristicas">
+
                                 <div class="row primary-inf">
-                                        <div class="col-md-8 titulo-producto">
-                                            <h5 class="npsolitario"> {{p.name}} </h5>
-                                        </div>
-                                        <div class="col-md-4 precio-producto">
-                                            <h4>${{p.price}} </h4>
-                                        </div>
-                                </div>
+                                    <div class="col-md-8 titulo-producto">
+                                        <h5 class="npsolitario"> {{h6.name}} </h5>
+                                    </div>
+                                    <div class="col-md-4 precio-producto">
+                                        <h6 class="price-ajuste">${{h6.price}} </h6>
+                                    </div>
+                            </div>
+
+                            <div class="row linea">
                                 
                                 <div class="row secundary-inf">
                                     <div class="col-md-12 descripcion-producto">
                                         <h5>Descripcion</h5>
-                                        <p class="pp"> {{p.description}} </p>
+                                        <h6 class="pp"> {{h6.description}} </h6>
                                     </div>
                                 </div>
-    
                                 <div class="row tertiary-inf">
                                     <div class="col-md-12 caracteristicas-producto">
                                         <h5>Caracteristicas</h5>
-                                        <p class="pp">{{p.caracteristicas}}</p>
+                                        <h6 class="pp">{{h6.caracteristicas}}</h6>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row quaternary-inf">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h5>cantidad</h5>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                        <option selected>Elige la cantidad</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                    </select>
+
+                                <div class="row linea">
+
+
+                                    <div class="row quaternary-inf">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>cantidad</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected>Elige la cantidad</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12 horas-sol-producto">
-                                        <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
-                                        <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                        <input type="range" class="form-range input-range" min="1" max="24">
+                                        <div class="col-md-12 horas-sol-producto">
+                                            <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
+                                            <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
+                                            <input type="range" class="form-range input-range" min="1" max="24">
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- <div class="row quaternary-inf">
                                     <div class="col-md-12 horas-sol-producto">
-                                        <p> Horas a usar: <strong class="hours-to-use"></strong> </p>
+                                        <h6> Horas a usar: <strong class="hours-to-use"></strong> </h6>
                                         <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
                                         <input type="range" class="form-range input-range" min="1" max="24">
                                     </div>
                                 </div> -->
                                 <div class="row five-inf">
                                     <div class="col-md-12 agregar-producto">
-                                        <a class="btn btn-success rounded-pill d-block mx-auto mb-2" onclick="addToQuote({{p}})">Agregar</a>
+                                        <a class="btn btn-success rounded-pill d-block mx-auto mb-2" onclick="addToQuote({{h6}})">Agregar</a>
                                     </div>
                                 </div>
                             </div>
@@ -296,6 +304,18 @@
 
                 <!-- precios totales- consumo totales -->
                 <div class="row totales">
+                    <div class="row innovacion">
+                        <div class="row">
+                            <h5>Cotizador de ahorro </h5>
+                            <h2>Tecnologia desarrollada por </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <a href="#" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="row">
@@ -347,31 +367,39 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row secundary-cotizador">
                                             <div class="row">
-                                                <p class="col-6">horas uso</p>
-                                                <div class="col-md-6 horas-uso-cotizador"></div>
-                                            </div>
-                                            <div class="row">
-                                                <p class="col-md-6">consumo hora</p>
-                                                <div class="col-md-6 consumo-hora-cotizador"></div>
+                                                <div class="col-md-6">
+                                                    <h6 class="col-12"><h6>horas uso</h6></h6>
+                                                    <div class="col-md-12 horas-uso-cotizador"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6 class="col-md-12"><h6>consumo hora</h6></h6>
+                                                    <div class="col-md-12 consumo-hora-cotizador"></h6></div>
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="row tertiary-cotizador ">
-                                            <div class="row">
-                                                <p class="col-md-6">consumo dia</p>
-                                                <div class="col-6 consumo-dia-cotizador"></div>
-                                            </div>
-                                            <div class="row">
-                                                <p class="col-md-6">% perdidas</p>
-                                                <div class="col-md-6 porcentaje-perdidas-cotizador"></div>
-                                            </div>
-                                            <div class="row"></div>
-                                            <p  class="col-md-6">total consumo</p>
-                                            <div class="col-md-6 total-consumo-cotizador">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                        <div class="col-md-4">
+                                                            <h6 class="col-md-12"><h6>consumo dia  </h6></h6>
+                                                            <div class="col-12 consumo-dia-cotizador"></div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <h6 class="col-md-12"><h6>% perdidas</h6></h6>
+                                                            <div class="col-md-12 porcentaje-perdidas-cotizador"></div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <h6  class="col-md-12"><h6>consumo </h6></h6>
+                                                            <div class="col-md-12 total-consumo-cotizador"></div>
+                                                        </div>
+                                                </div>
                                             </div>
                                             <!-- <div class="row"></div>
-                                            <p  class="col-md-6">total produccion</p>
+                                            <h6  class="col-md-6">total produccion</h6>
                                             <div class="col-md-6 total-produccion-cotizador">
                                             </div> -->
                                         </div>
@@ -386,31 +414,35 @@
 
 
                             {% comment %} <div class="row titulo-requerimiento">
-                                <p class="col-md-12">titulo titulo-requerimiento</p>
+                                <h6 class="col-md-12">titulo titulo-requerimiento</h6>
                             </div> {% endcomment %}
-                            <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion " id="accordionPanelsStayOpenExample">
     
                                 <!-- accordion-collapse collapse  paneles abierto por touch-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        Reguladores
+                                        <h4>Reguladores</h4>
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseOne" class=" " aria-labelledby="panelsStayOpen-headingOne">
                                         <div class="accordion-body">
                                         <div class="row requerimiento-individualmente-productos">
                                             <div class="col-md-3 reguladores-requeridos">
-                                                <p>reguladores requereridos</p>
+                                                <h6>Reguladores</h6>
+                                                <div class="reguladores-requeridos1"></div>
                                             </div>
                                             <div class="col-md-3 reguladores-tipo-requeridos">
-                                                <p>reguladores tipo</p>
+                                                <h6>Tipo</h6>
+                                                <div class="reguladores-tipo-requeridos1"></div>
                                             </div>
                                             <div class="col-md-2 paneles-precio-unitario-requeridos">
-                                                <p>paneles precio unitario</p>
+                                                <h6>P/Unitario</h6>
+                                                <div class="paneles-precio-unitario-requeridos1"></div>
                                             </div>
                                             <div class="col-md-2 reguladores-precio-requeridos">
-                                                <p>reguladores precio total</p>
+                                                <h6>P/total</h6>
+                                                <div class="reguladores-precio-requeridos1"></div>
                                             </div>
                                             <div class="col-md-2 reguladores-eliminar-requeridos">
                                                 <div class="col-md-2 reguladores-cotizador text-danger"> ❌ </div>
@@ -423,26 +455,27 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                        paneles
+                                        <h4>paneles</h4>
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseTwo" class="" aria-labelledby="panelsStayOpen-headingTwo">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 paneles-requeridos">
-                                                    <p>paneles requereridos</p>
+                                                    <h6>Paneles</h6>
                                                     <div class="paneles-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-3 paneles-tipo-requeridos">
-                                                    <p>paneles tipo</p>
+                                                    <h6>Tipo</h6>
                                                     <div class="paneles-tipo-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 paneles-precio-unitario-requeridos">
-                                                    <p>paneles precio unitario</p>
+                                                    <h6>P/Unitario</h6>
                                                     <div class="paneles-precio-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 paneles-precio-requeridos">
-                                                    <p>precio total</p>
+                                                    <h6>P/Total</h6>
+                                                    <div class="paneles-precio-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 paneles-eliminar-requeridos">
                                                     <div class="col-md-2 eliminar-cotizador text-danger"> ❌ </div>
@@ -455,25 +488,27 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                        Baterias
+                                        <h4>Baterias</h4>
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseThree" class="" aria-labelledby="panelsStayOpen-headingThree">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 baterias-requeridos">
-                                                    baterias requereridos
+                                                    <h6>Baterias</h6>
                                                     <div class="baterias-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-3 baterias-tipo-requeridos">
-                                                    baterias tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="baterias-tipo-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 baterias-unitario-precio-requeridos">
-                                                    <p>baterias precio unitario</p>
+                                                    <h6>P/Unitario</h6>
                                                     <div class="baterias-precio-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 baterias-precio-requeridos">
-                                                    <p> baterias precio total</p>
+                                                    <h6>P/Total</h6>
+                                                    <div class="baterias-precio-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 baterias-eliminar-requeridos">
                                                     <div class="col-md-2 baterias-cotizador text-danger"> ❌ </div>
@@ -486,23 +521,27 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingfour">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
-                                        breakers
+                                        <h4>breakers</h4>
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapsefour" class="" aria-labelledby="panelsStayOpen-headingfour">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 breakers-requeridos">
-                                                    <p>breakers requereridos</p>
+                                                    <h6>Breakers</h6>
+                                                    <div class="breakers-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-3 breakers-tipo-requeridos">
-                                                    <p>breakers tipo</p>
+                                                    <h6>Tipo</h6>
+                                                    <div class="breakers-tipo-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 breakers-precio-unitario-total-requeridos">
-                                                    <p>breakers precio total unitarios</p>
+                                                    <h6>P/Unitarios</h6>
+                                                    <div class="breakers-precio-unitario-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 breakers-precio-requeridos">
-                                                    <p> breakers  precio total</p>
+                                                    <h6>P/Total</h6>
+                                                    <div class="breakers-precio-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 breakers-eliminar-requeridos">
                                                     <div class="col-md-2 breakers-cotizador text-danger"> ❌ </div>
@@ -515,7 +554,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingfive">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false" aria-controls="panelsStayOpen-collapsefive">
-                                        otros requeremientos
+                                        <h4>otros requeremientos</h4>
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapsefive" class="" aria-labelledby="panelsStayOpen-headingfive">
@@ -523,33 +562,43 @@
                                             {% comment %} cables requeridos {% endcomment %}
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 cables-requeridos">
+                                                    <h6>cables</h6>
+                                                    <div class="cables-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 cables-tipo-requeridos">
-                                                    cables tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="cables-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 cables-precio-requeridos">
-                                                    cables precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="cables-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 cables-precio-total-requeridos">
-                                                    cables precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="cables-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 cables-eliminar-requeridos">
                                                     <div class="col-md-2 cables-eliminar-cotizador text-danger text-center"> ❌ </div>
                                                 </div>
                                             </div>
+
                                             {% comment %} soporte de techo {% endcomment %}
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 soportes-sobre-techo-requeridos">
-                                                    soporte sobre techo requereridos
+                                                    <h6>Soporte</h6>
+                                                    <div class="soportes-sobre-techo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 soportes-sobre-techo-tipo-requeridos">
-                                                    soporte sobre techo tipo
+                                                        <h6>Tipo</h6>
+                                                    <div class="soportes-sobre-techo-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 soportes-sobre-techo-precio-requeridos">
-                                                    soporte sobre techo precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="soportes-sobre-techo-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 soportes-sobre-techo-precio-total-requeridos">
-                                                    soporte sobre techo precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="soportes-sobre-techo-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 soporte-eliminar-requeridos">
                                                     <div class="col-md-2 soporte-eliminar-cotizador text-danger"> ❌ </div>
@@ -558,16 +607,20 @@
 
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 modulos-centralizados-requeridos">
-                                                    modulo-centralizado requereridos
+                                                    <h6>Modulo-Centralizado</h6>
+                                                    <div class="modulos-centralizados-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 modulos-centralizados-tipo-requeridos">
-                                                    soporte sobre techo tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="modulos-centralizados-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 modulos-centralizados-precio-requeridos">
-                                                    modulo-centralizado precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="modulos-centralizados-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 modulos-centralizados-precio-total-requeridos">
-                                                    modulo-centralizado precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="modulos-centralizados-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 modulos-eliminar-requeridos">
                                                     <div class="col-md-2 modulos-eliminar-cotizador text-danger"> ❌ </div>
@@ -575,16 +628,20 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 unidad-de-potencia-requeridos">
-                                                    unidad-de-potencia requereridos
+                                                    <h6>Unidad de potencia</h6>
+                                                    <div class="unidad-de-potencia-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 unidad-de-potencia-tipo-requeridos">
-                                                    unidad-de-potencia tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="unidad-de-potencia-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-2 unidad-de-potencia-precio-requeridos">
-                                                    unidad-de-potencia precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="unidad-de-potencia-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 unidad-de-potencia-precio-total-requeridos">
-                                                    unidad-de-potencia precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="unidad-de-potencia-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 unidad-de-potencia-eliminar-requeridos">
                                                     <div class="col-md-2 unidad-de-potencia-eliminar-cotizador text-danger"> ❌ </div>
@@ -592,16 +649,20 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 terminales-MC4-requeridos">
-                                                    terminales-MC4 requereridos
+                                                    <h6>Terminales-MC4</h6>
+                                                    <div class="terminales-MC4-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 terminales-MC4-tipo-requeridos">
-                                                    terminales-MC4 tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="terminales-MC4-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 terminales-MC4-precio-requeridos">
-                                                    terminales-MC4 precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="terminales-MC4-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 terminales-MC4-precio-total-requeridos">
-                                                    terminales-MC4 precio total
+                                                    <h6>P/total</h6>
+                                                    <div class="terminales-MC4-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 terminales-MC4-eliminar-requeridos">
                                                     <div class="col-md-2 terminales-MC4-eliminar-cotizador text-danger"> ❌ </div>
@@ -609,16 +670,20 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 conectores-en-y-requeridos">
-                                                    conectores-en-y requereridos
+                                                    <h6>Conectores En Y</h6>
+                                                    <div class="conectores-en-y-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 conectores-en-y-tipo-requeridos">
-                                                    conectores-en-y tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="conectores-en-y-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 conectores-en-y-precio-requeridos">
-                                                    conectores-en-y precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="conectores-en-y-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 conectores-en-y-precio-total-requeridos">
-                                                    conectores-en-y precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="conectores-en-y-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 conectores-en-y-eliminar-requeridos">
                                                     <div class="col-md-2 conectores-en-y-eliminar-cotizador text-danger"> ❌ </div>
@@ -626,16 +691,19 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 cable-vehicular-requeridos">
-                                                    cable-vehicular requereridos
+                                                    <h6>Cable-Vehicular</h6>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 cable-vehicular-tipo-requeridos">
-                                                    cable-vehicular tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="cable-vehicular-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 cable-vehicular-precio-requeridos">
-                                                    cable-vehicular precio
+                                                    <h6>U/Precio</h6>
+                                                    <div class="cable-vehicular-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 cable-vehicular-precio-total-requeridos">
-                                                    cable-vehicular precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="cable-vehicular-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 cable-vehicular-eliminar-requeridos">
                                                     <div class="col-md-2 cable-vehicular-eliminar-cotizador text-danger"> ❌ </div>
@@ -643,16 +711,20 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 materiales-electricos-requeridos">
-                                                    materiales-electricos requereridos
+                                                    <h6>Materiales Electricos </h6>
+                                                    <div class="materiales-electricos-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 materiales-electricos-tipo-requeridos">
-                                                    materiales-electricos tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="materiales-electricos-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 materiales-electricos-precio-requeridos">
-                                                materiales-electricos precio
+                                                <h6>U/Precio</h6>
+                                                <div class="materiales-electricos-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 materiales-electricos-precio-total-requeridos">
-                                                    materiales-electricos precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="materiales-electricos-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 materiales-electricos-eliminar-requeridos">
                                                     <div class="col-md-2 materiales-electricos-eliminar-cotizador text-danger"> ❌ </div>
@@ -660,16 +732,20 @@
                                             </div>
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 kit-puesta-a-tierra-requeridos">
-                                                    kit-puesta-a-tierra requereridos
+                                                    <h6>Kit Puesta A Tierra</h6>
+                                                    <div class="kit-puesta-a-tierra-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 kit-puesta-a-tierra-tipo-requeridos">
-                                                    kit-puesta-a-tierra tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="kit-puesta-a-tierra-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 kit-puesta-a-tierra-precio-requeridos">
-                                                mkit-puesta-a-tierra precio
+                                                <h6>U/Precio</h6>
+                                                <div class="kit-puesta-a-tierra-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 kit-puesta-a-tierra-precio-total-requeridos">
-                                                    kit-puesta-a-tierra precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="kit-puesta-a-tierra-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 kit-puesta-a-tierra-eliminar-requeridos">
                                                     <div class="col-md-2 kit-puesta-a-tierra-eliminar-cotizador text-danger"> ❌ </div>
@@ -677,16 +753,20 @@
                                             </div>
                                             {% comment %} <div class="row requerimiento-individualmente-productos">
                                                 <div style="font-size:13px;" class="col-md-3 rack-soporte-baterias-requeridos">
-                                                    rack-soporte-baterias requereridos
+                                                    <h6>Rack Soporte Baterias </h6>
+                                                    <div class="rack-soporte-baterias-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-3 rack-soporte-baterias-tipo-requeridos">
-                                                    rack-soporte-baterias tipo
+                                                    <h6>Tipo</h6>
+                                                    <div class="rack-soporte-baterias-tipo-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 rack-soporte-baterias-precio-requeridos">
-                                                rack-soporte-baterias precio
+                                                    <h6>U/Precio</h6>
+                                                <div class="rack-soporte-baterias-precio-requeridos1"></div>
                                                 </div>
                                                 <div style="font-size:13px;" class="col-md-2 rack-soporte-baterias-precio-total-requeridos">
-                                                    rack-soporte-baterias precio total
+                                                    <h6>P/Total</h6>
+                                                    <div class="rack-soporte-baterias-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-md-2 rack-soporte-baterias-eliminar-requeridos">
                                                     <div class="col-md-2 rack-soporte-baterias-eliminar-cotizador text-danger"> ❌ </div>
@@ -723,7 +803,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <h1 class="display-4">Bootstrap footer bottom</h1>
-                                        <p class="fst-italic text-muted">Using Bootstrap 5 flexbox utilities, create a footer that always sticks to the bottom of your viewport. Snippet by <a class="text-primary" href="https://bootstrapious.com/" target="_blank">Bootstrapious</a></p>
+                                        <h6 class="fst-italic text-muted">Using Bootstrap 5 flexbox utilities, create a footer that always sticks to the bottom of your viewport. Snippet by <a class="text-primary" href="https://bootstrapious.com/" target="_blank">Bootstrapious</a></h6>
                                     </div>
                                 </div>
                             </div>
@@ -736,8 +816,8 @@
                                 <div class="row gy-4 gx-5">
                                     <div class="col-lg-4 col-md-6">
                                         <h5 class="h1 text-white">CODENSOLAR</h5>
-                                        <p class="small text-muted">Somos una empresa comprometida con el media ambiente.</p>
-                                        <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">ELIT IT</a></p>
+                                        <h6 class="small text-muted">Somos una empresa comprometida con el media ambiente.</h6>
+                                        <h6 class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">ELIT IT</a></h6>
                                     </div>
                                     <div class="col-lg-2 col-md-6">
                                         <h5 class="text-white mb-3">Enlaces</h5>
@@ -759,7 +839,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <h5 class="text-white mb-3">Cotizador</h5>
-                                        <p class="small text-muted">Recuerda que por Registrarte a nuestra web o correotienes un 10% de descuento </p>
+                                        <h6 class="small text-muted">Recuerda que por Registrarte a nuestra web o correotienes un 10% de descuento </h6>
                                         <form action="#">
                                             <div class="input-group mb-3">
                                                 <input class="form-control" type="text" placeholder="Correo" aria-label="Recipient's username" aria-describedby="button-addon2">

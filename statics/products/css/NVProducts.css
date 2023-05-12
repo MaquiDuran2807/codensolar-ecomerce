@@ -155,18 +155,19 @@
 }
 
 .padre{
-    width: 55%;
+    width: 50%;
     border-radius: 10px;
 }
 
 .pp{
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .cotizador1{
-    width: 40%;
+    width: 45%;
     overflow-y:auto;  
     height: auto;
+    
     /* height:630px; */
     border-radius: 10px;
     /* position: sticky; */
@@ -174,6 +175,7 @@
     text-align: center;
     background-color: #0F172A;
     /* border: 2px solid #40C92A; */
+    overflow: auto;
 }
 
 .cotizador1::-webkit-scrollbar{
@@ -259,6 +261,10 @@
             margin-right: 0px;
         }
 
+        .npsolitario{
+            font-weight: bold;
+        }
+
                     .primary-inf{
                         border: 2px solid #545554 ;
                         border-radius: 10px;
@@ -266,7 +272,7 @@
                         margin: 5px  5px;
                     }
 
-                    .secundary-inf{
+                    /* .secundary-inf{
                         border: 2px solid #545554 ;
                         border-radius: 10px;
                         text-align: center;
@@ -285,6 +291,14 @@
                         border-radius: 10px;
                         text-align: center;
                         margin: 5px  5px;
+                    } */
+
+                    .linea{
+                        border: 2px solid #545554 ;
+                        border-radius: 10px;
+                        text-align: center;
+                        margin: 5px  5px;
+                        padding: 5px;
                     }
 
         .informacion-producto-caracteristicas{
@@ -309,6 +323,21 @@
                 font-weight: bolder;
             }
 
+            .precio-producto{
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .price-ajuste{
+            font-size: 18px;
+            font-weight:bold;
+            }
+
+            .descripcion-producto{
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
     .cotizador{
         background:rgb(73, 114, 160) ;
         border: 3px solid rgb(39, 209, 209);
@@ -316,6 +345,10 @@
         text-align: center;
         padding-right: 0;
     }     
+
+    .innovacion{
+        color: azure;
+    }
 
     
     .acumulador-cotizador{
@@ -411,6 +444,9 @@
             text-align: center;
         }
 
+    /* .separaracion{
+        margin: 2px 10px;
+    } */
 
 
     .descargar-pdf a{
