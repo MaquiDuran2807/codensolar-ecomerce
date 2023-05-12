@@ -135,11 +135,13 @@ class vistaprueba(View):
         cables_encauchetados=list(RubberizedCables.objects.all().values())
         cables_encauchetados=sorted(cables_encauchetados, key=lambda cable: cable["supported_amperage"],reverse=False)
         cable_encauchetado_apropiado=0
-        while cable_encauchetado_apropiado==0:
-            for c in cables_encauchetados:
-                if c["supported_amperage"]>=amp_requerido:
-                    cable_encauchetado_apropiado=c
-                    break
+        
+        for c in cables_encauchetados:
+            if c["supported_amperage"]>=amp_requerido:
+                cable_encauchetado_apropiado=c
+                break
+        if cable_encauchetado_apropiado==0:
+            cable_encauchetado_apropiado=cables_encauchetados[-1]
         cable_encauchetado_apropiado={
             "amount": 10,
             "name": cable_encauchetado_apropiado["name"],
@@ -210,11 +212,13 @@ class vistaprueba(View):
         vehicleCables=list(VehicleCables.objects.all().values())
         vehicleCables=sorted(vehicleCables, key=lambda cable: cable["supported_amperage"],reverse=False)
         cable_vehicular_apropiado=0
-        while cable_vehicular_apropiado==0:
-            for ch in vehicleCables:
-                if ch["supported_amperage"]>=amp_requerido:
-                    cable_vehicular_apropiado=ch
-                    break
+        
+        for ch in vehicleCables:
+            if ch["supported_amperage"]>=amp_requerido:
+                cable_vehicular_apropiado=ch
+                break
+        if cable_vehicular_apropiado==0:
+            cable_vehicular_apropiado=vehicleCables[-1]
         cable_vehicular_apropiado={
             "amount": 10,
             "name": cable_vehicular_apropiado["name"],
@@ -295,14 +299,20 @@ class vistaprueba(View):
 # prueba
 
 class PdfViewPage(View):
-    template_name       = 'products/html/nuevos/pdf-imprimir.html'
+    template_name       = 'products/html/nuevos/pdfgpt.html'
     def get(self,request):
+
         return render(
             request,
             self.template_name,
-            # {
-            #     "products":products
-            # }
+            {"productos":{
+            "id":1,
+            "name":"mla",
+            "imagen":"producto.image.url",
+            "price":"producto.price",
+            "amount":2,
+            "total":2
+        }}
             )    
 
 class ShoppingCar(LoginRequiredMixin, View):

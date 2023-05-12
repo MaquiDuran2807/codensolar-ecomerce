@@ -1,34 +1,141 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+
 <head>
-    <title>Cotización de Kit de Equipos Solares</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        @page {
+        size: A4 portrait;
+        margin: 1%;
+            
+        }
+
+    </style>
+    <title class="title1" >Cotización de Kit de Equipos Solares</title>
 </head>
 <body>
+    
     <h1>Cotización de Kit de Equipos Solares</h1>
-    <table>
-        <tr>
-            <th>Producto</th>
-            <th>Imagen</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Precio Total</th>
-        </tr>
-        
+    
+    
+
+    <div i="tabla-productos">
         {% for p in productos %}
-        <tr>
-            <td>{{p.name}}</td>
-            <td><img src="{{p.imagen}}" alt="Panel Solar"></td>
-            <td>{{p.amount}} </td>
-            <td>{{p.price}} </td>
-            <td>{{p.total}} </td>
-        </tr>
+        <table style="margin: 2%;">
+            <tr>
+                <th style="margin: 5px; width: 150px;height: 200px;"><img src="http://127.0.0.1:8000/media/{{p.imagen}}" alt=""></th>
+                <th style="width: 80%; ">
+                    <table style="margin: 5%;">
+                        <tr>
+                            <th style="width: 90px;">Producto</th>
+                            <th style="width: 90px;">Cantidad</th>
+                            <th style="width: 90px;">Precio Unitario</th>
+                            <th style="width: 90px;">Precio Total</th>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td style="width: 200px;">{{p.name}}</td>
+                            <td style="width: 200px;">{{p.amount}} </td>
+                            <td style="width: 200px;">{{p.price}} </td>
+                            <td style="width: 200px;">{{p.total}} </td>
+                        </tr>
+                        <tr>
+                            <td><div class="segunda-fila"></div></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Consumo/h</th>
+                            <th>Consumo Dia</th>
+                            <th>Perdidas</th>
+                            <th>Total Mas Perdidas</th>
+                        </tr>
+                        <tr>
+                            <td>{{p.consumo_h}}</td>
+                            <td>{{p.consumo_D}} </td>
+                            <td>{{p.perdidas}} </td>
+                            <td>{{p.total_MP}} </td>
+                        </tr>
+                        
+                            
+                        
+                       
+                        <!-- Agrega más filas para cada producto aquí -->
+                    </table>
+                    
+                </th>
+                
+            </tr>
+        </table>
         {% endfor %}
-            
-        
-       
-        <!-- Agrega más filas para cada producto aquí -->
-    </table>
+    </div>
+    <div>
+        <h2>Costo Total: {{total}}</h2>
+        <div>
+            <h3>Equipos Solares</h3>
+            <table>
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/panel.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Panel</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{p.panel}}</td>
+                                <td>{{p.amount}}</td>
+                                <td>{{p.panel_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{p.panel_potencia}}</td>
+                                <td>{{p.panel_precio_u}}</td>
+                                <td>{{p.panel_precio_t}}</td>
+                        </table>
+                    </th>
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/battery.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Bateria</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.bateria}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.bateria_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.bateria_capacidad_t}}</td>
+                                
+                                <td>{{b.bateria_precio_u}}</td>
+                                <td>{{b.bateria_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    
 </body>
 </html>
