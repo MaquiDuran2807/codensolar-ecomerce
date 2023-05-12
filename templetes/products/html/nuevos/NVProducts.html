@@ -140,6 +140,68 @@
             </div>
         </section>
 
+        <!-- filtrador de categorias -->
+
+        <section class="row">
+            <div class="col-md-12">
+                <div class="row categorias mt-5 mb-5 justify-items-between">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="" class="d-flex form filtrador">
+                                <input type="search" class="form-control me-2" placeholder="Buscar" aria-label="filtrar">
+                                <button class="btn btn-outline-success" type="button">filtrador</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                Electrodomesticos
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><button class="dropdown-item" type="button">Neveras</button></li>
+                                <li><button class="dropdown-item" type="button">Refrigeradores</button></li>
+                                <li><button class="dropdown-item" type="button">Licuadoras</button></li>
+                                <li><button class="dropdown-item" type="button">Televisores</button></li>
+                                <li><button class="dropdown-item" type="button">Ventiladores</button></li>
+                                <li><button class="dropdown-item" type="button">Lavadoras</button></li>
+                                </ul>
+                                <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Paneles
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><button class="dropdown-item" type="button">Paneles de 240 w</button></li>
+                                    <li><button class="dropdown-item" type="button">Pananeles monocristalinos</button></li>
+                                    <li><button class="dropdown-item" type="button">Paneles Policristalinos</button></li>
+                                    <li><button class="dropdown-item" type="button">Paneles de 320 w</button></li>
+                                </ul>
+                                <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Kits
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><button class="dropdown-item" type="button">Kit basico</button></li>
+                                    <li><button class="dropdown-item" type="button">Kit familiar</button></li>
+                                    <li><button class="dropdown-item" type="button">Kit recomendado</button></li>
+                                    <li><button class="dropdown-item" type="button">Kit x</button></li>
+                                </ul>
+                                <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Otros Complementos
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><button class="dropdown-item" type="button">Baterias</button></li>
+                                    <li><button class="dropdown-item" type="button">Bombillos</button></li>
+                                    <li><button class="dropdown-item" type="button">Reguladores</button></li>
+                                    <li><button class="dropdown-item" type="button">Cables</button></li>
+                                    <li><button class="dropdown-item" type="button">Breakers</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
         <!-- cotizador -->
 
             <section class=" logic d-flex  justify-content-around margin ">  
@@ -204,9 +266,19 @@
                                     <div class="quote d-grid gap-3">
                                         <div class="row primary-cotizador ">
                                             <!-- <button type="button" class="col-md-2 btn-close  eliminar-cotizador" aria-label="Close"></button> -->
-                                            <div class="col-md-2 eliminar-cotizador text-danger">eliminar</div>
-                                            <div class="col-md-7 titulo-producto-cotizador">titulo unitario</div>
-                                            <div class="col-md-3 precio-unitario"><p>precio</p></div>
+                                            <div class="col-md-1 eliminar-cotizador text-danger pt-1"> ❌</div>
+                                            <div class="col-md-5"> <H6>Producto</H6>
+                                                <div class="col-12 titulo-producto-cotizador">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4"> <h6>Precio</h6>
+                                                <div class="col-12 precio-unitario">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 "><h6>Cantidad</h6>
+                                                <div class="col-12 cantidad-cotizador">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row secundary-cotizador">
                                             <div class="row">
@@ -231,11 +303,10 @@
                                             <p  class="col-md-6">total consumo</p>
                                             <div class="col-md-6 total-consumo-cotizador">
                                             </div>
-                                            <div class="row"></div>
+                                            <!-- <div class="row"></div>
                                             <p  class="col-md-6">total produccion</p>
                                             <div class="col-md-6 total-produccion-cotizador">
-                                            </div>
-                                            
+                                            </div> -->
                                         </div>
                                     </div>
                                 </template>
@@ -245,7 +316,12 @@
                                 <!-- requerimientos-productos -->
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="acumulador-precio justify-self-center"> precio acumulado</div>
+                                        <div class="acumulador-precio justify-self-center"> Precio total</div>
+                                        <div class="row">
+                                            <p  class="col-md-12">total consumo</p>
+                                            <div class="col-md-12 total-consumo-cotizador">
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <select class="form-select text-center mt-2 mb-2" aria-label="Default select example">
@@ -259,6 +335,7 @@
                             </div> {% endcomment %}
                             <div class="accordion" id="accordionPanelsStayOpenExample">
     
+                                <!-- accordion-collapse collapse  paneles abierto por touch-->
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -294,7 +371,7 @@
                                         paneles
                                         </button>
                                     </h2>
-                                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div id="panelsStayOpen-collapseTwo" class="" aria-labelledby="panelsStayOpen-headingTwo">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 paneles-requeridos">
@@ -326,7 +403,7 @@
                                         Baterias
                                         </button>
                                     </h2>
-                                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                    <div id="panelsStayOpen-collapseThree" class="" aria-labelledby="panelsStayOpen-headingThree">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 baterias-requeridos">
@@ -357,7 +434,7 @@
                                         breakers
                                         </button>
                                     </h2>
-                                    <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingfour">
+                                    <div id="panelsStayOpen-collapsefour" class="" aria-labelledby="panelsStayOpen-headingfour">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
                                                 <div class="col-md-3 breakers-requeridos">
@@ -386,7 +463,7 @@
                                         otros requeremientos
                                         </button>
                                     </h2>
-                                    <div id="panelsStayOpen-collapsefive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingfive">
+                                    <div id="panelsStayOpen-collapsefive" class="" aria-labelledby="panelsStayOpen-headingfive">
                                         <div class="accordion-body">
                                             {% comment %} cables requeridos {% endcomment %}
                                             <div class="row requerimiento-individualmente-productos">
@@ -644,3 +721,5 @@
 
 <script src="{% static 'products/js/Newjs/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'products/js/Newjs/NVProducts1.js' %}"></script>
+</body>
+</html>
