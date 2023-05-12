@@ -160,45 +160,7 @@ async function makeQuote(quotation,product,hours_used) {
       document.querySelector(".kit-puesta-a-tierra-tipo-requeridos").textContent = quotation.ground_security_kit_needed.name;
       document.querySelector(".kit-puesta-a-tierra-precio-requeridos").textContent = quotation.ground_security_kit_needed.price;
       document.querySelector(".kit-puesta-a-tierra-precio-total-requeridos").textContent = quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount;
-        
-      // document.querySelector(".rack-soporte-baterias-requeridos").textContent = quotation.battery_supports_needed[0].amount;
-      // document.querySelector(".rack-soporte-baterias-tipo-requeridos").textContent = quotation.battery_supports_needed[0].name;
-      // document.querySelector(".rack-soporte-baterias-precio-requeridos").textContent = quotation.battery_supports_needed[0].price;
-  
-  
-      // quoteContainer.querySelector(`#_${id}`).querySelector("#horas_sol").textContent = quotation.productions[0].sun_hours
-      // quoteContainer.querySelector(`#_${id}`).querySelector("#consumo_dia").textContent = quotation.consumptions[0].consumption_day
-      // quoteContainer.querySelector(`#_${id}`).querySelector("#porcentaje_perdidas").textContent = "%"+ quotation.consumptions[0].loss_percentage.toString()
-      // quoteContainer.querySelector(`#_${id}`).querySelector("#cantidad_consumo").textContent = quotation.consumptions[0].total_consumption
       
-      // const panel = await fetch(`http://127.0.0.1:8000/products/panel/${quotation.panels_needed[0].id}`).then(response=>response.json()).then(panel => panel.panel);
-      // const regulator = await fetch(`http://127.0.0.1:8000/products/regulator/${quotation.regulators_needed[0].id}`).then(response=>response.json()).then(regulator => regulator.regulator);
-      // const battery = await fetch(`http://127.0.0.1:8000/products/battery/${quotation.batteries_needed[0].id}`).then(response=>response.json()).then(battery => battery.battery);
-      // const breaker = await fetch(`http://127.0.0.1:8000/products/breaker/${quotation.breakers_needed[0].id}`).then(response=>response.json()).then(breaker => breaker.breaker);
-  
-      // // console.log(quotation);
-      // quote.querySelector("#paneles_requeridos").textContent = quotation.panels_needed[0].amount;
-      // quote.querySelector("#paneles_tipo").textContent = panel.name;
-      // quote.querySelector("#paneles_precio").textContent = "$ "+formatearNumero(panel.price);
-      
-      // quote.querySelector("#reguladores_requeridos").textContent = quotation.regulators_needed[0].amount;
-      // quote.querySelector("#reguladores_tipo").textContent = regulator.name;
-      // quote.querySelector("#reguladores_precio").textContent = "$ "+formatearNumero(regulator.price);
-      
-      // quote.querySelector("#baterias_requeridos").textContent = quotation.batteries_needed[0].amount;
-      // quote.querySelector("#baterias_tipo").textContent = battery.name;
-      // quote.querySelector("#baterias_precio").textContent = "$ "+formatearNumero(battery.price);
-      
-      // quote.querySelector("#breakers_requeridos").textContent = quotation.breakers_needed[0].amount;
-      // quote.querySelector("#breakers_tipo").textContent = breaker.name;
-      // quote.querySelector("#breakers_precio").textContent = "$ "+formatearNumero(breaker.price);
-      
-      // quote.querySelector("#precio_acumulado").textContent = "$ "+formatearNumero(
-      //     breaker.price+
-      //     regulator.price+
-      //     panel.price+
-      //     battery.price
-      //     );
       return quoteReturn
   
 }
@@ -218,6 +180,8 @@ function createandsendpdf(nombre, email) {
   // va a recibir un pdf 
   ).then(response => response.json()).then(data => {
     console.log(data);
+    // alerta
+    alert("Se ha enviado el pdf a su correo", data);
   }) 
 }
 
