@@ -43,7 +43,7 @@ def generate_pdf(email,templete,data):
             "amount":data["battery_needed"]["amount"],
             "bateria_precio_t":data["battery_needed"]["price"]*data["battery_needed"]["amount"],
             "bateria_capacidad":data["battery_needed"]["capacity"] ,
-            "bateria_capacidad_t":data["battery_needed"]["capacity"]*data["battery_needed"]["amount"]*12 ,
+            "bateria_capacidad_t":data["battery_needed"]["capacity"]/data["battery_needed"]["amount"],
         }
 
 
