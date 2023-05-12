@@ -12,6 +12,7 @@
 
 .navbar a{
     color: azure;
+    font-weight: bolder;
 }
 
 .navbar a:hover{
