@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+<link rel="stylesheet" href="{% static 'products/css/pdfgpt.css' %}">
 <html>
 
 <head>
@@ -10,14 +11,57 @@
             
         }
 
+
     </style>
     <title class="title1" >Cotización de Kit de Equipos Solares</title>
 </head>
-<body>
+<body class="body">
+
+    <!-- logo  -->
+
+<table>
+    <tr>
+        <th style="height: 120px;width: 20px;">
+            <img src="http://127.0.0.1:8000/media/pdf/logo-codensolar.png" alt="" height="320px" width="320px">
+            <a href="#" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>
+
+        <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+        </th>
+        <th>
+            <table>
+                <tr>
+                    <th>Panel</th>
+                    <th>Cantidad</th>
+                    <th>Potencia dia</th>
+                    
+                    
+                </tr>
+                <tr>
+                    <td>{{p.panel}}</td>
+                    <td>{{p.amount}}</td>
+                    <td>{{p.panel_potencia_dia}}</td>
+                </tr>
+                <tr>
+                    <th>Potencia/h</th>
+                    <th>Precio unitario</th>
+                    <th>Precio total</th>
+                </tr>
+                <tr>
+                    <td>{{p.panel_potencia}}</td>
+                    <td>{{p.panel_precio_u}}</td>
+                    <td>{{p.panel_precio_t}}</td>
+            </table>
+        </th>
+    </tr>
+</table>
+
+<h1>Cotización de Kit de Equipos Solaressssss</h1>
+
     
-    <h1>Cotización de Kit de Equipos Solares</h1>
-    
-    
+
+
+    <!-- productos arriba -->
 
     <div i="tabla-productos">
         {% for p in productos %}
@@ -25,6 +69,7 @@
             <tr>
                 <th style="margin: 5px; width: 150px;height: 200px;"><img src="http://127.0.0.1:8000/media/{{p.imagen}}" alt=""></th>
                 <th style="width: 80%; ">
+
                     <table style="margin: 5%;">
                         <tr>
                             <th style="width: 90px;">Producto</th>
@@ -56,12 +101,9 @@
                             <td>{{p.perdidas}} </td>
                             <td>{{p.total_MP}} </td>
                         </tr>
-                        
-                            
-                        
-                       
                         <!-- Agrega más filas para cada producto aquí -->
                     </table>
+
                     
                 </th>
                 
@@ -69,6 +111,9 @@
         </table>
         {% endfor %}
     </div>
+
+    <!-- REQUIERMENTS  -->
+
     <div>
         <h2>Costo Total: {{total}}</h2>
         <div>
@@ -103,6 +148,7 @@
                                 <td>{{p.panel_precio_t}}</td>
                         </table>
                     </th>
+
                     <th style="width: 120px;height: 120px;">
                         <img src="http://127.0.0.1:8000/media/pdf/battery.svg" alt="" height="120px" width="120px">
                     </th>
@@ -132,9 +178,348 @@
                         </table>
                     </th>
                 </tr>
+
+                <!-- pruebas  -->
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/regulador.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>regulador</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                    
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/breaker.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>BREAKER</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breakers}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.breakers_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breaker_capacidad_t}}</td>
+                                
+                                <td>{{b.breaker_precio_u}}</td>
+                                <td>{{b.breaker_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/cables.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Cables</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                    
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/soporte-panels.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Solo porte panel</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breakers}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.breakers_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breaker_capacidad_t}}</td>
+                                
+                                <td>{{b.breaker_precio_u}}</td>
+                                <td>{{b.breaker_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/modulo-centralizado.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Modulo centralizado</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                    
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/unidad-potencia.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Unidad de potencia</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breakers}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.breakers_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breaker_capacidad_t}}</td>
+                                
+                                <td>{{b.breaker_precio_u}}</td>
+                                <td>{{b.breaker_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/terminal-mc4.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>terminal-mc4</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                    
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/conector-en-y.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Conector en y</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breakers}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.breakers_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breaker_capacidad_t}}</td>
+                                
+                                <td>{{b.breaker_precio_u}}</td>
+                                <td>{{b.breaker_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/cable-vehicular.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Cables Vehicular/th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                    
+                    <th style="width: 120px;height: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/materiales-electricos.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Materiales electricos</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breakers}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.breakers_capacidad}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.breaker_capacidad_t}}</td>
+                                
+                                <td>{{b.breaker_precio_u}}</td>
+                                <td>{{b.breaker_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="http://127.0.0.1:8000/media/pdf/puesta-tierra.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Puesta a tierra</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.regulador_potencia_dia}}</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{r.regulador_potencia}}</td>
+                                <td>{{r.regulador_precio_u}}</td>
+                                <td>{{r.regulador_precio_t}}</td>
+                        </table>
+                    </th>
+                
+                </tr>
+
             </table>
         </div>
     </div>
+
+    <!-- PRUEBAS  -->
+
+
     
     
 </body>
