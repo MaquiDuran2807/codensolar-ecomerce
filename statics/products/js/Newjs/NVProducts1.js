@@ -17,7 +17,7 @@ inputs.forEach(div => {
 // functions------
 
 async function addToQuote(product,hours_used=24) {
-  console.log(product.id,"=======================================");
+  console.log(product,"=======================================");
   hours_used =  parseInt((document.getElementById(`product°${product.id}`)).querySelector("input").value);
   // console.log(hours_used)
   if (productsToquote.find((obj) => obj.product_id == product.id)) {
@@ -37,7 +37,7 @@ async function addToQuote(product,hours_used=24) {
   }
   console.log(productsToquote,"productsToquote");
 
-  const consumptions = await fetch("http://127.0.0.1:8000/products/vista_prueba",{
+  const consumptions = await fetch("https://cotizadorcodensolar.azurewebsites.net/products/vista_prueba",{
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([
@@ -166,7 +166,7 @@ async function makeQuote(quotation,product,hours_used) {
 }
 function createandsendpdf(nombre, email) {
   console.log("enviando pdf", nombre, email);
-  fetch("http://127.0.0.1:8000/products/sendQuote", {
+  fetch("https://cotizadorcodensolar.azurewebsites.net/products/sendQuote", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

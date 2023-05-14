@@ -10,7 +10,7 @@ urlpatterns = [
     path('pdf-page', PdfViewPage.as_view(), name='pdf'),
     path('quote', PdfViewPage.as_view(), name='pdfPage'),
     path('sendQuote', SendEmail.as_view(), name='email'),
-    path('products', ProductListView.as_view(), name='products'),
+    path('products/<int:id>', ProductListView.as_view(), name='products'),
     # -----
     path('get/<str:obj>/<int:id>', GetObj.as_view(), name='get'),
     # -----
