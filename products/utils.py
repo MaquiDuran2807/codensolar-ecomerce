@@ -46,6 +46,26 @@ def generate_pdf(email,templete,data):
             "bateria_capacidad":data["battery_needed"]["capacity"] ,
             "bateria_capacidad_t":data["battery_needed"]["capacity"]/data["battery_needed"]["amount"],
         }
+        
+        # pruebas 
+        
+        regulador={
+            "regulador":data["regulator_needed"]["name"],
+            "regulador_precio_u":data["regulator_needed"]["price"],
+            "amount":data["regulator_needed"]["amount"],
+            "regulador_precio_t":data["regulator_needed"]["price"]*data["regulator_needed"]["amount"],
+            # verificar
+        }
+        
+        breakers={
+            "breakers":data["breaker_needed"]["name"],
+            "breakers_precio_u":data["breaker_needed"]["price"],
+            "amount":data["breaker_needed"]["amount"],
+            "breakers_precio_t":data["breaker_needed"]["price"]*data["breaker_needed"]["amount"],
+            # verificar
+        }
+        
+
 
 
     # Obtener la plantilla HTML
