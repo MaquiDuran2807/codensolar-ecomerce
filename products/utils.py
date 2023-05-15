@@ -24,6 +24,7 @@ def generate_pdf(email,templete,data):
             "total":producto.price*i["amount"],
             "consumo_h":data["consumptions"][contador]["consumption_hr"],
             "consumo_D":data["consumptions"][contador]["consumption_day"] ,
+            "porcentaje":data["consumptions"][contador]["loss_percentaje"] ,
             "perdidas":data["consumptions"][contador]["loss_consumption"],
             "total_MP":data["consumptions"][contador]["total_consumption_day"],    
         }

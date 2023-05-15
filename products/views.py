@@ -1,9 +1,10 @@
+from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, View
 from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 # importar jsonresponse
-from django.http import JsonResponse,FileResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse,FileResponse
 import json
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -17,6 +18,7 @@ from functools import reduce
 # from .pdf import create_pdf
 from .send_mail import send_mail
 from django.http import HttpResponseRedirect
+from django.core.cache import cache
 
 # Create your views here.
 
@@ -28,10 +30,20 @@ class vistaprueba(View):
     def post(self,request):
         print(request.body)
         data=json.loads(request.body)
-        
+        if data==[]:
+            #borrar cache
+            cache.delete(request.user.username)
+            return JsonResponse({"error":"no hay datos"})
+        usuario=request.user
+        print(usuario.username)
+        if data == {}:
+            data=cache.get(usuario.username)
+            if data==None:
+                return JsonResponse({"error":"no hay datos"})
+        cache.set(usuario.username,data,5000)
         products_consumptions=[]
         total_consumo_productos=0
-
+        productos=[]
         for d in data:
             print(d)
             product=Products.objects.get(id=d["product_id"])
@@ -49,6 +61,13 @@ class vistaprueba(View):
             }
             print(comsumtion,"comsumtion=====================")
             products_consumptions.append(comsumtion)
+            productos.append({
+                "amount":d["amount"],
+                "name":product.name,
+                "price":product.price,
+                "id":product.id,
+                "hours_used":d["hours"],
+            })
         # traer una lista de todos los paneles
         paneles=list(SolarPanel.objects.all().values())
         paneles=sorted(paneles, key=lambda panel: panel["production"],reverse=False)
@@ -294,6 +313,7 @@ class vistaprueba(View):
                              "electric_materials_needed":electric_material,
                              "ground_security_kit_needed":groundCable,
                              "products":data,
+                             "productos":productos,
                              },safe=False)
 
 # prueba
@@ -317,7 +337,7 @@ class PdfViewPage(View):
 
 class ShoppingCar(LoginRequiredMixin, View):
     template_name       = 'products/html/nuevos/NVProducts.html'
-    # paginate_by         = 5
+    paginate_by         = 5
     login_url           = reverse_lazy('users_app:user-login')
     def get(self,request):
         products= list(Products.objects.all().values())
@@ -338,11 +358,37 @@ class ShoppingCar(LoginRequiredMixin, View):
             }
             )
     
-class ProductListView(ListView):
-    template_name       = 'products/html/pruebas.html'
+class ProductListView(LoginRequiredMixin,ListView):
+    template_name       = 'products/html/nuevos/NVProducts1.html'
     model               = Products
     context_object_name = 'products'
     paginate_by         = 5
+    login_url           = reverse_lazy('users_app:user-login')
+
+    def get_queryset(self):
+        print("get_queryset=====================")
+        id = self.kwargs['id']
+        print(id)
+        if list(Products.objects.filter(category=id).values())==[]:
+            print("existe")
+            return Products.objects.all()
+        return Products.objects.filter(category=id)
+    
+
+
+    def get_context_data(self, **kwargs):
+        print("get_context_data=====================")
+        id = self.kwargs['id']
+        print(id)
+        productos = Products.objects.filter(category=id)
+        print(productos, "productos=====================")
+        context = super().get_context_data(**kwargs)
+        usuario=self.request.user
+        context['usuario'] = usuario
+        context['productos'] = productos
+        print(context, "contexto")
+        return context
+    
     
 class ProductView(View):
     
