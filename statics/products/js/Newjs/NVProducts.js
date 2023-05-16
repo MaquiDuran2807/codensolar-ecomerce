@@ -39,7 +39,7 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
   }
   console.log(productsToquote,"productsToquote");
 
-  const consumptions = await fetch("https://cotizadorcodensolar.azurewebsites.net/products/vista_prueba",{
+  const consumptions = await fetch("http://127.0.0.1:8000/products/vista_prueba",{
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([
@@ -173,16 +173,17 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       return quoteReturn
   
 }
-function createandsendpdf(nombre, email) {
+function createandsendpdf(nombre, email,apellido) {
   console.log("enviando pdf", nombre, email);
   alert("Se enviará a su correo el pdf en unos segundos");
-  fetch("https://cotizadorcodensolar.azurewebsites.net/products/sendQuote", {
+  fetch("http://127.0.0.1:8000/products/sendQuote", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
       "name": nombre,
+      "lastname": apellido,
       "email": email,
       "data": cotizacion_enviar
     })
@@ -208,7 +209,7 @@ function formatearNumero(numero, lenguaje = "es") {
 }
 
 function eliminarProducto(prod){
-  fetch("https://cotizadorcodensolar.azurewebsites.net/products/vista_prueba",{
+  fetch("http://127.0.0.1:8000/products/vista_prueba",{
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(prod),
@@ -229,7 +230,7 @@ function eliminarProducto(prod){
 
 
 
-const consumptions =  fetch("https://cotizadorcodensolar.azurewebsites.net/products/vista_prueba",{
+const consumptions =  fetch("http://127.0.0.1:8000/products/vista_prueba",{
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({}),

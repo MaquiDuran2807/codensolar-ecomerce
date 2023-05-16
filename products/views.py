@@ -335,30 +335,7 @@ class PdfViewPage(View):
         }}
             )    
 
-class ShoppingCar(LoginRequiredMixin, View):
-    template_name       = 'products/html/nuevos/NVProducts.html'
-    paginate_by         = 5
-    login_url           = reverse_lazy('users_app:user-login')
-    def get(self,request):
-        products= list(Products.objects.all().values())
-        usuario=request.user
-        # products = list(filter(lambda p : p["category_id"] == 3 or p["category_id"] == 4, products))
-        
-        for p in products:
-            print("~"*80)
-            print(p)
-            print("~"*80)
-        
-        return render(
-            request,
-            self.template_name,
-            {
-                "products":products,
-                "usuario":usuario
-            }
-            )
-    
-class ProductListView(LoginRequiredMixin,ListView):
+class ShoppingCar(LoginRequiredMixin, ListView):
     template_name       = 'products/html/nuevos/NVProducts1.html'
     model               = Products
     context_object_name = 'products'
@@ -388,6 +365,37 @@ class ProductListView(LoginRequiredMixin,ListView):
         context['productos'] = productos
         print(context, "contexto")
         return context
+    
+"""lass ProductListView(LoginRequiredMixin,ListView):
+    template_name       = 'products/html/nuevos/NVProducts1.html'
+    model               = Products
+    context_object_name = 'products'
+    paginate_by         = 5
+    login_url           = reverse_lazy('users_app:user-login')
+
+    def get_queryset(self):
+        print("get_queryset=====================")
+        id = self.kwargs['id']
+        print(id)
+        if list(Products.objects.filter(category=id).values())==[]:
+            print("existe")
+            return Products.objects.all()
+        return Products.objects.filter(category=id)
+    
+
+
+    def get_context_data(self, **kwargs):
+        print("get_context_data=====================")
+        id = self.kwargs['id']
+        print(id)
+        productos = Products.objects.filter(category=id)
+        print(productos, "productos=====================")
+        context = super().get_context_data(**kwargs)
+        usuario=self.request.user
+        context['usuario'] = usuario
+        context['productos'] = productos
+        print(context, "contexto")
+        return context"""
     
     
 class ProductView(View):
@@ -753,10 +761,13 @@ class SendEmail(View):
     
     def post(self,request):
         pdf_send= json.loads(request.body)
+        print(pdf_send)
+        nombre= pdf_send["name"]
+        apellido= pdf_send["lastname"]
         email = pdf_send["email"]
         data  = pdf_send["data"]
         print(f"sending email...a {email} y la data es {data}")
-        pdf   = generate_pdf(email,'products/html/nuevos/pdfgpt.html',data)
+        pdf   = generate_pdf(email,'products/html/nuevos/pdfgpt.html',data,nombre,apellido)
         return JsonResponse({"msg":pdf})
     
 
