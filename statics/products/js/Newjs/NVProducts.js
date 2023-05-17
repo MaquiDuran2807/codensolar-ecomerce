@@ -1,6 +1,7 @@
 const inputs = document.querySelectorAll(".horas-sol-producto");
 const quoteTemplate = document.getElementById("quote-template").content;
 const quoteContainer = document.querySelector(".acumulador-cotizador");
+let cantidad_html=document.getElementById(`cantidades`);
 let contador=0;
 let productsToquote = [];
 let cotizacion_enviar;
@@ -33,7 +34,8 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
       {
         amount:1,
         product_id:product_id1,
-        hours:hours_used
+        hours:hours_used,
+        borrar:false
       }
     );
   }
@@ -67,10 +69,12 @@ function delFromProducts(id) {
 async function makeQuote(quotation,product_id,product_name,product_price,hours_used) {
   let quoteReturn;
       // datos productos
+      let total_precio=0;
       
       if (mas_cantidad==false) {
         console.log("mas cantidad");
-        
+        let cant=quotation.products[contador].amount;
+        console.log(cant,"cant");
         let consumptions=quotation.consumptions[contador]
         contador++;
         console.log(consumptions,"consumption en makeQuote",contador);
@@ -78,14 +82,50 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       clone.querySelector(".quote").id += "_"+product_id;
       clone.querySelector(".eliminar-cotizador").addEventListener('click',()=>delFromProducts(product_id));
       clone.querySelector(".titulo-producto-cotizador").textContent += product_name;
-      clone.querySelector(".precio-unitario").textContent += "$"+formatearNumero(product_price).toString();
+      let ac1=clone.querySelector(".precio-unitario");
+      ac1.setAttribute("id", `4-${product_id}`);
+      ac1.textContent += "$"+formatearNumero(product_price*cant).toString();
       clone.querySelector(".horas-uso-cotizador").textContent += hours_used;
-      clone.querySelector(".consumo-hora-cotizador").textContent += consumptions.consumption_hr;
-      clone.querySelector(".consumo-dia-cotizador").textContent += consumptions.consumption_day;
-      clone.querySelector(".porcentaje-perdidas-cotizador").textContent += consumptions.loss_percentaje+" % perdidas: "+consumptions.loss_consumption;
-      clone.querySelector(".total-consumo-cotizador").textContent += consumptions.total_consumption_day;
+      let ac3=clone.querySelector(".consumo-hora-cotizador");
+      ac3.setAttribute("id", `6-${product_id}`);
+      ac3.textContent += formatearNumero(consumptions.consumption_hr*cant ).toString()+" W/hora";
+      let ac4=clone.querySelector(".consumo-dia-cotizador");
+      ac4.setAttribute("id", `7-${product_id}`);
+      ac4.textContent += formatearNumero(consumptions.consumption_day*cant).toString() +" W/dia";
+      let ac5=clone.querySelector(".porcentaje-perdidas-cotizador");
+      ac5.setAttribute("id", `8-${product_id}`);
+      ac5.textContent += consumptions.loss_percentaje+" % perdidas: "+formatearNumero(consumptions.loss_consumption*cant).toString() +" W";
+      let ac6=clone.querySelector(".total-consumo-cotizador");
+      ac6.setAttribute("id", `9-${product_id}`);
+      ac6.textContent += formatearNumero(consumptions.total_consumption_day*cant).toString() +" W";
+      let cantidades=clone.querySelector(".cantidad-cotizador") ;
+      cantidades.setAttribute("id", `cantidades-${product_id}`);
+      cantidades.textContent += cant;
       quoteContainer.appendChild(clone);
+      total_precio += parseInt(product_price*cant);
+      }else{
+        console.log("mas cantidad");
+        let canti=quotation.products;
+        let contador2=0;
+        canti.forEach(element => {
+          console.log(element,"element");
+          if (element.product_id==product_id) {
+            let consumptions=quotation.consumptions[contador2]
+            console.log(element.amount,"element.amount",element.product_id,"element.product_id");
+            document.getElementById(`cantidades-${product_id}`).textContent = element.amount;
+            document.getElementById(`4-${product_id}`).textContent = "$"+formatearNumero(product_price*element.amount).toString();
+            document.getElementById(`6-${product_id}`).textContent = formatearNumero(consumptions.consumption_hr*element.amount ).toString()+" W/hora";
+            document.getElementById(`7-${product_id}`).textContent = formatearNumero(consumptions.consumption_day*element.amount).toString() +" W/dia";
+            document.getElementById(`8-${product_id}`).textContent = consumptions.loss_percentaje+" % perdidas: "+formatearNumero(consumptions.loss_consumption*element.amount).toString()+"W" ;
+            document.getElementById(`9-${product_id}`).textContent = formatearNumero(consumptions.total_consumption_day*element.amount).toString() +" W";
+            contador2++;
+            total_precio += parseInt(product_price*element.amount);
+          }
+          
+        });
       }
+      console.log(product_price,"product_price");
+      
       mas_cantidad=false;
         
       
@@ -97,24 +137,25 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       let total_panel=quotation.panel_needed.price*quotation.panel_needed.amount;
       document.querySelector(".paneles-requeridos1").textContent = ` ${quotation.panel_needed.amount}`;
       document.querySelector(".paneles-tipo-requeridos1").textContent = quotation.panel_needed.name;
-      document.querySelector(".paneles-precio-requeridos1").textContent = quotation.panel_needed.price;
-      document.querySelector(".paneles-precio-requeridos2").textContent = ` ${total_panel}`;
+      document.querySelector(".paneles-precio-requeridos1").textContent = formatearNumero(quotation.panel_needed.price).toString();
+      document.querySelector(".paneles-precio-requeridos2").textContent = ` ${formatearNumero(total_panel).toString()}`;
       //
+      total_precio += parseInt(total_panel);
 
       // seccion baterias
       console.log(quotation.battery_needed.name,"bateria");
       document.querySelector(".baterias-requeridos1").textContent = quotation.battery_needed.amount;
       document.querySelector(".baterias-tipo-requeridos").textContent = quotation.battery_needed.name;
-      document.querySelector(".baterias-precio-requeridos1").textContent = quotation.battery_needed.price;
-      document.querySelector(".baterias-precio-requeridos2").textContent = quotation.battery_needed.price*quotation.battery_needed.amount;
-
+      document.querySelector(".baterias-precio-requeridos1").textContent = formatearNumero(quotation.battery_needed.price).toString();
+      document.querySelector(".baterias-precio-requeridos2").textContent = formatearNumero(quotation.battery_needed.price*quotation.battery_needed.amount).toString();
+      total_precio += parseInt(quotation.battery_needed.price*quotation.battery_needed.amount);
       //
   
       document.querySelector(".reguladores-requeridos").textContent = quotation.regulator_needed.amount;
       document.querySelector(".reguladores-tipo-requeridos").textContent = quotation.regulator_needed.name;
-      document.querySelector(".reguladores-precio-requeridos").textContent = quotation.regulator_needed.price;
+      document.querySelector(".reguladores-precio-requeridos").textContent = formatearNumero(quotation.regulator_needed.price).toString();
       // document.querySelector(".reguladores-precio-total-requeridos").textContent = quotation.regulators_needed[0].price*quotation.regulators_needed[0].amount;
-     
+      total_precio += parseInt(quotation.regulator_needed.price);
       // 
         
       
@@ -122,54 +163,70 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
         
       document.querySelector(".breakers-requeridos").textContent = quotation.breaker_needed.amount;
       document.querySelector(".breakers-tipo-requeridos").textContent = quotation.breaker_needed.name;
-      document.querySelector(".breakers-precio-requeridos").textContent = quotation.breaker_needed.price;
-      // document.querySelector(".breakers-precio-total-requeridos").textContent = quotation.breakers_needed[0].price*quotation.breakers_needed[0].amount;
+      document.querySelector(".breakers-precio-unitario-total-requeridos1").textContent = formatearNumero(quotation.breaker_needed.price).toString();
+      total_precio += parseInt(quotation.breaker_needed.price*quotation.breaker_needed.amount);
+      document.querySelector(".breakers-precio-requeridos1").textContent = formatearNumero(quotation.breaker_needed.price*quotation.breaker_needed.amount).toString();
         
       document.querySelector(".cables-requeridos").textContent = quotation.rubberized_cable_needed.amount;
       document.querySelector(".cables-tipo-requeridos").textContent = quotation.rubberized_cable_needed.name;
-      document.querySelector(".cables-precio-requeridos").textContent = quotation.rubberized_cable_needed.price;
-      document.querySelector(".cables-precio-total-requeridos").textContent = quotation.rubberized_cable_needed.price*quotation.rubberized_cable_needed.amount;
-        
+      document.querySelector(".cables-precio-requeridos").textContent = formatearNumero(quotation.rubberized_cable_needed.price).toString();
+      document.querySelector(".cables-precio-total-requeridos").textContent = formatearNumero(quotation.rubberized_cable_needed.price*quotation.rubberized_cable_needed.amount).toString() ;
+      total_precio+= parseInt( quotation.rubberized_cable_needed.price*quotation.rubberized_cable_needed.amount);
+      
       document.querySelector(".soportes-sobre-techo-requeridos").textContent = quotation.panel_support_needed.amount;
       document.querySelector(".soportes-sobre-techo-tipo-requeridos").textContent = quotation.panel_support_needed.name;
-      document.querySelector(".soportes-sobre-techo-precio-requeridos").textContent = quotation.panel_support_needed.price;
-      document.querySelector(".soportes-sobre-techo-precio-total-requeridos").textContent = quotation.panel_support_needed.price*quotation.panel_support_needed.amount;
-        
+      document.querySelector(".soportes-sobre-techo-precio-requeridos").textContent = formatearNumero(quotation.panel_support_needed.price).toString();
+      document.querySelector(".soportes-sobre-techo-precio-total-requeridos").textContent = formatearNumero(quotation.panel_support_needed.price*quotation.panel_support_needed.amount).toString();
+      total_precio += quotation.panel_support_needed.price*quotation.panel_support_needed.amount;   
+      
       document.querySelector(".modulos-centralizados-requeridos").textContent = quotation.centralized_modules_needed.amount;
       document.querySelector(".modulos-centralizados-tipo-requeridos").textContent = quotation.centralized_modules_needed.name;
-      document.querySelector(".modulos-centralizados-precio-requeridos").textContent = quotation.centralized_modules_needed.price;
-      document.querySelector(".modulos-centralizados-precio-total-requeridos").textContent = quotation.centralized_modules_needed.price*quotation.centralized_modules_needed.amount;
-        
+      document.querySelector(".modulos-centralizados-precio-requeridos").textContent = formatearNumero(quotation.centralized_modules_needed.price).toString();
+      document.querySelector(".modulos-centralizados-precio-total-requeridos").textContent = formatearNumero(quotation.centralized_modules_needed.price*quotation.centralized_modules_needed.amount).toString();
+      total_precio += parseInt( quotation.centralized_modules_needed.price*quotation.centralized_modules_needed.amount);  
+      
       document.querySelector(".unidad-de-potencia-requeridos").textContent = quotation.power_units_needed.amount;
       document.querySelector(".unidad-de-potencia-tipo-requeridos").textContent = quotation.power_units_needed.name;
-      document.querySelector(".unidad-de-potencia-precio-requeridos").textContent = quotation.power_units_needed.price;
-      document.querySelector(".unidad-de-potencia-precio-total-requeridos").textContent = quotation.power_units_needed.price*quotation.power_units_needed.amount;
-        
+      document.querySelector(".unidad-de-potencia-precio-requeridos").textContent = formatearNumero(quotation.power_units_needed.price).toString();
+      document.querySelector(".unidad-de-potencia-precio-total-requeridos").textContent = formatearNumero(quotation.power_units_needed.price*quotation.power_units_needed.amount).toString();
+      total_precio += parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
+      
       document.querySelector(".terminales-MC4-requeridos").textContent = quotation.terminals_needed.amount;
       document.querySelector(".terminales-MC4-tipo-requeridos").textContent = quotation.terminals_needed.name;
-      document.querySelector(".terminales-MC4-precio-requeridos").textContent = quotation.terminals_needed.price;
-      document.querySelector(".terminales-MC4-precio-total-requeridos").textContent = quotation.terminals_needed.price*quotation.terminals_needed.amount;
-      
+      document.querySelector(".terminales-MC4-precio-requeridos").textContent = formatearNumero(quotation.terminals_needed.price).toString();
+      document.querySelector(".terminales-MC4-precio-total-requeridos").textContent = formatearNumero(quotation.terminals_needed.price*quotation.terminals_needed.amount).toString();
+      total_precio += parseInt( quotation.terminals_needed.price*quotation.terminals_needed.amount);
+
       document.querySelector(".conectores-en-y-requeridos").textContent = quotation.connector_needed.amount;
       document.querySelector(".conectores-en-y-tipo-requeridos").textContent = quotation.connector_needed.name;
-      document.querySelector(".conectores-en-y-precio-requeridos").textContent = quotation.connector_needed.price;
-      document.querySelector(".conectores-en-y-precio-total-requeridos").textContent = quotation.connector_needed.price*quotation.connector_needed.amount;
-      
+      document.querySelector(".conectores-en-y-precio-requeridos").textContent = formatearNumero(quotation.connector_needed.price).toString();
+      document.querySelector(".conectores-en-y-precio-total-requeridos").textContent = formatearNumero(quotation.connector_needed.price*quotation.connector_needed.amount).toString();
+      total_precio += parseInt( quotation.connector_needed.price*quotation.connector_needed.amount);
+
       document.querySelector(".cable-vehicular-requeridos").textContent = quotation.vehicle_cable_needed.amount;
       document.querySelector(".cable-vehicular-tipo-requeridos").textContent = quotation.vehicle_cable_needed.name;
-      document.querySelector(".cable-vehicular-precio-requeridos").textContent = quotation.vehicle_cable_needed.price;
-      document.querySelector(".cable-vehicular-precio-total-requeridos").textContent = quotation.vehicle_cable_needed.price*quotation.vehicle_cable_needed.amount;
-        
+      document.querySelector(".cable-vehicular-precio-requeridos").textContent = formatearNumero(quotation.vehicle_cable_needed.price).toString();
+      document.querySelector(".cable-vehicular-precio-total-requeridos").textContent = formatearNumero(quotation.vehicle_cable_needed.price*quotation.vehicle_cable_needed.amount).toString();
+      total_precio += parseInt( quotation.vehicle_cable_needed.price*quotation.vehicle_cable_needed.amount);   
+
       document.querySelector(".materiales-electricos-requeridos").textContent = quotation.electric_materials_needed.amount;
       document.querySelector(".materiales-electricos-tipo-requeridos").textContent = quotation.electric_materials_needed.name;
-      document.querySelector(".materiales-electricos-precio-requeridos").textContent = quotation.electric_materials_needed.price;
-      document.querySelector(".materiales-electricos-precio-total-requeridos").textContent = quotation.electric_materials_needed.price*quotation.electric_materials_needed.amount;
-      
+      document.querySelector(".materiales-electricos-precio-requeridos").textContent = formatearNumero(quotation.electric_materials_needed.price).toString();
+      document.querySelector(".materiales-electricos-precio-total-requeridos").textContent = formatearNumero(quotation.electric_materials_needed.price*quotation.electric_materials_needed.amount).toString();
+      total_precio += parseInt( quotation.electric_materials_needed.price*quotation.electric_materials_needed.amount);
+
       document.querySelector(".kit-puesta-a-tierra-requeridos").textContent = quotation.ground_security_kit_needed.amount;
       document.querySelector(".kit-puesta-a-tierra-tipo-requeridos").textContent = quotation.ground_security_kit_needed.name;
-      document.querySelector(".kit-puesta-a-tierra-precio-requeridos").textContent = quotation.ground_security_kit_needed.price;
-      document.querySelector(".kit-puesta-a-tierra-precio-total-requeridos").textContent = quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount;
+      document.querySelector(".kit-puesta-a-tierra-precio-requeridos").textContent = formatearNumero(quotation.ground_security_kit_needed.price).toString();
+      document.querySelector(".kit-puesta-a-tierra-precio-total-requeridos").textContent = formatearNumero(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount).toString();
       
+      total_precio += parseInt(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
+      console.log("total_precio",total_precio);
+      // total de la cotizacion
+      console.log(total_precio,"total precio");
+      let totales=document.getElementById("totales");
+      totales.textContent="$ "+formatearNumero(total_precio).toString();
+
       return quoteReturn
   
 }
@@ -226,6 +283,23 @@ function eliminarProducto(prod){
   window.location.reload();
 
 })
+}
+function borrar() {
+  fetch("http://127.0.0.1:8000/products/vista_prueba",{
+  method: "POST",
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify([{"borrar":true}]),
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  
+    //actualizar la pagina
+    
+  window.location.reload();
+
+}
+)
 }
 
 
