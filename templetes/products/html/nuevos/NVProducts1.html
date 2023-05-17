@@ -80,10 +80,10 @@
                             <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
                         </ul>
         
-                        <div class="btn btn-outline-success btn1">
+                        <div class="btn btn-outline-success btn1 ">
                             <a href="{% url 'users_app:user-logout' %}"> salir</a>
                             </div>
-                            <div class="btn btn-outline-success btn2">
+                            <div class="btn btn-outline-success btn2 registrarse">
                             Registrarse
                             </div>
                     </div>
@@ -104,9 +104,9 @@
                     <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row justify-content-around">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel1.jpeg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel2.jpg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel4.jpeg' %}" class="d-block w-100" alt="">
+                            <img class="c1 imgcarru" src="{% static 'products/carrusel/carrusel1.jpeg' %}" class="d-block w-100" alt="">
+                            <img class="c2 imgcarru" src="{% static 'products/carrusel/carrusel2.jpg' %}" class="d-block w-100" alt="">
+                            <img class="c3 imgcarru" src="{% static 'products/carrusel/carrusel4.jpeg' %}" class="d-block w-100" alt="">
                         </div>
                         <!-- <div class="carousel-caption d-none d-md-block">
                         <div class="contenido-carrusel">
@@ -118,16 +118,16 @@
                     </div>
                     <div class="carousel-item">
                         <div class="row justify-content-around">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel3.jpeg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel5.jpeg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel7.jpg' %}" class="d-block w-100" alt="">
+                            <img class="c4 imgcarru" src="{% static 'products/carrusel/carrusel3.jpeg' %}" class="d-block w-100" alt="">
+                            <img class="c5 imgcarru" src="{% static 'products/carrusel/carrusel5.jpeg' %}" class="d-block w-100" alt="">
+                            <img class="c6 imgcarru" src="{% static 'products/carrusel/carrusel7.jpg' %}" class="d-block w-100" alt="">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="row justify-content-around">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel6.jpeg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel8.jpg' %}" class="d-block w-100" alt="">
-                            <img style="max-height: 18em; max-width: 25em; border-radius:10px; border: 2px solid #40C92A; margin:30px 10px; padding:2px;" src="{% static 'products/carrusel/carrusel9.jpg' %}" class="d-block w-100" alt="">
+                            <img class="c7 imgcarru" src="{% static 'products/carrusel/carrusel6.jpeg' %}" class="d-block w-100" alt="">
+                            <img class="c8 imgcarru" src="{% static 'products/carrusel/carrusel8.jpg' %}" class="d-block w-100" alt="">
+                            <img class="c9 imgcarru" src="{% static 'products/carrusel/carrusel9.jpg' %}" class="d-block w-100" alt="">
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@
 
         <section class="row">
             <div class="col-md-12">
-                <div class="row categorias  mb-2 justify-items-between">
+                <div class="row categorias  mb-2 ">
                     <!-- <div class="row">
                         <div class="col-md-6">
                             <div class="dropdown">
@@ -194,7 +194,7 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="col-md-12">
+                    <div class="col-md-12 grupo-botones d-flex  justify-content-evenly">
                         <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/0">todos</a></div>
                         <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/3">Neveras</a></div>
                         <div class="btn boton-filtro"> <a href="http://127.0.0.1:8000/products/shopping_car/24"> Lavadoras</a></div>
@@ -204,7 +204,7 @@
                         <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/4">Refrigeradores</a></div>
                             <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <a href="">Kits</a>
-                                </button>
+                            </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li><button class="dropdown-item" type="button">Kit basico</button></li>
                                 <li><button class="dropdown-item" type="button">Kit familiar</button></li>
@@ -318,17 +318,11 @@
 
                 <!-- precios totales- consumo totales -->
                 <div class="row totales">
-                    <div class="row innovacion">
+                    <div class="row innovacion justify-content-center">
                         <div class="row">
-                            <div class="row">
-                                <div class="col-md-11">
-                                    <h5>Cotizador de ahorro </h5>
-                                    <h2>Tecnologia desarrollada por </h2>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="row btn btn-success">Reinicar cotizacion</div>
-                                </div>
-                            </div>
+                            <div class="col-md-12">
+                                <h5>Cotizador de ahorro </h5>
+                                <h2>Tecnologia desarrollada por </h2>
                         </div>
                         <div class="row">
                             <div class="col-md-12 d-flex justify-content-center">
@@ -359,13 +353,26 @@
                             </div>
                         </div>
                     </div>
-    
-                    <select class="form-select text-center mt-2 mb-2" aria-label="Default select example">
-                        <option selected>Seleciona en que parte del pais te encuentras</option>
-                        <option value="1"> Cundinamarca</option>
-                        <option value="2">Boyaca</option>
-                        <option value="3"> Resto del pais </option>
-                    </select>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <select class="form-select text-center mt-2 mb-2 lugar-residencia" aria-label="Default select example">
+                                        <div class="selectores-lugar-residencia">
+                                            <option selected>¿En que parte del pais te encuentras?</option>
+                                            <option value="1">Cundinamarca</option>
+                                            <option value="2">Boyaca</option>
+                                            <option value="3">Resto del pais</option>
+                                        </div>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                        <div class="row btn btn-success reiniciar-cotizacion">Reiniciar cotizacion</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -430,17 +437,17 @@
                         </div>
 
 
-                        <div class="row requerimientos-productos">
+                        <div class="row requerimientos-productos justify-content-center">
                                 <!-- requerimientos-productos -->
 
 
                             {% comment %} <div class="row titulo-requerimiento">
                                 <h6 class="col-md-12">titulo titulo-requerimiento</h6>
                             </div> {% endcomment %}
-                            <div class="accordion " id="accordionPanelsStayOpenExample">
+                            <div class="accordion accordion-general justify-content-center" id="accordionPanelsStayOpenExample">
     
                                 <!-- accordion-collapse collapse  paneles abierto por touch-->
-                                <div class="accordion-item">
+                                <div class="accordion-item justify-content-center">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                         <h4>Reguladores</h4>
@@ -449,24 +456,24 @@
                                     <div id="panelsStayOpen-collapseOne" class=" " aria-labelledby="panelsStayOpen-headingOne">
                                         <div class="accordion-body">
                                         <div class="row requerimiento-individualmente-productos">
-                                            <div class="col-md-3 reguladores-requeridos">
+                                            <div class="col-xl-3   reguladores-requeridos">
                                                 <h6>Reguladores</h6>
                                                 <div class="reguladores-requeridos1"></div>
                                             </div>
-                                            <div class="col-md-3 reguladores-tipo-requeridos">
+                                            <div class="col-xl-3   reguladores-tipo-requeridos">
                                                 <h6>Tipo</h6>
                                                 <div class="reguladores-tipo-requeridos1"></div>
                                             </div>
-                                            <div class="col-md-2 paneles-precio-unitario-requeridos">
+                                            <div class="col-xl-2  paneles-precio-unitario-requeridos">
                                                 <h6>P/Unitario</h6>
                                                 <div class="paneles-precio-unitario-requeridos1"></div>
                                             </div>
-                                            <div class="col-md-2 reguladores-precio-requeridos">
+                                            <div class="col-xl-2  reguladores-precio-requeridos">
                                                 <h6>P/total</h6>
                                                 <div class="reguladores-precio-requeridos1"></div>
                                             </div>
-                                            <div class="col-md-2 reguladores-eliminar-requeridos">
-                                                <div class="col-md-2 reguladores-cotizador text-danger"> ❌ </div>
+                                            <div class="col-xl-2   reguladores-eliminar-requeridos">
+                                                <div class="col-xl-2 reguladores-cotizador text-danger"> ❌ </div>
                                             </div>
                                         </div>
                                         </div>
@@ -482,24 +489,24 @@
                                     <div id="panelsStayOpen-collapseTwo" class="" aria-labelledby="panelsStayOpen-headingTwo">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-md-3 paneles-requeridos">
+                                                <div class="col-xl-3 paneles-requeridos">
                                                     <h6>Paneles</h6>
                                                     <div class="paneles-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-3 paneles-tipo-requeridos">
+                                                <div class="col-xl-3 paneles-tipo-requeridos">
                                                     <h6>Tipo</h6>
                                                     <div class="paneles-tipo-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 paneles-precio-unitario-requeridos">
+                                                <div class="col-xl-2 paneles-precio-unitario-requeridos">
                                                     <h6>P/Unitario</h6>
                                                     <div class="paneles-precio-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 paneles-precio-requeridos">
+                                                <div class="col-xl-2 paneles-precio-requeridos">
                                                     <h6>P/Total</h6>
                                                     <div class="paneles-precio-requeridos2"></div>
                                                 </div>
-                                                <div class="col-md-2 paneles-eliminar-requeridos">
-                                                    <div class="col-md-2 eliminar-cotizador text-danger"> ❌ </div>
+                                                <div class="col-xl-2 paneles-eliminar-requeridos">
+                                                    <div class="col-xl-2 eliminar-cotizador text-danger"> ❌ </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -515,24 +522,24 @@
                                     <div id="panelsStayOpen-collapseThree" class="" aria-labelledby="panelsStayOpen-headingThree">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-md-3 baterias-requeridos">
+                                                <div class="col-xl-3 baterias-requeridos">
                                                     <h6>Baterias</h6>
                                                     <div class="baterias-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-3 baterias-tipo-requeridos">
+                                                <div class="col-xl-3 baterias-tipo-requeridos">
                                                     <h6>Tipo</h6>
                                                     <div class="baterias-tipo-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 baterias-unitario-precio-requeridos">
+                                                <div class="col-xl-2 baterias-unitario-precio-requeridos">
                                                     <h6>P/Unitario</h6>
                                                     <div class="baterias-precio-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 baterias-precio-requeridos">
+                                                <div class="col-xl-2 baterias-precio-requeridos">
                                                     <h6>P/Total</h6>
                                                     <div class="baterias-precio-requeridos2"></div>
                                                 </div>
-                                                <div class="col-md-2 baterias-eliminar-requeridos">
-                                                    <div class="col-md-2 baterias-cotizador text-danger"> ❌ </div>
+                                                <div class="col-xl-2 baterias-eliminar-requeridos">
+                                                    <div class="col-xl-2 baterias-cotizador text-danger"> ❌ </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -548,24 +555,24 @@
                                     <div id="panelsStayOpen-collapsefour" class="" aria-labelledby="panelsStayOpen-headingfour">
                                         <div class="accordion-body">
                                             <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-md-3 breakers-requeridos">
+                                                <div class="col-xl-3 breakers-requeridos">
                                                     <h6>Breakers</h6>
                                                     <div class="breakers-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-3 breakers-tipo-requeridos">
+                                                <div class="col-xl-3 breakers-tipo-requeridos">
                                                     <h6>Tipo</h6>
                                                     <div class="breakers-tipo-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 breakers-precio-unitario-total-requeridos">
+                                                <div class="col-xl-2 breakers-precio-unitario-total-requeridos">
                                                     <h6>P/Unitarios</h6>
                                                     <div class="breakers-precio-unitario-total-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 breakers-precio-requeridos">
+                                                <div class="col-xl-2 breakers-precio-requeridos">
                                                     <h6>P/Total</h6>
                                                     <div class="breakers-precio-requeridos1"></div>
                                                 </div>
-                                                <div class="col-md-2 breakers-eliminar-requeridos">
-                                                    <div class="col-md-2 breakers-cotizador text-danger"> ❌ </div>
+                                                <div class="col-xl-2 breakers-eliminar-requeridos">
+                                                    <div class="col-xl-2 breakers-cotizador text-danger"> ❌ </div>
                                                 </div>
                                             </div>
                                         </div>
