@@ -30,6 +30,7 @@ class vistaprueba(View):
     def post(self,request):
         print(request.body)
         data=json.loads(request.body)
+        
         if data==[]:
             #borrar cache
             cache.delete(request.user.username)
@@ -40,6 +41,9 @@ class vistaprueba(View):
             data=cache.get(usuario.username)
             if data==None:
                 return JsonResponse({"error":"no hay datos"})
+        if data[0]["borrar"]==True:
+            cache.delete(request.user.username)
+            return JsonResponse({"message":"borrado"})
         cache.set(usuario.username,data,5000)
         products_consumptions=[]
         total_consumo_productos=0
