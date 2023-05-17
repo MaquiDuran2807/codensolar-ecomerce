@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'products/css/pdfgpt.css' %}">
+<html>
+
+<head>
+    <style>
+        @page {
+        size: A4 portrait;
+        margin: 2%;
+            
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin: 2%;
+        }
+
+
+    </style>
+    <title class="title1" >Cotización de Kit de Equipos Solares</title>
+</head>
+<body>
+    
+    <div>
+        <table style="width: 100%;">
+            <tr style="height: 180px;">
+                <th style="width: 100%;height: 180px;"><img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/logo.png" alt="" height="200px" width="200px"></th>
+            </tr>
+            <tr>
+                <th style="width: 100%;height: 15px;">
+                    <h3>NIT No. 900.586.332-1 </h3>
+                </th >
+            </tr>
+            <tr>
+                <th style="width: 100%;height: 15px;">
+                    <h3 style="font-size: 13px;">detalle de tu compra</h3>
+                    <br>
+                </th>
+            </tr>
+            
+            
+        </table>
+    </div>
+
+    <!-- tabla de toda la cotizacion -->
+    <div style="margin: 4%">
+        <h1>KIT</h1>
+        <table>
+            <th >
+                <table style="border: 2px solid green; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%;">
+                    <tr>
+                        <th style="width: 40%;">
+                            Elemento
+                        </th>
+                        <th style="width: 20%;">
+                            Cantidad
+                        </th>
+                        <th style="width: 20%;">
+                            Precio Unitario
+                        </th>
+                        <th style="width: 20%;">
+                            Precio Total
+                        </th>
+                    </tr>
+                    
+                    {% for p in productos  %}
+                        
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{p.name}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{p.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{p.price}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{p.total}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        
+                        <td style="margin: 5px;">
+                            {{p.panel}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{p.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{p.panel_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{p.panel_precio_t}}
+                        </td>
+                        
+                            
+                    </tr>
+        
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{b.bateria}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{b.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{b.bateria_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{b.bateria_precio_t}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{r.regulador}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{r.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{r.regulador_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{r.regulador_precio_t}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{br.breakers}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{br.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{br.breakers_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{br.breakers_precio_t}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{rc.rubberized_cable_needed}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{rc.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{rc.rubberized_cable_needed_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{rc.rubberized_cable_needed_precio_t}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{sp.soporte_panel}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{sp.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{sp.soporte_panel_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{sp.soporte_panel_precio_t}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="margin: 5px;">
+                            {{cm.centralized_modules_needed}}
+                        </td>
+                        <td style="margin: 5px;">
+                            {{cm.amount}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{cm.centralized_modules_needed_precio_u}}
+                        </td>
+                        <td style="margin: 5px;">
+                           $ {{cm.centralized_modules_needed_precio_t}}
+                        </td>
+                        <tr>
+                            <td>
+                                {{pu.power_units_needed}}
+                            </td>
+                            <td>
+                                {{pu.amount}}
+                            </td>
+                            <td>
+                                $ {{pu.power_units_needed_precio_u}}
+                            </td>
+                            <td>
+                                $ {{pu.power_units_needed_precio_t}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{tr.terminals_needed}}
+                            </td>
+                            <td>
+                                {{tr.amount}}
+                            
+                            <td>
+                                $ {{tr.terminals_needed_precio_u}}
+                            </td>
+                            <td>
+                                $ {{tr.terminals_needed_precio_t}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{co.connector_needed}}
+                            </td>
+                            <td>
+                                {{co.amount}}
+                            </td>
+                            <td>
+                                $ {{co.connector_needed_precio_u}}
+                            </td>
+                            <td>
+                                $ {{co.connector_needed_precio_t}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{vc.vehicle_cable_needed}}
+                            </td>
+                            <td>
+                                {{vc.amount}}
+                            </td>
+                            <td>
+                                $ {{vc.vehicle_cable_needed_precio_u}}
+                            </td>
+                            <td>
+                                $ {{vc.vehicle_cable_needed_precio_t}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{gsk.ground_security_kit_needed}}
+                            </td>
+                            <td>
+                                {{gsk.amount}}
+                            </td>
+                            <td>
+                                $ {{gsk.ground_security_kit_needed_precio_u}}
+                            </td>
+                            <td>
+                                $ {{gsk.ground_security_kit_needed_precio_t}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <h1>total</h1>
+                            </th>
+                            <td>
+                                {{c.amount}}
+                            </td>
+                            <td>
+                                $ {{total.total_u}}
+                            </td>
+                            <td>
+                                $ {{total.total}}
+                            </td>
+                        </tr>
+        
+                </table>
+            </div>
+            </th>
+        </table>
+        
+    
+    
+
+
+    <!-- productos arriba -->
+
+    <div i="tabla-productos">
+        {% for p in productos %}
+        <table style="margin: 2%;">
+            <tr>
+                <th style="margin: 5px; width: 150px;height: 200px;"><img src="https://cotizadorcodensolar.azurewebsites.net/media/{{p.imagen}}" alt=""></th>
+                <th style="width: 80%; ">
+
+                    <table style="margin: 5%;">
+                        <tr>
+                            <th style="width: 90px;">Producto</th>
+                            <th style="width: 90px;">Cantidad</th>
+                            <th style="width: 90px;">Precio Unitario</th>
+                            <th style="width: 90px;">Precio Total</th>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td style="width: 200px;">{{p.name}}</td>
+                            <td style="width: 200px;">{{p.amount}} </td>
+                            <td style="width: 200px;">$ {{p.price}} </td>
+                            <td style="width: 200px;">$ {{p.total}} </td>
+                        </tr>
+                        <tr>
+                            <td><div class="segunda-fila"></div></td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Consumo/h</th>
+                            <th>Consumo Dia</th>
+                            <th>Perdidas {{p.porcentaje}}% </th>
+                            <th>Total Mas Perdidas</th>
+                        </tr>
+                        <tr>
+                            <td>{{p.consumo_h}} W</td>
+                            <td>{{p.consumo_D}} W </td>
+                            <td>{{p.perdidas}} W</td>
+                            <td>{{p.total_MP}} W</td>
+                        </tr>
+                        <!-- Agrega más filas para cada producto aquí -->
+                    </table>
+
+                    
+                </th>
+                
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+
+    <!-- REQUIERMENTS  -->
+
+    <div>
+        <h2>Totales:Consumo por hora {{consumos.total_consumo_hr}} W/h Consumo Dia {{consumos.total_consumo_day}} W perdidas {{consumos.total_perdidas}} W total consumo {{consumos.total_consumo}} W</h2>
+        <div>
+            <h3>Equipos Solares</h3>
+            <table>
+                <tr>
+                    <th style="height: 120px;width: 120px;">
+                        <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/panel.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Panel</th>
+                                <th>Cantidad</th>
+                                <th>Potencia dia</th>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td>{{p.panel}}</td>
+                                <td>{{p.amount}}</td>
+                                <td>{{p.panel_potencia_dia}} W</td>
+                            </tr>
+                            <tr>
+                                <th>Potencia/h</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{p.panel_potencia}} W/h</td>
+                                <td>$ {{p.panel_precio_u}}</td>
+                                <td>$ {{p.panel_precio_t}}</td>
+                        </table>
+                    </th>
+
+                    <th style="width: 120px;height: 120px;">
+                        <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/battery.svg" alt="" height="120px" width="120px">
+                    </th>
+                    <th>
+                        <table>
+                            <tr>
+                                <th>Bateria</th>
+                                <th>Cantidad</th>
+                                <th>Capacidad total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.bateria}}</td>
+                                <td>{{b.amount}}</td>
+                                <td>{{b.bateria_capacidad}} A</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Capacidad</th>
+                                <th>Precio unitario</th>
+                                <th>Precio total</th>
+                            </tr>
+                            <tr>
+                                <td>{{b.bateria_capacidad_t}} A/h</td>
+                                
+                                <td>$ {{b.bateria_precio_u}}</td>
+                                <td>$ {{b.bateria_precio_t}}</td>
+                        </table>
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>

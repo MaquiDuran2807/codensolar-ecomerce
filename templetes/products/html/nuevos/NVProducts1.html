@@ -158,12 +158,12 @@
                                 <a href="">Electrodomestico</a>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/3"><button class="dropdown-item" type="button">Neveras</button></a></li>
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/4"><button class="dropdown-item" type="button">Refrigeradores</button></a></li>
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/22"><button class="dropdown-item" type="button">Licuadoras</button></a></li>
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/21"><button class="dropdown-item" type="button">Televisores</button></a></li>
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/23"><button class="dropdown-item" type="button">Ventiladores</button></a></li>
-                                <li><a href="https://cotizadorcodensolar.azurewebsites.net/products/products/24"><button class="dropdown-item" type="button">Lavadoras</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/3"><button class="dropdown-item" type="button">Neveras</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/4"><button class="dropdown-item" type="button">Refrigeradores</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/22"><button class="dropdown-item" type="button">Licuadoras</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/21"><button class="dropdown-item" type="button">Televisores</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/23"><button class="dropdown-item" type="button">Ventiladores</button></a></li>
+                                <li><a href="http://127.0.0.1:8000/products/shopping_car/24"><button class="dropdown-item" type="button">Lavadoras</button></a></li>
                                 </ul>
                                 <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                     <a href="">Paneles</a>
@@ -780,7 +780,7 @@
                                 <div class="col-md-12 descargar pdf">
                                     
                                     {% if usuario %}
-                                    <a class="btn btn-success rounded-pill d-block mx-auto mt-2 mb-2"  onclick="createandsendpdf('{{usuario.name}}','{{usuario.email}}')" >descargar pdf</a> 
+                                    <a class="btn btn-success rounded-pill d-block mx-auto mt-2 mb-2"  onclick="createandsendpdf('{{usuario.name}}','{{usuario.email}}','{{usuario.lastname}}')" >descargar pdf</a> 
                                     {% endif %}
                                         
                                     
