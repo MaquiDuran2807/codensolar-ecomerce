@@ -100,7 +100,8 @@
 
 
 .carrusel{
-    background-color: #0f172ad0;
+    background-color: #0f172ac5;
+    background-image:linear-gradient(rgba(0, 0, 139, 0.432),rgba(70, 131, 180, 0.486)) ,url("{% static 'products/img/panelsolar.jpg' %}");
     margin: 10px ;
     border-radius: 10px;
 }
