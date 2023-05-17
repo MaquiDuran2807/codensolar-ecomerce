@@ -10,6 +10,15 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
+.imagen1{
+    margin-left: 20px;
+    max-width: 85px;
+    max-height: 85px;
+}
+
+
+
+
 .navbar a{
     color: azure;
     font-weight: bolder;
@@ -79,6 +88,11 @@
 }
 
 
+.carrusel{
+    background-color: #0f172ad0;
+    margin: 10px ;
+    border-radius: 10px;
+}
 
 .contenido-carrusel{
     background-color: #1e293bbb;
@@ -97,6 +111,7 @@
     padding: 0px;
     margin: 5px 2px;
     border-radius: 10px;
+    max-width:max-content;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
@@ -139,6 +154,21 @@
         text-decoration:none;
     }
 
+
+    .boton-filtro{
+        background-color: #1E293B;
+        border: 1px solid #0F172A;
+        padding: 10px 10px;
+        margin: 5px 5px;
+        font-weight: bold;
+        color: azure;
+        max-width: 200px;
+    }
+
+    .boton-filtro:hover{
+        background-color: #DDE0E5;
+        color: #0F172A;
+    }
 
 .logic{
     display: flex;
@@ -454,7 +484,13 @@
     }
 
 
-
+.pagination{
+    background-color: #1E293B;
+    border: #0F172A;
+    border-radius: 10px;
+    padding: 1px 10px;
+    margin: 1px 10px;
+}
 
 
 

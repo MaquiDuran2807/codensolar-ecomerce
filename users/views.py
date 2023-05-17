@@ -71,7 +71,7 @@ class UserRegisterView(FormView):
 class LoginUser(FormView):
     template_name = 'users/login1.html'
     form_class = LoginForm
-    success_url = reverse_lazy('Products_app:shopping_car')
+    success_url = 'http://127.0.0.1:8000/products/shopping_car/0'
 
     def form_valid(self, form):
         user = authenticate(
