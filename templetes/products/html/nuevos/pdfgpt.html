@@ -48,18 +48,18 @@
         <h1>KIT</h1>
         <table>
             <th >
-                <table style="border: 2px solid green; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%;">
+                <table style="border: 2px solid green; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px;">
                     <tr>
-                        <th style="width: 40%;">
+                        <th style="width: 40%; background-color: #202f46; color:azure; font-weight:bold;letter-spacing: 2px; ">
                             Elemento
                         </th>
-                        <th style="width: 20%;">
+                        <th style="width: 20%;background-color: #202f46; color:azure; font-weight:bold;letter-spacing: 2px;">
                             Cantidad
                         </th>
-                        <th style="width: 20%;">
+                        <th style="width: 20%;background-color: #202f46; color:azure; font-weight:bold;letter-spacing: 2px;">
                             Precio Unitario
                         </th>
-                        <th style="width: 20%;">
+                        <th style="width: 20%;background-color: #202f46; color:azure; font-weight:bold;letter-spacing: 2px;">
                             Precio Total
                         </th>
                     </tr>
@@ -67,202 +67,217 @@
                     {% for p in productos  %}
                         
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:1000; ">
                             {{p.name}}
                         </td>
-                        <td style="margin: 5px;">
+
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{p.amount}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{p.price}}
+                        
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+                        $ {{p.price}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{p.total}}
+<!-- 
+                        <td style="margin: 5px;background-color: #56b17d62; color:azure; font: weight 600px;">
+                        $ {{p.total}}
+                        </td> -->
+
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                            $ {{p.total}}
                         </td>
+
                     </tr>
                     {% endfor %}
                     <tr>
                         
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{p.panel}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{p.amount}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{p.panel_precio_u}}
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+                        $ {{p.panel_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{p.panel_precio_t}}
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                        $ {{p.panel_precio_t}}
                         </td>
                         
                             
                     </tr>
         
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{b.bateria}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{b.amount}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{b.bateria_precio_u}}
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+                        $ {{b.bateria_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{b.bateria_precio_t}}
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                        $ {{b.bateria_precio_t}}
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{r.regulador}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{r.amount}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{r.regulador_precio_u}}
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+                        $ {{r.regulador_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
-                           $ {{r.regulador_precio_t}}
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                        $ {{r.regulador_precio_t}}
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{br.breakers}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{br.amount}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                            $ {{br.breakers_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                            $ {{br.breakers_precio_t}}
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{rc.rubberized_cable_needed}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{rc.amount}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                            $ {{rc.rubberized_cable_needed_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                            $ {{rc.rubberized_cable_needed_precio_t}}
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{sp.soporte_panel}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{sp.amount}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                            $ {{sp.soporte_panel_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                            $ {{sp.soporte_panel_precio_t}}
                         </td>
                     </tr>
                     <tr>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{cm.centralized_modules_needed}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{cm.amount}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                            $ {{cm.centralized_modules_needed_precio_u}}
                         </td>
-                        <td style="margin: 5px;">
+                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                            $ {{cm.centralized_modules_needed_precio_t}}
                         </td>
                         <tr>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{pu.power_units_needed}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{pu.amount}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 $ {{pu.power_units_needed_precio_u}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{pu.power_units_needed_precio_t}}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{tr.terminals_needed}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{tr.amount}}
                             
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 $ {{tr.terminals_needed_precio_u}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{tr.terminals_needed_precio_t}}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{co.connector_needed}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{co.amount}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 $ {{co.connector_needed_precio_u}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{co.connector_needed_precio_t}}
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{vc.vehicle_cable_needed}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{vc.amount}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 $ {{vc.vehicle_cable_needed_precio_u}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{vc.vehicle_cable_needed_precio_t}}
                             </td>
                         </tr>
+
+
                         <tr>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{gsk.ground_security_kit_needed}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{gsk.amount}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 $ {{gsk.ground_security_kit_needed_precio_u}}
                             </td>
-                            <td>
+                            <td style="width: 40%; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{gsk.ground_security_kit_needed_precio_t}}
                             </td>
                         </tr>
+
+
+
+
+
                         <tr>
-                            <th>
+                            <th style="margin: 5px;background-color: #1e293b; color:azure; font-weight:bold;">
                                 <h1>total</h1>
                             </th>
-                            <td>
+                            <td style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 {{c.amount}}
                             </td>
-                            <td>
+                            <td style="margin: 5px;background-color: #1e293b; color:azure; font-weight:bold;">
                                 $ {{total.total_u}}
                             </td>
-                            <td>
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                                 $ {{total.total}}
                             </td>
                         </tr>
@@ -280,22 +295,22 @@
 
     <div i="tabla-productos">
         {% for p in productos %}
-        <table style="margin: 2%;">
-            <tr>
+        <table>
+            <tr >
                 <th style="margin: 5px; width: 150px;height: 200px;"><img src="https://cotizadorcodensolar.azurewebsites.net/media/{{p.imagen}}" alt=""></th>
                 <th style="width: 80%; ">
 
-                    <table style="margin: 5%;">
+                    <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px; ">
                         <tr>
-                            <th style="width: 90px;">Producto</th>
-                            <th style="width: 90px;">Cantidad</th>
-                            <th style="width: 90px;">Precio Unitario</th>
-                            <th style="width: 90px;">Precio Total</th>
+                            <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Producto</th>
+                            <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Cantidad</th>
+                            <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Precio Unitario</th>
+                            <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Precio Total</th>
                         </tr>
                         
                         
                         <tr>
-                            <td style="width: 200px;">{{p.name}}</td>
+                            <td style="width: 400px; font-weight:bold; font-size:600px;">{{p.name}}</td>
                             <td style="width: 200px;">{{p.amount}} </td>
                             <td style="width: 200px;">$ {{p.price}} </td>
                             <td style="width: 200px;">$ {{p.total}} </td>
@@ -305,10 +320,10 @@
                         </tr>
                         
                         <tr>
-                            <th>Consumo/h</th>
-                            <th>Consumo Dia</th>
-                            <th>Perdidas {{p.porcentaje}}% </th>
-                            <th>Total Mas Perdidas</th>
+                            <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Consumo/h </th>
+                            <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Consumo Dia</th>
+                            <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Perdidas {{p.porcentaje}}% </th>
+                            <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Total Mas Perdidas</th>
                         </tr>
                         <tr>
                             <td>{{p.consumo_h}} W</td>
@@ -338,12 +353,12 @@
                     <th style="height: 120px;width: 120px;">
                         <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/panel.svg" alt="" height="120px" width="120px">
                     </th>
-                    <th>
-                        <table>
-                            <tr>
-                                <th>Panel</th>
-                                <th>Cantidad</th>
-                                <th>Potencia dia</th>
+                    <th >
+                        <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%;  border-radius:10px;">
+                            <tr >
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Panel</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Cantidad</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Potencia dia</th>
                                 
                                 
                             </tr>
@@ -353,9 +368,9 @@
                                 <td>{{p.panel_potencia_dia}} W</td>
                             </tr>
                             <tr>
-                                <th>Potencia/h</th>
-                                <th>Precio unitario</th>
-                                <th>Precio total</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Potencia/h</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio unitario</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio total</th>
                             </tr>
                             <tr>
                                 <td>{{p.panel_potencia}} W/h</td>
@@ -368,11 +383,11 @@
                         <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/battery.svg" alt="" height="120px" width="120px">
                     </th>
                     <th>
-                        <table>
+                        <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px;">
                             <tr>
-                                <th>Bateria</th>
-                                <th>Cantidad</th>
-                                <th>Capacidad total</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Bateria</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Cantidad</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Capacidad total</th>
                             </tr>
                             <tr>
                                 <td>{{b.bateria}}</td>
@@ -381,9 +396,9 @@
                                 
                             </tr>
                             <tr>
-                                <th>Capacidad</th>
-                                <th>Precio unitario</th>
-                                <th>Precio total</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Capacidad</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio unitario</th>
+                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio total</th>
                             </tr>
                             <tr>
                                 <td>{{b.bateria_capacidad_t}} A/h</td>
