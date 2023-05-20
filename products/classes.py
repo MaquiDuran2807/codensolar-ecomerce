@@ -1,330 +1,245 @@
 from .models import *
-import math
 
-class Product:
-  """this class is used to format product
 
-  Returns:
-      str: inf just so u know
-  """
-  default_hours={
-  #idcategory:hours
-        3:24,
-        4:24
-  }
-  loss = 69
-  
-  def __init__(self,id,hours_in_use=0,amount=1):
-    self.real_product = Products.objects.filter(id=id).values()[0]
-    
-    self.id = id
-    self.hours_in_use = Product.default_hours[ self.real_product["category_id"] ] if hours_in_use == 0 else hours_in_use
-    self.amount = amount
-    
-  def __str__(self):
-    return f"""
---
-ID:{self.id} ({self.real_product["name"]}) 
-Hours to use:{self.hours_in_use}
-Amount:{self.amount} 
---
-"""
 
-class RequirementQuote:
-  """this is a a class that generates a quotation of the requirement asked from the products
-  """
-  def __init__(self,type_of_requirement,id,amount=1):
-    
-    self.id = id
-    self.amount = amount
-    
-    
-    if type_of_requirement == "panel":
-      self.sun_hours = 4
-      self.requirement = SolarPanel.objects.get(id=id)
-      self.voltage = self.requirement.voltage.voltage
-      self.production = {
-        'production_hr': self.requirement.production,
-        'production_day': self.requirement.production * self.sun_hours,
-        'total_production_day': (self.requirement.production * self.sun_hours) * self.amount
-      }
-      
-    elif type_of_requirement == "battery":
-      self.requirement = Battery.objects.get(id=id)
-      self.capacity = self.requirement.capacity
-      self.voltage = self.requirement.voltage.voltage
-      
-    elif type_of_requirement == "regulator":
-      self.requirement = Reguladores.objects.get(id=id)
-      
-    elif type_of_requirement == "breaker":
-      self.requirement = Breakers.objects.get(id=id)
-      
-    elif type_of_requirement == "rubberized_cable":
-      self.requirement = RubberizedCables.objects.get(id=id)
-      
-    elif type_of_requirement == "vehicle_cable":
-      self.requirement = VehicleCables.objects.get(id=id)
-      
-    elif type_of_requirement == "panel_support":
-      self.requirement = PanelSupports.objects.get(id=id)
-      
-    elif type_of_requirement == "battery_support":
-      self.requirement = BatterySupports.objects.get(id=id)
-      
-    elif type_of_requirement == "ground_security_kit":
-      self.requirement = GroundSecurityKits.objects.get(id=id)
-      
-    elif type_of_requirement == "connector":
-      self.requirement = Connectors.objects.get(id=id)
-      
-    elif type_of_requirement == "terminal":
-      self.requirement = Terminals.objects.get(id=id)
-      
-    elif type_of_requirement == "centralized_module":
-      self.requirement = CentralizedModule.objects.get(id=id)
-      
-    elif type_of_requirement == "unity_power":
-      self.requirement = UnityPower.objects.get(id=id)
-      
-    elif type_of_requirement == "electric_materials":
-      self.requirement = ElectricMaterials.objects.get(id=id)
-      
-    else:
-      raise Exception("Not a valid type_of_requierment")
-    
-    self.name = self.requirement.name
-    self.price = self.requirement.price
-    del self.requirement
-
-  def __str__(self):
-    return f"{self.amount} {self.name} is/are needed"
-    
-class ProductQuote:
-  default_hours={
-  #idcategory:hours
-        3:24,
-        4:24
+# PANELES =====================================================================================
+def paneles(total_consumo_productos):
+    print("Paneles=====================")
+    paneles=list(SolarPanel.objects.all().values())
+    paneles=sorted(paneles, key=lambda panel: panel["production"],reverse=False)
+    panel_apropiado=0
+    contador_paneles=0
+    while panel_apropiado==0:
+        contador_paneles +=1
+        for p in paneles:
+            pdrocuccion=(p["production"]*4)*contador_paneles
+            if pdrocuccion>=total_consumo_productos:
+                panel_apropiado=p
+                break
+    panel_need={
+        "amount": contador_paneles,
+        "production": {
+        "production_hr":panel_apropiado["production"] ,
+        "production_day":panel_apropiado["production"]*4 ,
+        "total_production_day": pdrocuccion
+    },
+    "name": panel_apropiado["name"],
+    "price": panel_apropiado["price"],
     }
-  default_amount={
-  #idcategory:hours
-        10:10,
-        11:5
+    return panel_need,panel_apropiado,contador_paneles
+
+
+# BATERIAS =====================================================================================
+
+def baterias(calculo_diario,total_consumo_productos,voltage_sistema):
+    # traer una lista de todas las baterias
+    baterias=list(Battery.objects.all().values())
+    bateria_apropiada=0
+    contardor_baterias=0
+    baterias=sorted(baterias, key=lambda bateria: bateria["capacity"],reverse=False)
+    loss_bat=calculo_diario*0.65
+    while bateria_apropiada==0:
+        contardor_baterias +=1
+        for b in baterias:
+            capacidad=b["capacity"]*voltage_sistema*contardor_baterias
+            print(b,"bateria ====================== ",capacidad, Voltage.objects.get(id=b["voltage_id"]).voltage,total_consumo_productos*2,contardor_baterias)
+            if Voltage.objects.get(id=b["voltage_id"]).voltage==12 and capacidad>=total_consumo_productos*2 :
+                bateria_apropiada=b
+                break
+    if voltage_sistema==24:
+        contardor_baterias *=2
+    bateria_apropiada={
+        "amount": contardor_baterias,
+        "capacity": capacidad,
+        "name": bateria_apropiada["name"],
+        "price": bateria_apropiada["price"],
     }
-  loss_percentaje={
-  #idcategory:loss_precentaje
-        3:69,
-        4:69,
+    return bateria_apropiada
+
+
+#REGULADOR =====================================================================================
+def regulador(amp_requerido):
+    reguladores=list(Reguladores.objects.all().values())
+    reguladores=sorted(reguladores, key=lambda regulador: regulador["amperios"],reverse=False)
+    regulador_apropiado=0
+    
+    print(amp_requerido,"amp_requerido")
+    for r in reguladores:
+            if r["amperios"]>=amp_requerido:
+                regulador_apropiado=r
+                break
+    if regulador_apropiado==0:
+        regulador_apropiado=reguladores[-1]
+    regulador_apropiado={
+        "amount": 1,
+        "name": regulador_apropiado["name"],
+        "price": regulador_apropiado["price"],
+    }
+    return regulador_apropiado
+
+
+#BREAKER =====================================================================================
+def breaker(amp_requerido):
+    breakers=list(Breakers.objects.all().values())
+    breakers=sorted(breakers, key=lambda breaker: breaker["amps"],reverse=False)
+    breaker_apropiado=0
+    for be in breakers:
+        if be["amps"]>=amp_requerido:
+            breaker_apropiado=be
+            break
+    if breaker_apropiado==0:
+        breaker_apropiado=breakers[-1]
+    breaker_apropiado={
+        "amount": 3,
+        "name": breaker_apropiado["name"],
+        "price": breaker_apropiado["price"],    
+    }
+    return breaker_apropiado
+
+# CABLES ENCAUCHETADOS =====================================================================================
+def cables_encauchetados(amp_requerido):
+        cables_encauchetados=list(RubberizedCables.objects.all().values())
+        cables_encauchetados=sorted(cables_encauchetados, key=lambda cable: cable["supported_amperage"],reverse=False)
+        cable_encauchetado_apropiado=0
         
-        19:29,
-        20:29,
-        21:29,
-    }
-  def __init__(self, id, amount,hours_used=0):
-    """this class
-    generates a complete quote of a product,
-    creating a quote for each requirement needed
+        for c in cables_encauchetados:
+            if c["supported_amperage"]>=amp_requerido:
+                cable_encauchetado_apropiado=c
+                break
+        if cable_encauchetado_apropiado==0:
+            cable_encauchetado_apropiado=cables_encauchetados[-1]
+        cable_encauchetado_apropiado={
+            "amount": 10,
+            "name": cable_encauchetado_apropiado["name"],
+            "price": cable_encauchetado_apropiado["price"],
+        }
+        return cable_encauchetado_apropiado
 
-    Args:
-        id (int): id of the product 
-        amount (int): amount of products to quote
-        hours_used (int): amount of hours to 
-    """
-    # ------------------------------------------------------------------------------------------------------------------ INFO
-    
-    self.id = id
-    self.product = Products.objects.get(id=self.id)
-    self.amount = amount
-    self.hours_used = ProductQuote.default_hours[ self.product.category.id ] if hours_used == 0 else hours_used
-    
-    # ------------------------------------------------------------------------------------------------------------------ REQUIRES
-    
-    try: kit = Kits.objects.get(product=self.id) #the corresponding kit
-    except: kit = 0
-    print(kit)
-    
-    # -------------------------------Panel & battery quote
-    
-    if kit != 0:
-      print("there is a kit")
-      panel_id=kit.panel_id
-      panel_amount=kit.panel_amount
-      battery_id=kit.battery_id
-      battery_amount=kit.battery_amount
+  # SOPORTES DE PANEL =====================================================================================
+        
+def Soporte_panel(contador_paneles):
+        soporte_panel=list(PanelSupports.objects.all().values())
+        soporte_panel={
+            "amount": contador_paneles,
+            "name": soporte_panel[0]["name"],
+            "price": soporte_panel[0]["price"],
+        }
+        return soporte_panel
 
-    else:
-      print("there isn't a kit")
-      day_consumption = self.product.consume*self.hours_used
-      total_day_consumption = day_consumption + ( day_consumption*(ProductQuote.loss_percentaje[self.product.category.id]/100))
-      sun_hours = 4
-      
-      ideal_panel = SolarPanel.objects\
-      .filter(production__gte=(total_day_consumption/sun_hours))\
-      .order_by("production")\
-      [0]
-      panel_id=ideal_panel.id
-      panel_amount = 1
-      
-      
-      _12v_batteries = Battery.objects.filter(voltage=1).order_by("capacity")
-      # print("batteries: ",_12v_batteries)
-      
-      battery_amount = 1
-      if ideal_panel.voltage.voltage >= 12: battery_amount = 2
-      
-      ideal_battery=list(
-        filter(
-          lambda battery :((battery.capacity*battery.voltage.voltage)*0.65)*(battery_amount)>=total_day_consumption
-          ,_12v_batteries))[0]
-      
-      battery_id = ideal_battery.id
-      
-    self.panel_needed = RequirementQuote(
-      "panel",
-      panel_id,
-      panel_amount
-    )
-    self.battery_needed = RequirementQuote(
-      "battery",
-      battery_id,
-      battery_amount
-    )
-    
-    # -------------------------------regulator & breaker needed
-    
-    watts_to_support = (self.panel_needed.production["production_hr"] * self.panel_needed.amount) / self.panel_needed.voltage # total wtts / voltage
-    print("watts_to_support:",watts_to_support,"\n")
-    
-    # MISSING FIX IN DB (NO KINDS SHE SAID)
-    try:regulator_id = Reguladores.objects.filter(amperios__gte = watts_to_support).order_by("amperios")[0].id 
-    except:regulator_id = Reguladores.objects.order_by("-amperios")[0].id
-    self.regulator_needed = RequirementQuote(
-      "regulator",
-      regulator_id
-    )
-    
-    try:breaker_id = Breakers.objects.filter(amps__gte = watts_to_support).order_by("-amps")[0].id 
-    except:breaker_id = Breakers.objects.order_by("-amps")[0].id
-      
-    self.breaker_needed = RequirementQuote(
-      "breaker",
-      breaker_id,
-      3
-    )
-    
-    # -------------------------------cables
-    
-    try: rubberized_cable_id = (RubberizedCables.objects.filter(supported_amperage__gte=watts_to_support).order_by("supported_amperage"))[0].id
-    except: rubberized_cable_id = (RubberizedCables.objects.order_by("-supported_amperage"))[0].id
-    self.rubberized_cables_needed = RequirementQuote(
-      "rubberized_cable",
-      rubberized_cable_id,
-      ProductQuote.default_amount[RubberizedCables.objects.get(id=rubberized_cable_id).category.id] #default amount for the cables
-    )
-    
-    try:vehicle_cable_id = (VehicleCables.objects.filter(supported_amperage__gte=watts_to_support).order_by("supported_amperage"))[0].id
-    except: vehicle_cable_id = (VehicleCables.objects.order_by("-supported_amperage"))[0].id
-    self.vehicle_cables_needed = RequirementQuote(
-      "vehicle_cable",
-      vehicle_cable_id,
-      ProductQuote.default_amount[VehicleCables.objects.get(id=vehicle_cable_id).category.id] #default amount for the cables
-    )
-    
-    # -------------------------------panel supports
-    
-    self.panel_supports_needed = RequirementQuote(
-      "panel_support",
-      1,
-      panel_amount
-    )
-    
-    # -------------------------------battery supports
-    # MISSING FIX (IDK HOW TO CHOOSE OR WICH B.S. EXISTS)
-    self.battery_supports_needed = RequirementQuote(
-      "battery_support",
-      1,
-      1
-    )
-    
-    # -------------------------------ground security kit
-    
-    self.ground_security_kit_needed = RequirementQuote(
-      "ground_security_kit",
-      1,
-      1
-    )
-    
-    # -------------------------------connectors
-    output_pairs = panel_amount
-    connectors_needed = 0
-    while output_pairs > 1:
-      print("entre al while")
-      x = output_pairs // 2
-      output_pairs = x
-      connectors_needed += x*2
-    
-    self.connectors_needed = RequirementQuote(
-      "connector",
-      1,
-      connectors_needed
-    )
-      
-    # -------------------------------terminals
-    self.terminals_needed = RequirementQuote(
-      "terminal",
-      1,
-      2
-    )
+    # MODULO CENTRALIZADO =====================================================================================
+        
+def Modulo_centralizado():
+        modulo_centralizado=list(CentralizedModule.objects.all().values())
+        modulo_centralizado={
+            "amount": 1,
+            "name": modulo_centralizado[0]["name"],
+            "price": modulo_centralizado[0]["price"],
+        }
+        return modulo_centralizado
+  # UNIDAD DE POTENCIA =====================================================================================
+
+def Unidad_potencia(bateria,voltage_sistema):
+        unidad_potencia=list(UnityPower.objects.all().values())
+        unidad_potencia=sorted(unidad_potencia, key=lambda unidad: unidad["max_ampers_supported"],reverse=False)
+        unidad_potencia_adeacuada=0
+        print("unidad de potencia =====================",bateria)
+        capacidad=(bateria["capacity"]/voltage_sistema)
+        for u in unidad_potencia:
+            print(u["max_ampers_supported"],u["min_ampers_supported"],bateria["capacity"],capacidad)
+            if u["max_ampers_supported"]>=capacidad and u["min_ampers_supported"]<=capacidad:
+                unidad_potencia_adeacuada=u
+                break
+        if unidad_potencia_adeacuada==0:
+            unidad_potencia_adeacuada={
+                "amount": 0,
+                "name": "no hay unidad de potencia adecuada",
+                "price": 0,
+            }
+        else:
+            unidad_potencia_adeacuada={
+                "amount": 1,
+                "name": unidad_potencia_adeacuada["name"],
+                "price": unidad_potencia_adeacuada["price"],
+            }
+        return unidad_potencia_adeacuada
+        
+  # TERMINAL =====================================================================================
+
+def Terminal():
+        terminal=list(Terminals.objects.all().values())
+        terminal={
+            "amount": 1,
+            "name": terminal[0]["name"],
+            "price": terminal[0]["price"],
+        }
+        return terminal
+  #CONECTOR =====================================================================================
+def Conector(contador_paneles):
+        list_pares=[]
+        for i in range(0,20,2):
+            list_pares.append(i)
+        conector=list(Connectors.objects.all().values())
+        for c in list_pares:
+            if c==contador_paneles:
+                conector_apropiado={
+                    "amount": c/2,
+                    "name": conector[0]["name"],
+                    "price": conector[0]["price"],
+                }
+                break
+            if c==1:
+                conector_apropiado={
+                    "amount": 0,
+                    "name": "no hay conector apropiado",
+                    "price": 0,
+                }
+                break
+            else:
+                conector_apropiado={
+                    "amount": (contador_paneles-1)/2,
+                    "name": "no hay conector apropiado",
+                    "price": 0,
+                }
+        return conector_apropiado
+
+  #CABLE VEHICULAR =====================================================================================
+
+def Cable_vehicular(amp_requerido):
+        vehicleCables=list(VehicleCables.objects.all().values())
+        vehicleCables=sorted(vehicleCables, key=lambda cable: cable["supported_amperage"],reverse=False)
+        cable_vehicular_apropiado=0
+        
+        for ch in vehicleCables:
+            if ch["supported_amperage"]>=amp_requerido:
+                cable_vehicular_apropiado=ch
+                break
+        if cable_vehicular_apropiado==0:
+            cable_vehicular_apropiado=vehicleCables[-1]
+        cable_vehicular_apropiado={
+            "amount": 10,
+            "name": cable_vehicular_apropiado["name"],
+            "price": cable_vehicular_apropiado["price"],
+        }
+        return cable_vehicular_apropiado
+
+  #ELECTRIC MATERIAL =====================================================================================
+
+def Electric_material():
+        electric_material=list(ElectricMaterials.objects.all().values())
+        electric_material={
+            "amount": 1,
+            "name": electric_material[0]["name"],
+            "price": electric_material[0]["price"],
+        }
+        return electric_material
   
+  #CABLE A TIERRA =====================================================================================
 
-
-    # -------------------------------centralized_module
-    self.centralized_modules_needed = RequirementQuote(
-      "centralized_module",
-      1,
-      1
-    )
-  
-    # -------------------------------unity_power
-    unity_power_id = 1
-    battery = Battery.objects.get(id=battery_id)
-    print("category: ",self.product.category.id)
-    if self.product.category.id in [3,4]:
-      print("capacity: ",battery.capacity)
-      try:
-        unity_power_id = UnityPower.objects\
-        .exclude(id=4)\
-        .filter(max_ampers_supported__gte=battery.capacity)\
-        .order_by("max_ampers_supported")[0].id
-      except:
-        unity_power_id = UnityPower.objects\
-        .exclude(id=4)\
-        .order_by("max_ampers_supported")[0].id
-      
-    else:
-      unity_power_id = 4
-      
-      
-    self.power_units_needed = RequirementQuote(
-      "unity_power",
-      unity_power_id,
-      1
-    )
-  
-    # -------------------------------electric_materials
-    # MISSING FIX (IDK HOW TO CHOOSE OR WICH B.S. EXISTS)
-    self.electric_materials_needed = RequirementQuote(
-      "electric_materials",
-      1,
-      1
-    )
-
-    # ------------------------------------------------------------------------------------------------------------------ COST
-    
-    self.consumption = {
-    'consumption_hr': self.product.consume,
-    'consumption_day': self.product.consume * self.hours_used,
-    'loss_percentaje': ProductQuote.loss_percentaje[self.product.category.id],
-    'loss_consumption': round((self.product.consume * self.hours_used) * (ProductQuote.loss_percentaje[self.product.category.id]/100), 2),
-    'total_consumption_day': round((self.product.consume * self.hours_used) + (round((self.product.consume * self.hours_used) * (ProductQuote.loss_percentaje[self.product.category.id]/100), 2)), 2)
-}
+def Cable_tierra():
+        groundCable=list(GroundSecurityKits.objects.all().values())
+        groundCable={
+            "amount": 1,
+            "name": groundCable[0]["name"],
+            "price": groundCable[0]["price"],
+        }
+        return groundCable

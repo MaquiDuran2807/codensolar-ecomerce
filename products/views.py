@@ -1,8 +1,8 @@
 from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, View
-from .models import *
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .classes import *
 # importar jsonresponse
 from django.http import HttpRequest, HttpResponse, JsonResponse,FileResponse
 import json
@@ -35,16 +35,22 @@ class vistaprueba(View):
             #borrar cache
             cache.delete(request.user.username)
             return JsonResponse({"error":"no hay datos"})
+
         usuario=request.user
         print(usuario.username)
         if data == {}:
             data=cache.get(usuario.username)
+            print(data,"cache desde el if data=={}")
             if data==None:
                 return JsonResponse({"error":"no hay datos"})
-        if data[0]["borrar"]==True:
-            cache.delete(request.user.username)
-            return JsonResponse({"message":"borrado"})
-        cache.set(usuario.username,data,5000)
+        
+        try:
+            if data[0]["borrar"]==True:
+                cache.delete(request.user.username)
+                return JsonResponse({"message":"borrado"})
+        except:
+            print("no hay borrar")
+        cache.set(usuario.username,data,timeout=300)
         products_consumptions=[]
         total_consumo_productos=0
         productos=[]
@@ -72,196 +78,65 @@ class vistaprueba(View):
                 "id":product.id,
                 "hours_used":d["hours"],
             })
-        # traer una lista de todos los paneles
-        paneles=list(SolarPanel.objects.all().values())
-        paneles=sorted(paneles, key=lambda panel: panel["production"],reverse=False)
-        # traer una lista de todas las baterias
-        baterias=list(Battery.objects.all().values())
-        # traer una lista de todos los inversores
+        # PANEL APROPIADO=======================================================
 
-        panel_apropiado=0
-        contador_paneles=0
-        while panel_apropiado==0:
-            contador_paneles +=1
-            for p in paneles:
-                pdrocuccion=(p["production"]*4)*contador_paneles
-                if pdrocuccion>=total_consumo_productos:
-                    panel_apropiado=p
-                    break
-            
-        panel_need={
-            "amount": contador_paneles,
-            "production": {
-            "production_hr":panel_apropiado["production"] ,
-            "production_day":panel_apropiado["production"]*4 ,
-            "total_production_day": pdrocuccion
-        },
-        "name": panel_apropiado["name"],
-        "price": panel_apropiado["price"],
-        }
-        bateria_apropiada=0
-        contardor_baterias=0
+        panel_need,panel_apropiado,contador_paneles=paneles(total_consumo_productos)
+
+        # VOLTAJE DEL SISTEMA===================================================
+
         voltage_sistema=Voltage.objects.get(id=panel_apropiado["voltage_id"]).voltage
-        baterias=sorted(baterias, key=lambda bateria: bateria["capacity"],reverse=False)
-        loss_bat=calculo_diario*0.65
-        while bateria_apropiada==0:
-            contardor_baterias +=1
-            for b in baterias:
-                capacidad=b["capacity"]*voltage_sistema*contardor_baterias
-                print(b,"bateria ====================== ",capacidad, Voltage.objects.get(id=b["voltage_id"]).voltage,total_consumo_productos*2,contardor_baterias)
-                if Voltage.objects.get(id=b["voltage_id"]).voltage==12 and capacidad>=total_consumo_productos*2 :
-                    bateria_apropiada=b
-                    break
-        if voltage_sistema==24:
-            contardor_baterias *=2
-        bateria_apropiada={
-            "amount": contardor_baterias,
-            "capacity": capacidad,
-            "name": bateria_apropiada["name"],
-            "price": bateria_apropiada["price"],
-        }
 
-        #regulador 
-        reguladores=list(Reguladores.objects.all().values())
-        reguladores=sorted(reguladores, key=lambda regulador: regulador["amperios"],reverse=False)
-        regulador_apropiado=0
+        # BATERIAS APROPIADAS===================================================
+
+        bateria_apropiada=baterias(calculo_diario ,total_consumo_productos,voltage_sistema)
+
+        # AMPERIOS REQUERIDOS====================================================
+
         amp_requerido=(panel_apropiado["production"]/voltage_sistema)*contador_paneles
-        print(amp_requerido,"amp_requerido")
-        
-        for r in reguladores:
-            if r["amperios"]>=amp_requerido:
-                regulador_apropiado=r
-                break
-        if regulador_apropiado==0:
-            regulador_apropiado=reguladores[-1]
-        regulador_apropiado={
-            "amount": 1,
-            "name": regulador_apropiado["name"],
-            "price": regulador_apropiado["price"],
-        }
-        #breakers
-        breakers=list(Breakers.objects.all().values())
-        breakers=sorted(breakers, key=lambda breaker: breaker["amps"],reverse=False)
-        breaker_apropiado=0
-        for be in breakers:
-            if be["amps"]>=amp_requerido:
-                breaker_apropiado=be
-                break
-        if breaker_apropiado==0:
-            breaker_apropiado=breakers[-1]
-        breaker_apropiado={
-            "amount": 3,
-            "name": breaker_apropiado["name"],
-            "price": breaker_apropiado["price"],    
-        }
-        #cables encauchetados
-        cables_encauchetados=list(RubberizedCables.objects.all().values())
-        cables_encauchetados=sorted(cables_encauchetados, key=lambda cable: cable["supported_amperage"],reverse=False)
-        cable_encauchetado_apropiado=0
-        
-        for c in cables_encauchetados:
-            if c["supported_amperage"]>=amp_requerido:
-                cable_encauchetado_apropiado=c
-                break
-        if cable_encauchetado_apropiado==0:
-            cable_encauchetado_apropiado=cables_encauchetados[-1]
-        cable_encauchetado_apropiado={
-            "amount": 10,
-            "name": cable_encauchetado_apropiado["name"],
-            "price": cable_encauchetado_apropiado["price"],
-        }
-        #soporte de panel
-        soporte_panel=list(PanelSupports.objects.all().values())
-        soporte_panel={
-            "amount": contador_paneles,
-            "name": soporte_panel[0]["name"],
-            "price": soporte_panel[0]["price"],
-        }
-        #modulo centralizado
-        modulo_centralizado=list(CentralizedModule.objects.all().values())
-        modulo_centralizado={
-            "amount": 1,
-            "name": modulo_centralizado[0]["name"],
-            "price": modulo_centralizado[0]["price"],
-        }
-        #unidad de potencia
-        unidad_potencia=list(UnityPower.objects.all().values())
-        unidad_potencia=sorted(unidad_potencia, key=lambda unidad: unidad["max_ampers_supported"],reverse=False)
-        unidad_potencia_adeacuada=0
-        for u in unidad_potencia:
-            print(u["max_ampers_supported"],u["min_ampers_supported"],b["capacity"])
-            if u["max_ampers_supported"]>=b["capacity"] and u["min_ampers_supported"]<=b["capacity"]:
-                unidad_potencia_adeacuada=u
-                break
-        if unidad_potencia_adeacuada==0:
-            unidad_potencia_adeacuada={
-                "amount": 0,
-                "name": "no hay unidad de potencia adecuada",
-                "price": 0,
-            }
-        else:
-            unidad_potencia_adeacuada={
-                "amount": 1,
-                "name": unidad_potencia_adeacuada["name"],
-                "price": unidad_potencia_adeacuada["price"],
-            }
-        #terminal
-        terminal=list(Terminals.objects.all().values())
-        terminal={
-            "amount": 1,
-            "name": terminal[0]["name"],
-            "price": terminal[0]["price"],
-        }
-        #conector
-        list_pares=[]
-        for i in range(0,20,2):
-            list_pares.append(i)
-        conector=list(Connectors.objects.all().values())
-        for c in list_pares:
-            if c==contador_paneles:
-                conector_apropiado={
-                    "amount": c/2,
-                    "name": conector[0]["name"],
-                    "price": conector[0]["price"],
-                }
-                break
-            else:
-                conector_apropiado={
-                    "amount": 0,
-                    "name": "no hay conector apropiado",
-                    "price": 0,
-                }
-        #cable vehicular
-        vehicleCables=list(VehicleCables.objects.all().values())
-        vehicleCables=sorted(vehicleCables, key=lambda cable: cable["supported_amperage"],reverse=False)
-        cable_vehicular_apropiado=0
-        
-        for ch in vehicleCables:
-            if ch["supported_amperage"]>=amp_requerido:
-                cable_vehicular_apropiado=ch
-                break
-        if cable_vehicular_apropiado==0:
-            cable_vehicular_apropiado=vehicleCables[-1]
-        cable_vehicular_apropiado={
-            "amount": 10,
-            "name": cable_vehicular_apropiado["name"],
-            "price": cable_vehicular_apropiado["price"],
-        }
-        #electric material
-        electric_material=list(ElectricMaterials.objects.all().values())
-        electric_material={
-            "amount": 1,
-            "name": electric_material[0]["name"],
-            "price": electric_material[0]["price"],
-        }
-        #cable de tierra
-        groundCable=list(GroundSecurityKits.objects.all().values())
-        groundCable={
-            "amount": 1,
-            "name": groundCable[0]["name"],
-            "price": groundCable[0]["price"],
-        }
 
+        # REGULADOR APROPIADO===================================================
+
+        regulador_apropiado=regulador(amp_requerido)
+        
+        # BREAKER APROPIADO======================================================
+
+        breaker_apropiado=breaker(amp_requerido)
+
+        # CABLE ENCAUCHETADO APROPIADO===========================================
+
+        cable_encauchetado_apropiado=cables_encauchetados(amp_requerido)
+
+        # SOPORTE PANEL APROPIADO================================================
+
+        soporte_panel=Soporte_panel(contador_paneles)
+
+        # MODULO CENTRALIZADO====================================================
+
+        modulo_centralizado=Modulo_centralizado()
+
+        # UNIDAD DE POTENCIA=====================================================
+
+        unidad_potencia_adeacuada=Unidad_potencia(bateria_apropiada,voltage_sistema)
+
+        # TERMINAL================================================================
+
+        terminal=Terminal()
+
+        # CONECTOR================================================================
+
+        conector_apropiado=Conector(contador_paneles)
+
+        # CABLE VEHICULAR========================================================
+
+        cable_vehicular_apropiado=Cable_vehicular(amp_requerido)
+
+        # MATERIAL ELECTRICO=====================================================
+
+        electric_material=Electric_material()
+
+        # CABLE DE TIERRA========================================================
+
+        groundCable=Cable_tierra()
 
         print(f"""       ===============================
         **data**
@@ -271,14 +146,14 @@ class vistaprueba(View):
         **consumo diario total**
         {total_consumo_productos}
         **paneles**
-        {panel_apropiado}
+        {panel_need}
         **baterias**
-        bateria {b},capacidad {capacidad},
-        total_consumo_productos {calculo_diario},contardor_baterias {contardor_baterias}
+        bateria {bateria_apropiada},
+        total_consumo_productos {calculo_diario}
         **amp_requerido**
         {amp_requerido}
         ** amp bat **
-        {b["capacity"]}
+        {bateria_apropiada["capacity"]}
         **regulador**
         {regulador_apropiado}
         **breaker**
@@ -301,8 +176,10 @@ class vistaprueba(View):
         {electric_material}
         **cable de tierra**
         {groundCable}
+
                ================================= """)
-        return JsonResponse({"consumptions":products_consumptions,
+        print(data[-1]["eliminar_requeimientos"],"eliminar requirements")
+        respuesta={"consumptions":products_consumptions,
                              "panel_needed":panel_need,
                              "battery_needed":bateria_apropiada,
                              "regulator_needed":regulador_apropiado,
@@ -318,7 +195,20 @@ class vistaprueba(View):
                              "ground_security_kit_needed":groundCable,
                              "products":data,
                              "productos":productos,
-                             },safe=False)
+                             "eliminar_requirements":data[-1]["eliminar_requeimientos"],
+                             }
+        
+
+        todo_lista=["panel","bateria","regulador","breaker","cable_encauchetado","soporte","modulo_centralizado","unidad_potencia","terminal","conector","cable_vehicular","materiales_electricos","kit_puestatierra"]
+        llaves=["panel_needed","battery_needed","regulator_needed","breaker_needed","rubberized_cable_needed","panel_support_needed","centralized_modules_needed","power_units_needed","terminals_needed","connector_needed","vehicle_cable_needed","electric_materials_needed","ground_security_kit_needed"]
+        for i in llaves:
+            if i in data[-1]["eliminar_requeimientos"]:
+                print(i,"esta es la i =====================")
+                respuesta[i]["price"]=0
+
+
+        cache.set(f"respuesta{usuario.username}",respuesta,timeout=300)
+        return JsonResponse(respuesta,safe=False)
 
 # prueba
 
@@ -769,7 +659,8 @@ class SendEmail(View):
         nombre= pdf_send["name"]
         apellido= pdf_send["lastname"]
         email = pdf_send["email"]
-        data  = pdf_send["data"]
+        usuario=request.user
+        data  = cache.get(f"respuesta{usuario.username}")
         print(f"sending email...a {email} y la data es {data}")
         pdf   = generate_pdf(email,'products/html/nuevos/pdfgpt.html',data,nombre,apellido)
         return JsonResponse({"msg":pdf})
