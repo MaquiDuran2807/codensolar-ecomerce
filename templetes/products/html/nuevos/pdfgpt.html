@@ -24,6 +24,8 @@
     
     <div>
         <table style="width: 100%;">
+            <br>
+            <hr size="5px" color="green" />
             <tr style="height: 180px;">
                 <th style="width: 100%;height: 180px;"><img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/logo.png" alt="" height="200px" width="200px"></th>
             </tr>
@@ -33,9 +35,8 @@
                 </th >
             </tr>
             <tr>
-                <th style="width: 100%;height: 15px;">
-                    <h3 style="font-size: 13px;">detalle de tu compra</h3>
-                    <br>
+                <th>
+                    <h2 >detalle de tu compra</h2>
                 </th>
             </tr>
             
@@ -45,10 +46,14 @@
 
     <!-- tabla de toda la cotizacion -->
     <div style="margin: 4%">
-        <h1>KIT</h1>
+        <h1 style="margin-left: 270px; color: #202f46;">REQUERIMIENTOS DE TUS KITS</h1>
+        <h1 style="margin-left: 150px; color: green;">CONDENSOLAR COMPROMETIDOS CON EL MEDIO AMBIENTE</h1>
         <table>
             <th >
                 <table style="border: 2px solid green; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px;">
+                    <br>
+                    <hr size="2px" color="blue" />
+                    <br>
                     <tr>
                         <th style="width: 40%; background-color: #202f46; color:azure; font-weight:bold;letter-spacing: 2px; ">
                             Elemento
@@ -67,7 +72,7 @@
                     {% for p in productos  %}
                         
                     <tr>
-                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:1000; ">
+                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{p.name}}
                         </td>
 
@@ -121,14 +126,16 @@
                         $ {{b.bateria_precio_t}}
                         </td>
                     </tr>
-                    <tr>
-                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+
+                    <!-- problemas letra -->
+                    <tr>    
+                        <td style="width: 50%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                             {{r.regulador}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
                             {{r.amount}}
                         </td>
-                        <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
+                        <td style="width: 35%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                         $ {{r.regulador_precio_u}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
@@ -143,10 +150,10 @@
                             {{br.amount}}
                         </td>
                         <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
-                           $ {{br.breakers_precio_u}}
+                        $ {{br.breakers_precio_u}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                           $ {{br.breakers_precio_t}}
+                        $ {{br.breakers_precio_t}}
                         </td>
                     </tr>
                     <tr>
@@ -185,10 +192,10 @@
                             {{cm.amount}}
                         </td>
                         <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
-                           $ {{cm.centralized_modules_needed_precio_u}}
+                        $ {{cm.centralized_modules_needed_precio_u}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                           $ {{cm.centralized_modules_needed_precio_t}}
+                        $ {{cm.centralized_modules_needed_precio_t}}
                         </td>
                         <tr>
                             <td style="width: 40%; background-color: #7b8faf; color:azure; font-weight:bold; ">
@@ -296,21 +303,20 @@
     <div i="tabla-productos">
         {% for p in productos %}
         <table>
+        <br>
             <tr >
                 <th style="margin: 5px; width: 150px;height: 200px;"><img src="https://cotizadorcodensolar.azurewebsites.net/media/{{p.imagen}}" alt=""></th>
                 <th style="width: 80%; ">
-
-                    <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px; ">
+                    <!-- style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px; " -->
+                    <table style="margin-left:150px;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px; ">
                         <tr>
                             <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Producto</th>
                             <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Cantidad</th>
                             <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Precio Unitario</th>
                             <th style="width: 90px;color:azure; background-color: #1E293B; font-weight:bold;">Precio Total</th>
                         </tr>
-                        
-                        
                         <tr>
-                            <td style="width: 400px; font-weight:bold; font-size:600px;">{{p.name}}</td>
+                            <td style="width: 200px; font-weight:bolder;">{{p.name}}</td>
                             <td style="width: 200px;">{{p.amount}} </td>
                             <td style="width: 200px;">$ {{p.price}} </td>
                             <td style="width: 200px;">$ {{p.total}} </td>
@@ -332,48 +338,54 @@
                             <td>{{p.total_MP}} W</td>
                         </tr>
                         <!-- Agrega más filas para cada producto aquí -->
+                        
                     </table>
-
                     
                 </th>
                 
             </tr>
         </table>
+        <br>
+        <hr size="2px" color="blue" />
+        <br>
         {% endfor %}
     </div>
 
     <!-- REQUIERMENTS  -->
 
     <div>
-        <h2>Totales:Consumo por hora {{consumos.total_consumo_hr}} W/h Consumo Dia {{consumos.total_consumo_day}} W perdidas {{consumos.total_perdidas}} W total consumo {{consumos.total_consumo}} W</h2>
+        <h1 style="margin-left:10px;color:#0F172A;">Totales:Consumo por hora {{consumos.total_consumo_hr}} W/h <br> Consumo Dia {{consumos.total_consumo_day}} W   <br> perdidas {{consumos.total_perdidas}} W <br> total consumo {{consumos.total_consumo}} W</h1>
         <div>
-            <h3>Equipos Solares</h3>
+            <br>
+            <hr size="2px" color="black" />
+            <br>
+            <h1 style="margin-left:300px;; color:green ;">Equipos Solares</h1>
             <table>
+
                 <tr>
                     <th style="height: 120px;width: 120px;">
                         <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/panel.svg" alt="" height="120px" width="120px">
                     </th>
                     <th >
-                        <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%;  border-radius:10px;">
-                            <tr >
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Panel</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Cantidad</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Potencia dia</th>
-                                
-                                
-                            </tr>
+                        <!-- <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%;  border-radius:10px;"> -->
+                        <table >
                             <tr>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Panel</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Cantidad</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Potencia dia</th>
+                            </tr>
+                            <tr >
                                 <td>{{p.panel}}</td>
-                                <td>{{p.amount}}</td>
+                                <td >{{p.amount}}</td>
                                 <td>{{p.panel_potencia_dia}} W</td>
                             </tr>
-                            <tr>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Potencia/h</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio unitario</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio total</th>
+                            <tr >
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Potencia/h</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Precio unitario</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Precio total</th>
                             </tr>
                             <tr>
-                                <td>{{p.panel_potencia}} W/h</td>
+                                <td >{{p.panel_potencia}} W/h</td>
                                 <td>$ {{p.panel_precio_u}}</td>
                                 <td>$ {{p.panel_precio_t}}</td>
                         </table>
@@ -383,11 +395,11 @@
                         <img src="https://cotizadorcodensolar.azurewebsites.net/media/pdf/battery.svg" alt="" height="120px" width="120px">
                     </th>
                     <th>
-                        <table style="margin: 5%;border: 2px solid #0F172A; height: 25px;text-align: center;padding-top: 3px;font-size: 12px;margin: 1%; border-radius:10px;">
+                        <table >
                             <tr>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Bateria</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Cantidad</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;letter-spacing: 2px;">Capacidad total</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Bateria</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Cantidad</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Capacidad total</th>
                             </tr>
                             <tr>
                                 <td>{{b.bateria}}</td>
@@ -396,9 +408,9 @@
                                 
                             </tr>
                             <tr>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Capacidad</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio unitario</th>
-                                <th style="width: 90px; background-color: #1E293B; color:azure; font-weight:bold;">Precio total</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Capacidad</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Precio unitario</th>
+                                <th style="width: 90px; color: #1E293B; font-weight:bolder;">Precio total</th>
                             </tr>
                             <tr>
                                 <td>{{b.bateria_capacidad_t}} A/h</td>
@@ -410,6 +422,9 @@
                 </tr>
 
             </table>
+            <br>
+            <hr size="5px" color="green" />
+            <br>
         </div>
     </div>
 
