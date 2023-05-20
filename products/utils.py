@@ -12,7 +12,7 @@ from datetime import datetime
 
 def generate_pdf(email,templete,data,nombre,apellido):
     product=[]
-    print(data["products"],"esto es data=====================================================================================================")
+    print(data,"esto es data=====================================================================================================")
     contador=0
     totalp=0
     totalup=0

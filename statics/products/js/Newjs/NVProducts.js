@@ -6,6 +6,10 @@ let contador=0;
 let productsToquote = [];
 let cotizacion_enviar;
 let mas_cantidad=false
+let del_requeriments=[];
+let eliminador=false;
+let data1=0;
+const url="http://127.0.0.1:8000/products/"
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
@@ -27,6 +31,7 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
     console.log("ya existe",product_id1);
     new_amount = productsToquote.find((obj) => obj.product_id == product_id1);
     new_amount.amount ++;
+    new_amount.eliminar_requeimientos = del_requeriments;
     console.log(new_amount,"new_amount",productsToquote,"productsToquote");
     mas_cantidad=true;
   }else{
@@ -35,13 +40,14 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
         amount:1,
         product_id:product_id1,
         hours:hours_used,
-        borrar:false
+        borrar:false,
+        eliminar_requeimientos:del_requeriments
       }
     );
   }
   console.log(productsToquote,"productsToquote");
 
-  const consumptions = await fetch("http://127.0.0.1:8000/products/vista_prueba",{
+  const consumptions = await fetch(url+"vista_prueba",{
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([
@@ -53,7 +59,7 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
   
   // MISSING FIX
   cotizacion_enviar=consumptions;
-  makeQuote(consumptions,product_id1,product_name,product_price,hours_used)
+  makeQuote(consumptions,product_id1,product_name,product_price,hours_used,eliminador=false);
 }
 
 function delFromProducts(id) {
@@ -66,13 +72,13 @@ function delFromProducts(id) {
   //makeQuote();
 }
 
-async function makeQuote(quotation,product_id,product_name,product_price,hours_used) {
+async function makeQuote(quotation,product_id,product_name,product_price,hours_used,eliminador) {
   let quoteReturn;
       // datos productos
       let total_precio=0;
       
-      if (mas_cantidad==false) {
-        console.log("mas cantidad");
+      if (mas_cantidad==false && eliminador==false) {
+        console.log("mas cantidad",contador);
         let cant=quotation.products[contador].amount;
         console.log(cant,"cant");
         let consumptions=quotation.consumptions[contador]
@@ -230,10 +236,18 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       return quoteReturn
   
 }
-function createandsendpdf(nombre, email,apellido) {
+async function createandsendpdf(nombre, email,apellido) {
   console.log("enviando pdf", nombre, email);
-  alert("Se enviará a su correo el pdf en unos segundos");
-  fetch("http://127.0.0.1:8000/products/sendQuote", {
+  Swal.fire({
+    title: 'Su cotizacion estara en su correo en unos segundos',
+    icon: 'success',
+    confirmButtonText: false,
+    stopKeydownPropagation: true,
+    timer: 5000,
+    showTimerProgressBar: true,
+
+  })
+  fetch(url + "sendQuote", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -242,11 +256,9 @@ function createandsendpdf(nombre, email,apellido) {
       "name": nombre,
       "lastname": apellido,
       "email": email,
-      "data": cotizacion_enviar
     })
-}
   // va a recibir un pdf 
-  ).then(response => response.json()).then(data => {
+  }).then(response => response.json()).then(data => {
     console.log(data);
     // alerta
     alert("Se ha enviado el pdf a su correo", data);
@@ -265,8 +277,9 @@ function formatearNumero(numero, lenguaje = "es") {
   return formateador.format(numero);
 }
 
-function eliminarProducto(prod){
-  fetch("http://127.0.0.1:8000/products/vista_prueba",{
+async function eliminarProducto(prod){
+  console.log(prod,"prod");
+  await fetch(url+"vista_prueba",{
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(prod),
@@ -274,18 +287,30 @@ function eliminarProducto(prod){
 .then(response => response.json())
 .then(data => {
   console.log(data);
+  reiniciar=false
   if (data.error == "no hay datos") {
-    alert("No hay productos")
-    //actualizar la pagina
-    
-    
-  }
-  window.location.reload();
+    let reiniciar=  Swal.fire({
+      title: 'Ha eliminado todos los productos',
+      icon: 'warning',
+      confirmButtonText: 'Ok',
+      stopKeydownPropagation: true,
 
+    }).then((result) => 
+    {
+      cotizacion_enviar=data
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+
+    })
+  }else{
+    cotizacion_enviar=data
+    window.location.reload();
+  }
 })
 }
 function borrar() {
-  fetch("http://127.0.0.1:8000/products/vista_prueba",{
+  fetch(url+"vista_prueba",{
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify([{"borrar":true}]),
@@ -302,9 +327,40 @@ function borrar() {
 )
 }
 
+async function eliminar_requerimientos(requerimiento,product){
+del_requeriments.push(requerimiento)
+console.log(del_requeriments);
+// encontrar el ultimo objeto de productsToquote  y agregarle la lista del_requeriments
+console.log(productsToquote[productsToquote.length-1], "productsToquote antes de eliminar requerimientos");
+productsToquote[productsToquote.length-1].eliminar_requeimientos=del_requeriments
+console.log(productsToquote, "productsToquote eliminando requerimientos");
+
+await fetch(url+"vista_prueba",{
+  method: "POST",
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify([
+    ...productsToquote
+  ]),
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+    mas_cantidad=true
+    data.productos.forEach(element => {
+
+    makeQuote(data, element.id, element.name, element.price, element.hours_used,eliminador=true)
+    cotizacion_enviar= data;
+  });
+  
+  return data
+})
+
+}
 
 
-const consumptions =  fetch("http://127.0.0.1:8000/products/vista_prueba",{
+
+
+const consumptions =  fetch(url+"vista_prueba",{
   method: "POST",
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({}),
@@ -316,12 +372,22 @@ const consumptions =  fetch("http://127.0.0.1:8000/products/vista_prueba",{
       {
         amount:element.amount,
         product_id:element.id,
-        hours:element.hours_used
+        hours:element.hours_used,
+        eliminar_requeimientos:element.eliminar_requirements
       }
     );
-    makeQuote(data, element.id, element.name, element.price, element.hours_used)
+    // añadir lista de eliminados
+
+
+    makeQuote(data, element.id, element.name, element.price, element.hours_used,eliminador=false)
     cotizacion_enviar= data;
   });
+  console.log(data.eliminar_requirements,"eliminar_requirements");
+  data.eliminar_requirements.forEach(element => {
+    console.log(element,"element");
+    del_requeriments.push(element)
+  });
+
   
   return data
 }).catch(error => {
