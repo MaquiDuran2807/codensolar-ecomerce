@@ -248,7 +248,7 @@ def rack_baterias(cantidad_baterias):
     list_pares=[]
     for i in range(0,20,2):
         list_pares.append(i)
-    rack=list(Connectors.objects.all().values())
+    rack=list(BatterySupports.objects.all().values())
     for c in list_pares:
         if c==cantidad_baterias:
             rack_apropiado={
@@ -270,4 +270,5 @@ def rack_baterias(cantidad_baterias):
                 "name": "no hay conector apropiado",
                 "price": 0,
             }
+    print("rack baterias",rack_apropiado)
     return rack_apropiado

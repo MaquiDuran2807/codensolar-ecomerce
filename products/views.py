@@ -140,7 +140,7 @@ class vistaprueba(View):
 
         # rack de baterias========================================================
 
-        rack_bateria=rack_baterias(bateria_apropiada)
+        rack_bateria=rack_baterias(bateria_apropiada["amount"])
 
 
         print(f"""       ===============================
