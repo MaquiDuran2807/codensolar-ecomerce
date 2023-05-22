@@ -50,7 +50,7 @@ class vistaprueba(View):
                 return JsonResponse({"message":"borrado"})
         except:
             print("no hay borrar")
-        cache.set(usuario.username,data,timeout=300)
+        cache.set(usuario.username,data,timeout=900)
         products_consumptions=[]
         total_consumo_productos=0
         productos=[]
@@ -199,7 +199,6 @@ class vistaprueba(View):
                              }
         
 
-        todo_lista=["panel","bateria","regulador","breaker","cable_encauchetado","soporte","modulo_centralizado","unidad_potencia","terminal","conector","cable_vehicular","materiales_electricos","kit_puestatierra"]
         llaves=["panel_needed","battery_needed","regulator_needed","breaker_needed","rubberized_cable_needed","panel_support_needed","centralized_modules_needed","power_units_needed","terminals_needed","connector_needed","vehicle_cable_needed","electric_materials_needed","ground_security_kit_needed"]
         for i in llaves:
             if i in data[-1]["eliminar_requeimientos"]:
@@ -207,7 +206,7 @@ class vistaprueba(View):
                 respuesta[i]["price"]=0
 
 
-        cache.set(f"respuesta{usuario.username}",respuesta,timeout=300)
+        cache.set(f"respuesta{usuario.username}",respuesta,timeout=900)
         return JsonResponse(respuesta,safe=False)
 
 # prueba

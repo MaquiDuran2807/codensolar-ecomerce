@@ -43,7 +43,9 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
         borrar:false,
         eliminar_requeimientos:del_requeriments
       }
+      
     );
+    console.log(productsToquote,"productsToquote del add to quote");
   }
   console.log(productsToquote,"productsToquote");
 
@@ -65,7 +67,7 @@ async function addToQuote(product_id1,product_name,product_price ,hours_used=24)
 function delFromProducts(id) {
   productsToquote = productsToquote.filter((obj) => obj.product_id != id);
   //productsToquote.find((obj) => obj.product_id == id).remove;
-  console.log(productsToquote,"productsToquote");
+  console.log(productsToquote,"productsToquote de eliminar");
   quoteContainer.querySelector(`#_${id}`).remove();
   eliminarProducto(productsToquote);
   
@@ -108,7 +110,6 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       cantidades.setAttribute("id", `cantidades-${product_id}`);
       cantidades.textContent += cant;
       quoteContainer.appendChild(clone);
-      total_precio += parseInt(product_price*cant);
       }else{
         console.log("mas cantidad");
         let canti=quotation.products;
@@ -125,11 +126,17 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
             document.getElementById(`8-${product_id}`).textContent = consumptions.loss_percentaje+" % perdidas: "+formatearNumero(consumptions.loss_consumption*element.amount).toString()+"W" ;
             document.getElementById(`9-${product_id}`).textContent = formatearNumero(consumptions.total_consumption_day*element.amount).toString() +" W";
             contador2++;
-            total_precio += parseInt(product_price*element.amount);
           }
           
         });
       }
+      // precio de los productos
+      quotation.productos.forEach((productos) => {
+        console.log(productos,"product en makeQuote para precios");
+        total_precio += productos.price * productos.amount;
+      });
+      console.log(total_precio,"total_precio");
+
       console.log(product_price,"product_price");
       
       mas_cantidad=false;
@@ -367,26 +374,28 @@ const consumptions =  fetch(url+"vista_prueba",{
 }).then(response => response.json()).then(data => {
   console.log(data)
   contador_productos = 0;
+  data.eliminar_requirements.forEach(element => {
+    console.log(element,"element");
+    del_requeriments.push(element)
+  });
   data.productos.forEach(element => {
     productsToquote.push(
       {
         amount:element.amount,
         product_id:element.id,
         hours:element.hours_used,
-        eliminar_requeimientos:element.eliminar_requirements
+        eliminar_requeimientos:del_requeriments
       }
     );
     // añadir lista de eliminados
-
+    console.log(productsToquote,"productsToquote actualizar pagina");
+    mas_cantidad=0
 
     makeQuote(data, element.id, element.name, element.price, element.hours_used,eliminador=false)
     cotizacion_enviar= data;
   });
   console.log(data.eliminar_requirements,"eliminar_requirements");
-  data.eliminar_requirements.forEach(element => {
-    console.log(element,"element");
-    del_requeriments.push(element)
-  });
+  
 
   
   return data

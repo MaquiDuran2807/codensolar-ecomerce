@@ -216,7 +216,7 @@ def Cable_vehicular(amp_requerido):
         if cable_vehicular_apropiado==0:
             cable_vehicular_apropiado=vehicleCables[-1]
         cable_vehicular_apropiado={
-            "amount": 10,
+            "amount": 2,
             "name": cable_vehicular_apropiado["name"],
             "price": cable_vehicular_apropiado["price"],
         }

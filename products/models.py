@@ -232,28 +232,32 @@ class ElectricMaterials (models.Model):
 
 # ===========================================================================
 
-class Kits (models.Model):
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
-    panel = models.ForeignKey(SolarPanel, on_delete=models.CASCADE)
-    panel_amount = models.IntegerField()
-    battery = models.ForeignKey(Battery, on_delete=models.CASCADE)
-    battery_amount = models.IntegerField()
+class KitHogar (models.Model):
+    name = models.CharField(max_length=50)
+    productos = models.ManyToManyField(Products, related_name='kit_hogar')
+    panel= models.ForeignKey(SolarPanel, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    panel_cantidad = models.IntegerField(blank=True,null=True)
+    bateria = models.ForeignKey(Battery, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    bateria_cantidad = models.IntegerField(blank=True,null=True)
+    regulador= models.ForeignKey(Reguladores, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    breakers= models.ForeignKey(Breakers, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    breakers_cantidad = models.IntegerField(default=3,blank=True,null=True)
+    cable= models.ForeignKey(RubberizedCables, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    cable_cantidad = models.IntegerField(default=10,blank=True,null=True)
+    cable_vehicular= models.ForeignKey(VehicleCables, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    cablevehicular_cantidad = models.IntegerField(default=10,blank=True,null=True)
+    panel_suport= models.ForeignKey(PanelSupports, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    panel_suport_cantidad = models.IntegerField(blank=True,null=True)
+    unidad_de_potencia= models.ForeignKey(UnityPower, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    modulo_centralizado= models.ForeignKey(CentralizedModule, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    puesta_tierra= models.ForeignKey(GroundSecurityKits, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    conectores= models.ForeignKey(Connectors, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    conectores_cantidad = models.IntegerField(blank=True,null=True)
+    terminales= models.ForeignKey(Terminals, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    material_electrico= models.ForeignKey(ElectricMaterials, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    inversor= models.ForeignKey(Inversores, on_delete=models.CASCADE, related_name='kit_hogar',blank=True,null=True)
+    price = models.IntegerField()
+    image = models.ImageField(upload_to='media/KitHogar',blank=True, null=True)
+
     def __str__(self):
-        return "kit del producto "+ str(self.product)
-    
-class HomeKits (models.Model):
-    name = models.CharField(max_length=25,default="KIT - SOLAR---CODEN")
-    panel = models.ForeignKey(SolarPanel, on_delete=models.CASCADE)
-    panel_amount = models.IntegerField()
-    battery = models.ForeignKey(Battery, on_delete=models.CASCADE)
-    battery_amount = models.IntegerField()
-    def __str__(self):
-        return f"{str(self.id)}) {self.name}"
-    
-class HomeKits_Products (models.Model):
-    kit = models.ForeignKey(HomeKits, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=1)
-    
-    def __str__(self):
-        return f"{self.kit} -> {self.product}({str(self.amount)})"
+        return str(self.id) +") "+self.name + f" ${self.price}"
