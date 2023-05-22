@@ -216,7 +216,7 @@ def Cable_vehicular(amp_requerido):
         if cable_vehicular_apropiado==0:
             cable_vehicular_apropiado=vehicleCables[-1]
         cable_vehicular_apropiado={
-            "amount": 10,
+            "amount": 2,
             "name": cable_vehicular_apropiado["name"],
             "price": cable_vehicular_apropiado["price"],
         }
@@ -243,3 +243,31 @@ def Cable_tierra():
             "price": groundCable[0]["price"],
         }
         return groundCable
+
+def rack_baterias(cantidad_baterias):
+    list_pares=[]
+    for i in range(0,20,2):
+        list_pares.append(i)
+    rack=list(Connectors.objects.all().values())
+    for c in list_pares:
+        if c==cantidad_baterias:
+            rack_apropiado={
+                "amount": c/2,
+                "name": rack[0]["name"],
+                "price": rack[0]["price"],
+            }
+            break
+        if c==1:
+            rack_apropiado={
+                "amount": 0,
+                "name": "no hay rack apropiado",
+                "price": 0,
+            }
+            break
+        else:
+            rack_apropiado={
+                "amount": (cantidad_baterias-1)/2,
+                "name": "no hay conector apropiado",
+                "price": 0,
+            }
+    return rack_apropiado
