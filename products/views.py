@@ -138,6 +138,11 @@ class vistaprueba(View):
 
         groundCable=Cable_tierra()
 
+        # rack de baterias========================================================
+
+        rack_bateria=rack_baterias(bateria_apropiada)
+
+
         print(f"""       ===============================
         **data**
         {data}
@@ -196,6 +201,7 @@ class vistaprueba(View):
                              "products":data,
                              "productos":productos,
                              "eliminar_requirements":data[-1]["eliminar_requeimientos"],
+                             "rack_bateria":rack_bateria,
                              }
         
 

@@ -232,6 +232,11 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       document.querySelector(".kit-puesta-a-tierra-tipo-requeridos").textContent = quotation.ground_security_kit_needed.name;
       document.querySelector(".kit-puesta-a-tierra-precio-requeridos").textContent = formatearNumero(quotation.ground_security_kit_needed.price).toString();
       document.querySelector(".kit-puesta-a-tierra-precio-total-requeridos").textContent = formatearNumero(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount).toString();
+
+      document.querySelector(".rack-soporte-baterias-requeridos1").textContent = quotation.ground_security_kit_needed.amount;
+      document.querySelector(".rack-soporte-baterias-tipo-requeridos1").textContent = quotation.ground_security_kit_needed.name;
+      document.querySelector(".rack-soporte-baterias-precio-requeridos1").textContent = formatearNumero(quotation.ground_security_kit_needed.price).toString();
+      document.querySelector(".rack-soporte-baterias-precio-total-requeridos1").textContent = formatearNumero(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount).toString();
       
       total_precio += parseInt(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
       console.log("total_precio",total_precio);
