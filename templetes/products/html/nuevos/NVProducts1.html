@@ -309,7 +309,7 @@
                                         <!-- logica eliminar -->
                                         
                                         <div class="col-md-6 agregar-producto">
-                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
+                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
                                         </div>
 
                                         <div class="col-md-6 agregar-producto">
@@ -498,7 +498,7 @@
                                             <div class="col-xl-1   reguladores-eliminar-requeridos">
                                                 <div class="col-xl-2 reguladores-cotizador text-danger" onclick="eliminar_requerimientos('regulator_needed')" title="Eliminar el requerimiento"> ❌ </div>
                                             </div>
-                                            <div class="col-xl-1 reguladores-reiniciar-requeridos">
+                                            <div class="col-xl-1 reguladores-reiniciar-requeridos" onclick="reagregar_requerimientos('regulator_needed')">
                                                 <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -539,7 +539,7 @@
                                                 <div class="col-xl-1 paneles-eliminar-requeridos">
                                                     <div class="col-xl-2 eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 paneles-reiniciar-requeridos">
+                                                <div class="col-xl-1 paneles-reiniciar-requeridos" onclick="reagregar_requerimientos('panel_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -580,7 +580,7 @@
                                                 <div class="col-xl-1 baterias-eliminar-requeridos">
                                                     <div class="col-xl-2 baterias-cotizador text-danger" onclick="eliminar_requerimientos('battery_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 baterias-eliminar-requeridos">
+                                                <div class="col-xl-1 baterias-eliminar-requeridos" onclick="reagregar_requerimientos('battery_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -621,7 +621,7 @@
                                                 <div class="col-xl-1 breakers-eliminar-requeridos">
                                                     <div class="col-xl-2 breakers-cotizador text-danger" onclick="eliminar_requerimientos('breaker_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 breakers-eliminar-requeridos">
+                                                <div class="col-xl-1 breakers-eliminar-requeridos" onclick="reagregar_requerimientos('breaker_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -663,7 +663,7 @@
                                                 <div class="col-xl-1 cables-eliminar-requeridos">
                                                     <div class="col-xl-2 cables-eliminar-cotizador text-danger text-center" onclick="eliminar_requerimientos('rubberized_cable_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 cables-eliminar-requeridos">
+                                                <div class="col-xl-1 cables-eliminar-requeridos" onclick="reagregar_requerimientos('rubberized_cable_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -696,7 +696,7 @@
                                                 <div class="col-xl-1 soporte-eliminar-requeridos">
                                                     <div class="col-xl-2 soporte-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_support_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1  soporte-sobre-techo-eliminar-requeridos">
+                                                <div class="col-xl-1  soporte-sobre-techo-eliminar-requeridos" onclick="reagregar_requerimientos('panel_support_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -728,7 +728,7 @@
                                                 <div class="col-xl-1 modulos-eliminar-requeridos">
                                                     <div class="col-xl-2 modulos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('centralized_modules_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 modulos-centralizados-eliminar-requeridos">
+                                                <div class="col-xl-1 modulos-centralizados-eliminar-requeridos " onclick="reagregar_requerimientos('centralized_modules_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -738,7 +738,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row requerimiento-individualmente-productos">
+                                            <div class="row requerimiento-individualmente-productos ">
                                                 <div style="font-size:13px;" class="col-xl-3 unidad-de-potencia-requeridos">
                                                     <h6>Unidad de potencia</h6>
                                                     <div class="unidad-de-potencia-requeridos1"></div>
@@ -758,7 +758,7 @@
                                                 <div class="col-xl-1 unidad-de-potencia-eliminar-requeridos">
                                                     <div class="col-xl-2 unidad-de-potencia-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('power_units_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 unidad-de-potencia-reiniciar-requeridos">
+                                                <div class="col-xl-1 unidad-de-potencia-reiniciar-requeridos" onclick="reagregar_requerimientos('power_units_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -790,7 +790,7 @@
                                                 <div class="col-xl-1 terminales-MC4-eliminar-requeridos">
                                                     <div class="col-xl-2 terminales-MC4-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('terminals_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 terminales-MC4-reiniciar-requeridos">
+                                                <div class="col-xl-1 terminales-MC4-reiniciar-requeridos "onclick="reagregar_requerimientos('terminals_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -822,7 +822,7 @@
                                                 <div class="col-xl-1 conectores-en-y-eliminar-requeridos">
                                                     <div class="col-xl-2 conectores-en-y-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('connector_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 conectores-en-y-reiniciar-requeridos">
+                                                <div class="col-xl-1 conectores-en-y-reiniciar-requeridos" onclick="reagregar_requerimientos('connector_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -853,7 +853,7 @@
                                                 <div class="col-xl-1 cable-vehicular-eliminar-requeridos">
                                                     <div class="col-xl-2 cable-vehicular-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('vehicle_cable_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 cable-vehicular-reiniciar-requeridos">
+                                                <div class="col-xl-1 cable-vehicular-reiniciar-requeridos" onclick="reagregar_requerimientos('vehicle_cable_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -885,7 +885,7 @@
                                                 <div class="col-xl-1 materiales-electricos-eliminar-requeridos">
                                                     <div class="col-xl-2 materiales-electricos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('electric_materials_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 materiales-electricos-reiniciar">
+                                                <div class="col-xl-1 materiales-electricos-reiniciar" onclick="reagregar_requerimientos('electric_materials_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -917,7 +917,7 @@
                                                 <div class="col-xl-1 kit-puesta-a-tierra-eliminar-requeridos">
                                                     <div class="col-xl-1 kit-puesta-a-tierra-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('ground_security_kit_needed')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 kit-puesta-a-tierra-reiniciar-requeridos">
+                                                <div class="col-xl-1 kit-puesta-a-tierra-reiniciar-requeridos" onclick="reagregar_requerimientos('ground_security_kit_needed')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
