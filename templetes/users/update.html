@@ -5,7 +5,7 @@
 <head>
 
 	<link rel="stylesheet" type="text/css" href=" {% static 'products/css/main.css' %} ">
-	<link rel="stylesheet" type="text/css" href="{% static 'products/css/nuevocss.css/css/Vlogin.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/Vlogin.css' %}">
     <title>registrate</title>
 </head>
 
@@ -13,7 +13,7 @@
 
 <div class=volver>
     <div class="volver1">
-        <a href="home.html">Volver</a>
+        <a href="http://127.0.0.1:8000/login#">Volver</a>
     </div>
 </div>
 
@@ -22,16 +22,27 @@
 <input type="checkbox" id="check">
     <div class="container">
         <div class="login page">
-            <div class="heading"> </div>
+            <div class="heading"><a href="https://codensolar.com/" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>  </div>
             <form method="post">
                 {% csrf_token %}
+
                 <div class="entryarea">
+                    
+                <input type="email" required>
                     {{form.email}}
-                    <div class="labelline">Ingresa tu Correo</div>
+                    <div class="labelline"></div>
                 </div>
-    
-                
+
                 <input type="submit" value="enviar" id="btn">
+                <br>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <br><br>
+                <div class="imagen">
+                    <img class="imagen1" src="{% static 'products/img/logo-coden1.png' %}" alt="">
+                </div>
             </form>
         </div>
 

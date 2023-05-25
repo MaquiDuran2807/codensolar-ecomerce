@@ -16,7 +16,11 @@
 } */
 
 .body{
-    background: linear-gradient(#0f172ac7, #0a507169, #54555460),url(../../../img/panelsolar.jpg);
+    background: linear-gradient(#0f172ac7, #0a507169, #54555460),url(../img/panelsolar.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 .login{
@@ -37,16 +41,18 @@
 }
 
 
-
     .container{
-        max-width: 480px;
-        width: 100%;
-        height: 820px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        max-width: 580px;
+        height: 940px;
         transform-style: preserve-3d;
         box-shadow: 0 8px 20px rgba(0,0,0,0.7);
         margin-left: auto;
         margin-right: auto;
+        border-radius: 10px;
     }
+    
     input[type="checkbox"]{
         display: none;
     }
@@ -239,7 +245,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .volver1{
@@ -252,3 +258,16 @@
     text-decoration: none;
 }
 
+@media (min-width: 800px) {
+    
+    .container{
+        width:580px;
+        height: 820px;
+    }
+}
+
+/* @media (min-width: 900px) {
+    .container {
+        max-width: 100%;
+    }
+} */
