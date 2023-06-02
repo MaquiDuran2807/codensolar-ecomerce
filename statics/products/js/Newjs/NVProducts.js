@@ -341,11 +341,24 @@ function borrar() {
 }
 
 async function eliminar_requerimientos(requerimiento,product){
-del_requeriments.push(requerimiento)
-console.log(del_requeriments);
+  if (del_requeriments.length==0) {
+    del_requeriments.push(requerimiento)
+    console.log(del_requeriments,"del_requeriments despues del push");
+  }
+  del_requeriments.forEach(element => {
+    if (element==requerimiento) {
+      console.log("element ya esta",element);
+    }else{
+      del_requeriments.push(requerimiento)
+      console.log(del_requeriments,"del_requeriments despues del push");
+    }
+  });
 // encontrar el ultimo objeto de productsToquote  y agregarle la lista del_requeriments
-console.log(productsToquote[productsToquote.length-1], "productsToquote antes de eliminar requerimientos");
-productsToquote[productsToquote.length-1].eliminar_requeimientos=del_requeriments
+console.log(productsToquote, "productsToquote antes de eliminar requerimientos");
+
+productsToquote.forEach(element => {
+  element.eliminar_requeimientos=del_requeriments
+});
 console.log(productsToquote, "productsToquote eliminando requerimientos");
 
 await fetch(url+"vista_prueba",{
@@ -369,6 +382,74 @@ await fetch(url+"vista_prueba",{
 })
 
 }
+
+function reagregar_requerimientos(requerimiento,product){
+
+  console.log(requerimiento,"requerimiento");
+  console.log(product,"product");
+  console.log(productsToquote,"productsToquote antes de reagregar requerimientos");
+  productsToquote.forEach(element => {
+      element.eliminar_requeimientos.forEach(element2 => {
+        if (element2==requerimiento) {
+          element.eliminar_requeimientos=element.eliminar_requeimientos.filter(item => item !== requerimiento)
+        }
+      });
+  });
+  console.log(productsToquote,"productsToquote despues de reagregar requerimientos");
+  fetch(url+"vista_prueba",{
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify([
+      ...productsToquote
+    ]),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    mas_cantidad=true
+    data.productos.forEach(element => {
+      makeQuote(data, element.id, element.name, element.price, element.hours_used,eliminador=true)
+    cotizacion_enviar= data;
+  });
+  })
+}
+async function delToQuote(producto) {
+  console.log(producto,"producto a eliminar");
+  console.log(productsToquote,"productsToquote antes de eliminar");
+  productsToquote.forEach(element => {
+    if (element.product_id==producto) {
+      if (element.amount==1) {
+        delFromProducts(producto)
+        
+      }else{
+      element.amount=element.amount-1
+      }
+    }
+  });
+  console.log(productsToquote,"productsToquote despues de eliminar");
+  fetch(url+"vista_prueba",{
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify([
+      ...productsToquote
+    ]),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    mas_cantidad=true
+    data.productos.forEach(element => {
+
+    makeQuote(data, element.id, element.name, element.price, element.hours_used,eliminador=true)
+    cotizacion_enviar= data;
+  });
+  })
+
+  // actualizar la pagina
+  
+}
+  
+
 
 
 
