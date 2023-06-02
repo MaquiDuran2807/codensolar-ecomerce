@@ -97,41 +97,34 @@
             <div class="col-12">
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row justify-content-around">
-                            <img class="c1 imgcarru" src="{% static 'products/carrusel/carrusel1.jpeg' %}" class="d-block w-100" alt="">
-                            <img class="c2 imgcarru" src="{% static 'products/carrusel/carrusel2.jpg' %}" class="d-block w-100" alt="">
-                            <img class="c3 imgcarru" src="{% static 'products/carrusel/carrusel4.jpeg' %}" class="d-block w-100" alt="">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-around">
+                                <img class="c1 imgcarru" src="{% static 'products/carrusel/carrusel1.jpeg' %}" class="d-block w-100" alt="https://codensolar.com/producto/kit-hogar-1070-w-h-dia/">
+                                <img class="c2 imgcarru" src="{% static 'products/carrusel/carrusel2.jpg' %}" class="d-block w-100" alt="">
+                                <img class="c3 imgcarru" src="{% static 'products/carrusel/carrusel4.jpeg' %}" class="d-block w-100" alt="">
+                            </div>
                         </div>
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                        <div class="contenido-carrusel">
-                            <h5 class="">First slide labelaa
-                            </h5>
-                            <h6>Some representative placeholder content for the first slide.</h6>
+                        <div class="carousel-item">
+                            <div class="row justify-content-around">
+                                <img class="c4 imgcarru" src="{% static 'products/carrusel/carrusel3.jpeg' %}" class="d-block w-100" alt="">
+                                <img class="c5 imgcarru" src="{% static 'products/carrusel/carrusel5.jpeg' %}" class="d-block w-100" alt="">
+                                <img class="c6 imgcarru" src="{% static 'products/carrusel/carrusel7.jpg' %}" class="d-block w-100" alt="">
+                            </div>
                         </div>
-                        </div> -->
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-around">
-                            <img class="c4 imgcarru" src="{% static 'products/carrusel/carrusel3.jpeg' %}" class="d-block w-100" alt="">
-                            <img class="c5 imgcarru" src="{% static 'products/carrusel/carrusel5.jpeg' %}" class="d-block w-100" alt="">
-                            <img class="c6 imgcarru" src="{% static 'products/carrusel/carrusel7.jpg' %}" class="d-block w-100" alt="">
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-around">
-                            <img class="c7 imgcarru" src="{% static 'products/carrusel/carrusel6.jpeg' %}" class="d-block w-100" alt="">
-                            <img class="c8 imgcarru" src="{% static 'products/carrusel/carrusel8.jpg' %}" class="d-block w-100" alt="">
-                            <img class="c9 imgcarru" src="{% static 'products/carrusel/carrusel9.jpg' %}" class="d-block w-100" alt="">
+                        <div class="carousel-item">
+                            <div class="row justify-content-around">
+                                <img class="c7 imgcarru" src="{% static 'products/carrusel/carrusel6.jpeg' %}" class="d-block w-100" alt="">
+                                <img class="c8 imgcarru" src="{% static 'products/carrusel/carrusel8.jpg' %}" class="d-block w-100" alt="">
+                                <img class="c9 imgcarru" src="{% static 'products/carrusel/carrusel9.jpg' %}" class="d-block w-100" alt="">
+                            </div>
                         </div>
                     </div>
 
-                    </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -141,6 +134,15 @@
                     <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-center pb-1">
+                        <a href="https://codensolar.com/kits/" class="ver-kits" target="_blank">
+                            <h4 title="Da click para ver todos los paneles">Ver todos los kits</h4>
+                        </a>
+                    </div>
+                </div>
+                
+                
             </div>
         </section>
 
@@ -216,913 +218,876 @@
             </div>
         </section>
 
+
+
+
+
+        <!-- por si se daña  -->
+
+        <section class=" logic d-flex  justify-content-around margin ">  
+            {% comment %} products {% endcomment %}
+
+            
+
+        
+        <section class="row padre">
+                {% for h6 in products %}
+            <div class="col-12">
+                <div class=" producto  mb-2" id="product°{{h6.id}}" >
+        
+                    <div class="row informacion producto">
+
+                        <!-- <section class="row">
+                            <div class="col12 mt-5 mb-5  products-view justify-content">
+                                <div class="row row-cols-1 row-cols-md-3 g-3">
+                                    <div class="col">
+                                    <div class="card h-100">
+                                        <img src="img/bg.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">titulo producto</h5>
+                                        <p class="card-text">caracteristicas producto</p>
+                                        <small class="text-muted">precio x</small>
+                                        </div>
+                                        <div class="card-footer">
+                                        <div class="btn bg-primary">Actualizar</div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <img src="img/bg.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">titulo producto</h5>
+                                            <p class="card-text">caracteristicas producto</p>
+                                            <small class="text-muted">precio x</small>
+                                            </div>
+                                            <div class="card-footer">
+                                            <div class="btn bg-primary">Actualizar</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+
+                        <div class="col-md-12 informacion-producto-caracteristicas ">
+                            <div class="col-12 mt-2 mb-2  products-view justify-content">
+        
+                                <div class="row row-cols-2 row-cols-md-2 g-3">
+
+                                        <div class="card h-100">
+                                            
+                                            <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px; max-width: 350px; max-height: 400px; width: 100%; height: 100%; overflow: hidden;" class="rounded mx-auto d-block" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
+
+                                            <div class="card-body">
+        
+                                                <div class="card-title">
+                                                    <div class="row primary-inf ">
+                                                        <div class="col-md-7 titulo-producto">
+                                                            <h5 class="npsolitario"> nombre {{h6.name}} </h5>
+                                                        </div>
+                                                        <div class="col-md-5 precio-producto">
+                                                            <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="card-text">
+                                                    <div class="row linea">
+                                            
+                                                        <div class="row secundary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 descripcion-producto">
+                                                                <h5>Descripcion</h5>
+                                                                <h6 class="pp"> {{h6.description}} </h6>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="row tertiary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 caracteristicas-producto">
+                                                                <h5>Caracteristicas</h5>
+                                                                <h6 class="pp">{{h6.caracteristicas}}</h6>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+        
+                                                <small class="text-muted">
+                                                    <div class="row linea">
+                                                        <div class="row quaternary-inf pt-1">
+                                                                <div class="col-md-12 horas-sol-producto">
+                                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
+                                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
+                                                                    <input type="range" class="form-range input-range" min="1" max="24">
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </small>
+                                                <div class="card-footer">
+                                                    <div class="row five-inf">
+                                                        <!-- logica eliminar -->
+                                                        
+                                                        <div class="col-md-6 agregar-producto">
+                                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
+                                                        </div>
+                
+                                                        <div class="col-md-6 agregar-producto">
+                                                                <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+    
+                                        </div>
+
+                                                                                <div class="card h-100">
+                                            
+                                            <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px; max-width: 350px; max-height: 400px; width: 100%; height: 100%; overflow: hidden;" class="rounded mx-auto d-block" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
+
+                                            <div class="card-body">
+        
+                                                <div class="card-title">
+                                                    <div class="row primary-inf ">
+                                                        <div class="col-md-7 titulo-producto">
+                                                            <h5 class="npsolitario"> nombre {{h6.name}} </h5>
+                                                        </div>
+                                                        <div class="col-md-5 precio-producto">
+                                                            <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="card-text">
+                                                    <div class="row linea">
+                                            
+                                                        <div class="row secundary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 descripcion-producto">
+                                                                <h5>Descripcion</h5>
+                                                                <h6 class="pp"> {{h6.description}} </h6>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="row tertiary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 caracteristicas-producto">
+                                                                <h5>Caracteristicas</h5>
+                                                                <h6 class="pp">{{h6.caracteristicas}}</h6>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+        
+                                                <small class="text-muted">
+                                                    <div class="row linea">
+                                                        <div class="row quaternary-inf pt-1">
+                                                                <div class="col-md-12 horas-sol-producto">
+                                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
+                                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
+                                                                    <input type="range" class="form-range input-range" min="1" max="24">
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </small>
+                                                <div class="card-footer">
+                                                    <div class="row five-inf">
+                                                        <!-- logica eliminar -->
+                                                        
+                                                        <div class="col-md-6 agregar-producto">
+                                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
+                                                        </div>
+                
+                                                        <div class="col-md-6 agregar-producto">
+                                                                <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+    
+                                        </div>
+
+
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+        </section>
+            
+        
+        
+        {% comment %} quotes and requirements {% endcomment %}
+            <div class="cotizador1 ">
+        
+        <!-- precios totales- consumo totales -->
+        <div class="row totales">
+            <div class="row innovacion justify-content-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Cotizador de ahorro </h5>
+                        <h2>Tecnologia desarrollada por </h2>
+                    <!-- <div class="row">
+                        <div class="col-md-11">
+                            <h5>Cotizador de ahorro </h5>
+                            <h2>Tecnologia desarrollada por </h2>
+                        </div>
+                        <div class="col-md-1">
+                            <a onclick="borrar()"> <div class="row btn btn-success" >Reinicar cotizacion</div></a>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <a href="#" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 precio-acumulado-total">
+                            <div class="row">
+                                <div class="col-md-12 acumulador-precio "> <h6>Precio total</h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12  acumulador-precio-id" id="totales">id</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 consumo-acumulado-total">
+                            <div class="row">
+                                <div class="col-md-12 consumo-total "> <h6>consumo total</h6> </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 consumo-total-id">id</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select class="form-select text-center mt-2 mb-2 lugar-residencia" aria-label="Default select example">
+                                <div class="selectores-lugar-residencia">
+                                    <option selected>¿En que parte del pais te encuentras?</option>
+                                    <option value="1">Cundinamarca</option>
+                                    <option value="2">Boyaca</option>
+                                    <option value="3">Resto del pais</option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <a onclick="borrar()"> <div class="row btn btn-success reiniciar-cotizacion" title="Reiniciar Cotizador" >Reiniciar cotizacion</div></a>
+                                <!-- <div class="row btn btn-success reiniciar-cotizacion"><a onclick="borrar()"> <div class="row btn btn-success" >Reinicar cotizacion</div></a></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+                <div class="row acumulador-cotizador">
+                        <template id="quote-template">
+                            <div class="quote d-grid gap-3">
+                                <div class="row primary-cotizador ">
+                                    <!-- <button type="button" class="col-md-2 btn-close  eliminar-cotizador" aria-label="Close"></button> -->
+                                    <div class="col-md-1 eliminar-cotizador text-danger pt-1" title="Eliminar"> ❌</div>
+                                    <div class="col-md-5"> <H6>Producto</H6>
+                                        <div class="col-12 titulo-producto-cotizador">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4"> <h6>Precio</h6>
+                                        <div class="col-12 precio-unitario">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 "><h6>Cantidad</h6>
+                                        <div class="col-12 cantidad-cotizador">
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row secundary-cotizador">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="col-12"><h6>horas uso</h6></h6>
+                                            <div class="col-md-12 horas-uso-cotizador"></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="col-md-12"><h6>consumo hora</h6></h6>
+                                            <div class="col-md-12 consumo-hora-cotizador"></h6></div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row tertiary-cotizador ">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                                <div class="col-md-4">
+                                                    <h6 class="col-md-12"><h6>consumo dia  </h6></h6>
+                                                    <div class="col-12 consumo-dia-cotizador"></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="col-md-12"><h6>% perdidas</h6></h6>
+                                                    <div class="col-md-12 porcentaje-perdidas-cotizador"></div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6  class="col-md-12"><h6>consumo </h6></h6>
+                                                    <div class="col-md-12 total-consumo-cotizador"></div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row"></div>
+                                    <h6  class="col-md-6">total produccion</h6>
+                                    <div class="col-md-6 total-produccion-cotizador">
+                                    </div> -->
+                                </div>
+                            </div>
+                        </template>
+                        <!-- acumulador -->
+                </div>
+        
+        
+                <div class="row requerimientos-productos justify-content-center">
+                        <!-- requerimientos-productos -->
+        
+        
+                    {% comment %} <div class="row titulo-requerimiento">
+                        <h6 class="col-md-12">titulo titulo-requerimiento</h6>
+                    </div> {% endcomment %}
+                    <div class="accordion accordion-general justify-content-center" id="accordionPanelsStayOpenExample">
+        
+                        <!-- accordion-collapse collapse  paneles abierto por touch-->
+                        <div class="accordion-item justify-content-center">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <h4>Reguladores</h4>
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class=" " aria-labelledby="panelsStayOpen-headingOne">
+                                <div class="accordion-body">
+                                <div class="row requerimiento-individualmente-productos">
+                                    <div class="col-xl-3 reguladores-requeridos">
+                                        <h6>Reguladores</h6>
+                                        <div class="reguladores-requeridos1"></div>
+                                    </div>
+                                    <div class="col-xl-3 reguladores-tipo-requeridos">
+                                        <h6>Tipo</h6>
+                                        <div class="reguladores-tipo-requeridos1"></div>
+                                    </div>
+                                    <div class="col-xl-2  paneles-precio-unitario-requeridos">
+                                        <h6>P/Unitario</h6>
+                                        <div class="paneles-precio-unitario-requeridos1"></div>
+                                    </div>
+                                    <div class="col-xl-2  reguladores-precio-requeridos">
+                                        <h6>P/total</h6>
+                                        <div class="reguladores-precio-requeridos1"></div>
+                                    </div>
+                                    <div class="col-xl-1   reguladores-eliminar-requeridos">
+                                        <div class="col-xl-2 reguladores-cotizador text-danger" onclick="eliminar_requerimientos('regulator_needed')" title="Eliminar el requerimiento"> ❌ </div>
+                                    </div>
+                                    <div class="col-xl-1 reguladores-reiniciar-requeridos" onclick="reagregar_requerimientos('regulator_needed')">
+                                        <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                <h4>paneles</h4>
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="" aria-labelledby="panelsStayOpen-headingTwo">
+                                <div class="accordion-body">
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div class="col-xl-3 paneles-requeridos">
+                                            <h6>Paneles</h6>
+                                            <div class="paneles-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-3 paneles-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="paneles-tipo-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 paneles-precio-unitario-requeridos">
+                                            <h6>P/Unitario</h6>
+                                            <div class="paneles-precio-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 paneles-precio-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="paneles-precio-requeridos2"></div>
+                                        </div>
+                                        <div class="col-xl-1 paneles-eliminar-requeridos">
+                                            <div class="col-xl-2 eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 paneles-reiniciar-requeridos" onclick="reagregar_requerimientos('panel_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                <h4>Baterias</h4>
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="" aria-labelledby="panelsStayOpen-headingThree">
+                                <div class="accordion-body">
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div class="col-xl-3 baterias-requeridos">
+                                            <h6>Baterias</h6>
+                                            <div class="baterias-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-3 baterias-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="baterias-tipo-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 baterias-unitario-precio-requeridos">
+                                            <h6>P/Unitario</h6>
+                                            <div class="baterias-precio-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 baterias-precio-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="baterias-precio-requeridos2"></div>
+                                        </div>
+                                        <div class="col-xl-1 baterias-eliminar-requeridos">
+                                            <div class="col-xl-2 baterias-cotizador text-danger" onclick="eliminar_requerimientos('battery_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 baterias-eliminar-requeridos" onclick="reagregar_requerimientos('battery_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingfour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
+                                <h4>breakers</h4>
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapsefour" class="" aria-labelledby="panelsStayOpen-headingfour">
+                                <div class="accordion-body">
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div class="col-xl-3 breakers-requeridos">
+                                            <h6>Breakers</h6>
+                                            <div class="breakers-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-3 breakers-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="breakers-tipo-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 breakers-precio-unitario-total-requeridos">
+                                            <h6>P/Unitarios</h6>
+                                            <div class="breakers-precio-unitario-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-2 breakers-precio-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="breakers-precio-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 breakers-eliminar-requeridos">
+                                            <div class="col-xl-2 breakers-cotizador text-danger" onclick="eliminar_requerimientos('breaker_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 breakers-eliminar-requeridos" onclick="reagregar_requerimientos('breaker_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="panelsStayOpen-headingfive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false" aria-controls="panelsStayOpen-collapsefive">
+                                <h4>otros requeremientos</h4>
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapsefive" class="" aria-labelledby="panelsStayOpen-headingfive">
+                                <div class="accordion-body">
+                                    {% comment %} cables requeridos {% endcomment %}
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 cables-requeridos">
+                                            <h6>cables</h6>
+                                            <div class="cables-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 cables-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="cables-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 cables-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="cables-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 cables-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="cables-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 cables-eliminar-requeridos">
+                                            <div class="col-xl-2 cables-eliminar-cotizador text-danger text-center" onclick="eliminar_requerimientos('rubberized_cable_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 cables-eliminar-requeridos" onclick="reagregar_requerimientos('rubberized_cable_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    {% comment %} soporte de techo {% endcomment %}
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 soportes-sobre-techo-requeridos">
+                                            <h6>Soporte</h6>
+                                            <div class="soportes-sobre-techo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 soportes-sobre-techo-tipo-requeridos">
+                                                <h6>Tipo</h6>
+                                            <div class="soportes-sobre-techo-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 soportes-sobre-techo-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="soportes-sobre-techo-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 soportes-sobre-techo-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="soportes-sobre-techo-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 soporte-eliminar-requeridos">
+                                            <div class="col-xl-2 soporte-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_support_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1  soporte-sobre-techo-eliminar-requeridos" onclick="reagregar_requerimientos('panel_support_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 modulos-centralizados-requeridos">
+                                            <h6>Modulo-Centralizado</h6>
+                                            <div class="modulos-centralizados-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 modulos-centralizados-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="modulos-centralizados-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 modulos-centralizados-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="modulos-centralizados-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 modulos-centralizados-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="modulos-centralizados-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 modulos-eliminar-requeridos">
+                                            <div class="col-xl-2 modulos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('centralized_modules_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 modulos-centralizados-eliminar-requeridos " onclick="reagregar_requerimientos('centralized_modules_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row requerimiento-individualmente-productos ">
+                                        <div style="font-size:13px;" class="col-xl-3 unidad-de-potencia-requeridos">
+                                            <h6>Unidad de potencia</h6>
+                                            <div class="unidad-de-potencia-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 unidad-de-potencia-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="unidad-de-potencia-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 unidad-de-potencia-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="unidad-de-potencia-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 unidad-de-potencia-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="unidad-de-potencia-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 unidad-de-potencia-eliminar-requeridos">
+                                            <div class="col-xl-2 unidad-de-potencia-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('power_units_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 unidad-de-potencia-reiniciar-requeridos" onclick="reagregar_requerimientos('power_units_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 terminales-MC4-requeridos">
+                                            <h6>Terminales-MC4</h6>
+                                            <div class="terminales-MC4-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 terminales-MC4-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="terminales-MC4-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 terminales-MC4-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="terminales-MC4-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 terminales-MC4-precio-total-requeridos">
+                                            <h6>P/total</h6>
+                                            <div class="terminales-MC4-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 terminales-MC4-eliminar-requeridos">
+                                            <div class="col-xl-2 terminales-MC4-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('terminals_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 terminales-MC4-reiniciar-requeridos "onclick="reagregar_requerimientos('terminals_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 conectores-en-y-requeridos">
+                                            <h6>Conectores En Y</h6>
+                                            <div class="conectores-en-y-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 conectores-en-y-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="conectores-en-y-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 conectores-en-y-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="conectores-en-y-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 conectores-en-y-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="conectores-en-y-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 conectores-en-y-eliminar-requeridos">
+                                            <div class="col-xl-2 conectores-en-y-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('connector_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 conectores-en-y-reiniciar-requeridos" onclick="reagregar_requerimientos('connector_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 cable-vehicular-requeridos">
+                                            <h6>Cable-Vehicular</h6>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 cable-vehicular-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="cable-vehicular-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 cable-vehicular-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                            <div class="cable-vehicular-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 cable-vehicular-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="cable-vehicular-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 cable-vehicular-eliminar-requeridos">
+                                            <div class="col-xl-2 cable-vehicular-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('vehicle_cable_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 cable-vehicular-reiniciar-requeridos" onclick="reagregar_requerimientos('vehicle_cable_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                        </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 materiales-electricos-requeridos">
+                                            <h6>Materiales Electricos </h6>
+                                            <div class="materiales-electricos-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 materiales-electricos-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="materiales-electricos-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 materiales-electricos-precio-requeridos">
+                                        <h6>U/Precio</h6>
+                                        <div class="materiales-electricos-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 materiales-electricos-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="materiales-electricos-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 materiales-electricos-eliminar-requeridos">
+                                            <div class="col-xl-2 materiales-electricos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('electric_materials_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 materiales-electricos-reiniciar" onclick="reagregar_requerimientos('electric_materials_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 kit-puesta-a-tierra-requeridos">
+                                            <h6>Kit Puesta A Tierra</h6>
+                                            <div class="kit-puesta-a-tierra-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 kit-puesta-a-tierra-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="kit-puesta-a-tierra-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 kit-puesta-a-tierra-precio-requeridos">
+                                        <h6>U/Precio</h6>
+                                        <div class="kit-puesta-a-tierra-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 kit-puesta-a-tierra-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="kit-puesta-a-tierra-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1 kit-puesta-a-tierra-eliminar-requeridos">
+                                            <div class="col-xl-1 kit-puesta-a-tierra-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('ground_security_kit_needed')"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 kit-puesta-a-tierra-reiniciar-requeridos" onclick="reagregar_requerimientos('ground_security_kit_needed')">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+        
+                                    <hr size="2px" color="green" />
+        
+                                    <div class="row requerimiento-individualmente-productos">
+                                        <div style="font-size:13px;" class="col-xl-3 rack-soporte-baterias-requeridos">
+                                            <h6>Rack Soporte Baterias </h6>
+                                            <div class="rack-soporte-baterias-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-3 rack-soporte-baterias-tipo-requeridos">
+                                            <h6>Tipo</h6>
+                                            <div class="rack-soporte-baterias-tipo-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 rack-soporte-baterias-precio-requeridos">
+                                            <h6>U/Precio</h6>
+                                        <div class="rack-soporte-baterias-precio-requeridos1"></div>
+                                        </div>
+                                        <div style="font-size:13px;" class="col-xl-2 rack-soporte-baterias-precio-total-requeridos">
+                                            <h6>P/Total</h6>
+                                            <div class="rack-soporte-baterias-precio-total-requeridos1"></div>
+                                        </div>
+                                        <div class="col-xl-1   rack-soporte-eliminar-requeridos">
+                                            <div class="col-xl-2 reguladores-cotizador text-danger"> ❌ </div>
+                                        </div>
+                                        <div class="col-xl-1 rack-soporte-reiniciar-requeridos">
+                                            <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {% comment %} {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+        
+                        <div class="col-md-12 descargar pdf">
+                            
+                            {% if usuario %}
+                            <a class="btn btn-success rounded-pill d-block mx-auto mt-2 mb-2"  onclick="createandsendpdf('{{usuario.name}}','{{usuario.email}}','{{usuario.lastname}}')" >descargar pdf</a> 
+                            {% endif %}
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+<!-- por si se daña  -->
+
+
+
+
+
+
         <!-- cotizador -->
 
-            <section class=" logic d-flex  justify-content-around margin ">  
-                {% comment %} products {% endcomment %}
-                <!-- <div  class="padre" style="width: 50%"> -->
-<!-- por si se daña  -->
-
-                    <div  class="row padre">
-                        {% for h6 in products %}
-    
-                        <div class="col-md-6">
-                            <div class=" producto  mb-2" id="product°{{h6.id}}" >
-                                <div class="row informacion-producto ">
-    
-                                    <div class="col-md-12 informacion-producto-caracteristicas">
-    
-                                    <div class="col-md-12 img-producto">
-                                            <!-- <img style="max-height: 100%; max-width: 100%; border-radius:10px; border: 2px solid #40C92A;" class="img-fluid" src="../media/{{h6.image}}" alt=""> -->
-                                            <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px;" class="img-fluid" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
-                                            <!-- <img style="max-height: 15em" class="img-fluid rounded-3 h6-1 border-success border border-2 d-block mx-auto mb-2 my-md-0 " src="img/bg.jpg" alt=""> -->
-                                    </div>
-        
-                                        <div class="row primary-inf mt-1 mb-1">
-                                                <div class="col-md-7 titulo-producto">
-                                                    <h5 class="npsolitario"> {{h6.name}} </h5>
-                                                </div>
-                                                <div class="col-md-5 precio-producto">
-                                                    <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
-                                                </div>
-                                        </div>
-        
-                                        <div class="row linea">
-                                            
-                                            <div class="row secundary-inf mt-1 mb-1">
-                                                <div class="col-md-12 descripcion-producto">
-                                                    <h5>Descripcion</h5>
-                                                    <h6 class="pp"> {{h6.description}} </h6>
-                                                </div>
-                                            </div>
-                                            <div class="row tertiary-inf mt-1 mb-1">
-                                                <div class="col-md-12 caracteristicas-producto">
-                                                    <h5>Caracteristicas</h5>
-                                                    <h6 class="pp">{{h6.caracteristicas}}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-        
-        
-                                        <div class="row linea">
-        
-        
-                                                <div class="row quaternary-inf">
-                                                    <!-- <div class="row">
-                                                        <div class="col-md-6">
-                                                            <h5>cantidad</h5>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                                        <option selected>Elige la cantidad</option>
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                        <option value="6">6</option>
-                                                                        <option value="7">7</option>
-                                                                        <option value="8">8</option>
-                                                                        <option value="9">9</option>
-                                                                        <option value="10">10</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
-                                                    <div class="col-md-12 horas-sol-producto">
-                                                        <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
-                                                        <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                                        <input type="range" class="form-range input-range" min="1" max="24">
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                            <!-- <div class="row quaternary-inf">
-                                                <div class="col-md-12 horas-sol-producto">
-                                                    <h6> Horas a usar: <strong class="hours-to-use"></strong> </h6>
-                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                                    <input type="range" class="form-range input-range" min="1" max="24">
-                                                </div>
-                                            </div> -->
-                                        <div class="row five-inf">
-    
-                                            <!-- logica eliminar -->
-                                            
-                                            <div class="col-md-6 agregar-producto">
-                                                <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
-                                            </div>
-    
-                                            <div class="col-md-6 agregar-producto">
-                                                    <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
-                                            </div>
-                                        </div>
-        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        {% endfor %}
-                    </div>
-
-                    <section class="row">
-                            <div class="col12 mt-5 mb-5  products-view justify-content">
-                                <div class="row row-cols-1 row-cols-md-2 g-3">
-
-                                    <div class="col">
-                                        <div class="card h-100">
-                                            <img src="img/bg.jpg" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                            <h5 class="card-title">titulo producto</h5>
-                                            <p class="card-text">caracteristicas producto</p>
-                                            <small class="text-muted">precio x</small>
-                                            </div>
-                                            <div class="card-footer">
-                                            <div class="btn bg-primary">Actualizar</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="card h-100">
-                                            <img src="img/bg.jpg" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                            <h5 class="card-title">titulo producto</h5>
-                                            <p class="card-text">caracteristicas producto</p>
-                                            <small class="text-muted">precio x</small>
-                                            </div>
-                                            <div class="card-footer">
-                                            <div class="btn bg-primary">Actualizar</div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                    </section>
-                    
-<!-- por si se daña  -->
-                <div  class="row padre">
-                    {% for h6 in products %}
-
-                    <div class="col-md-6">
-                        <div class=" producto  mb-2" id="product°{{h6.id}}" >
-                            <div class="row informacion-producto ">
-
-                                <div class="col-md-12 informacion-producto-caracteristicas">
-
-                                <div class="col-md-12 img-producto">
-                                        <!-- <img style="max-height: 100%; max-width: 100%; border-radius:10px; border: 2px solid #40C92A;" class="img-fluid" src="../media/{{h6.image}}" alt=""> -->
-                                        <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px;" class="img-fluid" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
-                                        <!-- <img style="max-height: 15em" class="img-fluid rounded-3 h6-1 border-success border border-2 d-block mx-auto mb-2 my-md-0 " src="img/bg.jpg" alt=""> -->
-                                </div>
-    
-                                    <div class="row primary-inf mt-1 mb-1">
-                                            <div class="col-md-7 titulo-producto">
-                                                <h5 class="npsolitario"> {{h6.name}} </h5>
-                                            </div>
-                                            <div class="col-md-5 precio-producto">
-                                                <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
-                                            </div>
-                                    </div>
-    
-                                    <div class="row linea">
-                                        
-                                        <div class="row secundary-inf mt-1 mb-1">
-                                            <div class="col-md-12 descripcion-producto">
-                                                <h5>Descripcion</h5>
-                                                <h6 class="pp"> {{h6.description}} </h6>
-                                            </div>
-                                        </div>
-                                        <div class="row tertiary-inf mt-1 mb-1">
-                                            <div class="col-md-12 caracteristicas-producto">
-                                                <h5>Caracteristicas</h5>
-                                                <h6 class="pp">{{h6.caracteristicas}}</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-    
-                                    <div class="row linea">
-    
-    
-                                            <div class="row quaternary-inf">
-                                                <!-- <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h5>cantidad</h5>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                                    <option selected>Elige la cantidad</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                    <option value="6">6</option>
-                                                                    <option value="7">7</option>
-                                                                    <option value="8">8</option>
-                                                                    <option value="9">9</option>
-                                                                    <option value="10">10</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <div class="col-md-12 horas-sol-producto">
-                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
-                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                                    <input type="range" class="form-range input-range" min="1" max="24">
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <!-- <div class="row quaternary-inf">
-                                            <div class="col-md-12 horas-sol-producto">
-                                                <h6> Horas a usar: <strong class="hours-to-use"></strong> </h6>
-                                                <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                                <input type="range" class="form-range input-range" min="1" max="24">
-                                            </div>
-                                        </div> -->
-                                    <div class="row five-inf">
-
-                                        <!-- logica eliminar -->
-                                        
-                                        <div class="col-md-6 agregar-producto">
-                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
-                                        </div>
-
-                                        <div class="col-md-6 agregar-producto">
-                                                <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
-                                        </div>
-                                    </div>
-    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %}
-                </div>
-
-                {% comment %} quotes and requirements {% endcomment %}
-                <!-- <div class="cotizador1 text-center"  style="width: 45%;  overflow:scroll; border:1px solid black;  height: 550px; "> -->
-                    <div class="cotizador1 ">
-
-                <!-- precios totales- consumo totales -->
-                <div class="row totales">
-                    <div class="row innovacion justify-content-center">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5>Cotizador de ahorro </h5>
-                                <h2>Tecnologia desarrollada por </h2>
-                            <!-- <div class="row">
-                                <div class="col-md-11">
-                                    <h5>Cotizador de ahorro </h5>
-                                    <h2>Tecnologia desarrollada por </h2>
-                                </div>
-                                <div class="col-md-1">
-                                    <a onclick="borrar()"> <div class="row btn btn-success" >Reinicar cotizacion</div></a>
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-center">
-                                <a href="#" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6 precio-acumulado-total">
-                                    <div class="row">
-                                        <div class="col-md-12 acumulador-precio "> <h6>Precio total</h6></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12  acumulador-precio-id" id="totales">id</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 consumo-acumulado-total">
-                                    <div class="row">
-                                        <div class="col-md-12 consumo-total "> <h6>consumo total</h6> </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 consumo-total-id">id</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <select class="form-select text-center mt-2 mb-2 lugar-residencia" aria-label="Default select example">
-                                        <div class="selectores-lugar-residencia">
-                                            <option selected>¿En que parte del pais te encuentras?</option>
-                                            <option value="1">Cundinamarca</option>
-                                            <option value="2">Boyaca</option>
-                                            <option value="3">Resto del pais</option>
-                                        </div>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <a onclick="borrar()"> <div class="row btn btn-success reiniciar-cotizacion" title="Reiniciar Cotizador" >Reiniciar cotizacion</div></a>
-                                        <!-- <div class="row btn btn-success reiniciar-cotizacion"><a onclick="borrar()"> <div class="row btn btn-success" >Reinicar cotizacion</div></a></div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- poner aquiii el buen0 -->
 
 
-                        <div class="row acumulador-cotizador">
-                                <template id="quote-template">
-                                    <div class="quote d-grid gap-3">
-                                        <div class="row primary-cotizador ">
-                                            <!-- <button type="button" class="col-md-2 btn-close  eliminar-cotizador" aria-label="Close"></button> -->
-                                            <div class="col-md-1 eliminar-cotizador text-danger pt-1" title="Eliminar"> ❌</div>
-                                            <div class="col-md-5"> <H6>Producto</H6>
-                                                <div class="col-12 titulo-producto-cotizador">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4"> <h6>Precio</h6>
-                                                <div class="col-12 precio-unitario">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 "><h6>Cantidad</h6>
-                                                <div class="col-12 cantidad-cotizador">
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row secundary-cotizador">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6 class="col-12"><h6>horas uso</h6></h6>
-                                                    <div class="col-md-12 horas-uso-cotizador"></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6 class="col-md-12"><h6>consumo hora</h6></h6>
-                                                    <div class="col-md-12 consumo-hora-cotizador"></h6></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row tertiary-cotizador ">
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                        <div class="col-md-4">
-                                                            <h6 class="col-md-12"><h6>consumo dia  </h6></h6>
-                                                            <div class="col-12 consumo-dia-cotizador"></div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <h6 class="col-md-12"><h6>% perdidas</h6></h6>
-                                                            <div class="col-md-12 porcentaje-perdidas-cotizador"></div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <h6  class="col-md-12"><h6>consumo </h6></h6>
-                                                            <div class="col-md-12 total-consumo-cotizador"></div>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="row"></div>
-                                            <h6  class="col-md-6">total produccion</h6>
-                                            <div class="col-md-6 total-produccion-cotizador">
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </template>
-                                <!-- acumulador -->
-                        </div>
-
-
-                        <div class="row requerimientos-productos justify-content-center">
-                                <!-- requerimientos-productos -->
-
-
-                            {% comment %} <div class="row titulo-requerimiento">
-                                <h6 class="col-md-12">titulo titulo-requerimiento</h6>
-                            </div> {% endcomment %}
-                            <div class="accordion accordion-general justify-content-center" id="accordionPanelsStayOpenExample">
-    
-                                <!-- accordion-collapse collapse  paneles abierto por touch-->
-                                <div class="accordion-item justify-content-center">
-                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                        <h4>Reguladores</h4>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapseOne" class=" " aria-labelledby="panelsStayOpen-headingOne">
-                                        <div class="accordion-body">
-                                        <div class="row requerimiento-individualmente-productos">
-                                            <div class="col-xl-3   reguladores-requeridos">
-                                                <h6>Reguladores</h6>
-                                                <div class="reguladores-requeridos1"></div>
-                                            </div>
-                                            <div class="col-xl-3   reguladores-tipo-requeridos">
-                                                <h6>Tipo</h6>
-                                                <div class="reguladores-tipo-requeridos1"></div>
-                                            </div>
-                                            <div class="col-xl-2  paneles-precio-unitario-requeridos">
-                                                <h6>P/Unitario</h6>
-                                                <div class="paneles-precio-unitario-requeridos1"></div>
-                                            </div>
-                                            <div class="col-xl-2  reguladores-precio-requeridos">
-                                                <h6>P/total</h6>
-                                                <div class="reguladores-precio-requeridos1"></div>
-                                            </div>
-                                            <div class="col-xl-1   reguladores-eliminar-requeridos">
-                                                <div class="col-xl-2 reguladores-cotizador text-danger" onclick="eliminar_requerimientos('regulator_needed')" title="Eliminar el requerimiento"> ❌ </div>
-                                            </div>
-                                            <div class="col-xl-1 reguladores-reiniciar-requeridos" onclick="reagregar_requerimientos('regulator_needed')">
-                                                <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                        <h4>paneles</h4>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapseTwo" class="" aria-labelledby="panelsStayOpen-headingTwo">
-                                        <div class="accordion-body">
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-xl-3 paneles-requeridos">
-                                                    <h6>Paneles</h6>
-                                                    <div class="paneles-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-3 paneles-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="paneles-tipo-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 paneles-precio-unitario-requeridos">
-                                                    <h6>P/Unitario</h6>
-                                                    <div class="paneles-precio-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 paneles-precio-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="paneles-precio-requeridos2"></div>
-                                                </div>
-                                                <div class="col-xl-1 paneles-eliminar-requeridos">
-                                                    <div class="col-xl-2 eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 paneles-reiniciar-requeridos" onclick="reagregar_requerimientos('panel_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                        <h4>Baterias</h4>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapseThree" class="" aria-labelledby="panelsStayOpen-headingThree">
-                                        <div class="accordion-body">
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-xl-3 baterias-requeridos">
-                                                    <h6>Baterias</h6>
-                                                    <div class="baterias-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-3 baterias-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="baterias-tipo-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 baterias-unitario-precio-requeridos">
-                                                    <h6>P/Unitario</h6>
-                                                    <div class="baterias-precio-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 baterias-precio-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="baterias-precio-requeridos2"></div>
-                                                </div>
-                                                <div class="col-xl-1 baterias-eliminar-requeridos">
-                                                    <div class="col-xl-2 baterias-cotizador text-danger" onclick="eliminar_requerimientos('battery_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 baterias-eliminar-requeridos" onclick="reagregar_requerimientos('battery_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="panelsStayOpen-headingfour">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour">
-                                        <h4>breakers</h4>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapsefour" class="" aria-labelledby="panelsStayOpen-headingfour">
-                                        <div class="accordion-body">
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div class="col-xl-3 breakers-requeridos">
-                                                    <h6>Breakers</h6>
-                                                    <div class="breakers-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-3 breakers-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="breakers-tipo-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 breakers-precio-unitario-total-requeridos">
-                                                    <h6>P/Unitarios</h6>
-                                                    <div class="breakers-precio-unitario-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-2 breakers-precio-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="breakers-precio-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 breakers-eliminar-requeridos">
-                                                    <div class="col-xl-2 breakers-cotizador text-danger" onclick="eliminar_requerimientos('breaker_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 breakers-eliminar-requeridos" onclick="reagregar_requerimientos('breaker_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="panelsStayOpen-headingfive">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false" aria-controls="panelsStayOpen-collapsefive">
-                                        <h4>otros requeremientos</h4>
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-collapsefive" class="" aria-labelledby="panelsStayOpen-headingfive">
-                                        <div class="accordion-body">
-                                            {% comment %} cables requeridos {% endcomment %}
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 cables-requeridos">
-                                                    <h6>cables</h6>
-                                                    <div class="cables-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 cables-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="cables-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 cables-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="cables-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 cables-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="cables-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 cables-eliminar-requeridos">
-                                                    <div class="col-xl-2 cables-eliminar-cotizador text-danger text-center" onclick="eliminar_requerimientos('rubberized_cable_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 cables-eliminar-requeridos" onclick="reagregar_requerimientos('rubberized_cable_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            {% comment %} soporte de techo {% endcomment %}
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 soportes-sobre-techo-requeridos">
-                                                    <h6>Soporte</h6>
-                                                    <div class="soportes-sobre-techo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 soportes-sobre-techo-tipo-requeridos">
-                                                        <h6>Tipo</h6>
-                                                    <div class="soportes-sobre-techo-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 soportes-sobre-techo-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="soportes-sobre-techo-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 soportes-sobre-techo-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="soportes-sobre-techo-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 soporte-eliminar-requeridos">
-                                                    <div class="col-xl-2 soporte-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('panel_support_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1  soporte-sobre-techo-eliminar-requeridos" onclick="reagregar_requerimientos('panel_support_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 modulos-centralizados-requeridos">
-                                                    <h6>Modulo-Centralizado</h6>
-                                                    <div class="modulos-centralizados-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 modulos-centralizados-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="modulos-centralizados-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 modulos-centralizados-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="modulos-centralizados-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 modulos-centralizados-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="modulos-centralizados-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 modulos-eliminar-requeridos">
-                                                    <div class="col-xl-2 modulos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('centralized_modules_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 modulos-centralizados-eliminar-requeridos " onclick="reagregar_requerimientos('centralized_modules_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <div class="row requerimiento-individualmente-productos ">
-                                                <div style="font-size:13px;" class="col-xl-3 unidad-de-potencia-requeridos">
-                                                    <h6>Unidad de potencia</h6>
-                                                    <div class="unidad-de-potencia-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 unidad-de-potencia-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="unidad-de-potencia-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 unidad-de-potencia-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="unidad-de-potencia-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 unidad-de-potencia-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="unidad-de-potencia-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 unidad-de-potencia-eliminar-requeridos">
-                                                    <div class="col-xl-2 unidad-de-potencia-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('power_units_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 unidad-de-potencia-reiniciar-requeridos" onclick="reagregar_requerimientos('power_units_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 terminales-MC4-requeridos">
-                                                    <h6>Terminales-MC4</h6>
-                                                    <div class="terminales-MC4-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 terminales-MC4-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="terminales-MC4-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 terminales-MC4-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="terminales-MC4-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 terminales-MC4-precio-total-requeridos">
-                                                    <h6>P/total</h6>
-                                                    <div class="terminales-MC4-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 terminales-MC4-eliminar-requeridos">
-                                                    <div class="col-xl-2 terminales-MC4-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('terminals_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 terminales-MC4-reiniciar-requeridos "onclick="reagregar_requerimientos('terminals_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 conectores-en-y-requeridos">
-                                                    <h6>Conectores En Y</h6>
-                                                    <div class="conectores-en-y-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 conectores-en-y-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="conectores-en-y-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 conectores-en-y-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="conectores-en-y-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 conectores-en-y-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="conectores-en-y-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 conectores-en-y-eliminar-requeridos">
-                                                    <div class="col-xl-2 conectores-en-y-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('connector_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 conectores-en-y-reiniciar-requeridos" onclick="reagregar_requerimientos('connector_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 cable-vehicular-requeridos">
-                                                    <h6>Cable-Vehicular</h6>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 cable-vehicular-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="cable-vehicular-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 cable-vehicular-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                    <div class="cable-vehicular-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 cable-vehicular-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="cable-vehicular-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 cable-vehicular-eliminar-requeridos">
-                                                    <div class="col-xl-2 cable-vehicular-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('vehicle_cable_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 cable-vehicular-reiniciar-requeridos" onclick="reagregar_requerimientos('vehicle_cable_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 materiales-electricos-requeridos">
-                                                    <h6>Materiales Electricos </h6>
-                                                    <div class="materiales-electricos-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 materiales-electricos-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="materiales-electricos-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 materiales-electricos-precio-requeridos">
-                                                <h6>U/Precio</h6>
-                                                <div class="materiales-electricos-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 materiales-electricos-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="materiales-electricos-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 materiales-electricos-eliminar-requeridos">
-                                                    <div class="col-xl-2 materiales-electricos-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('electric_materials_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 materiales-electricos-reiniciar" onclick="reagregar_requerimientos('electric_materials_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 kit-puesta-a-tierra-requeridos">
-                                                    <h6>Kit Puesta A Tierra</h6>
-                                                    <div class="kit-puesta-a-tierra-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 kit-puesta-a-tierra-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="kit-puesta-a-tierra-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 kit-puesta-a-tierra-precio-requeridos">
-                                                <h6>U/Precio</h6>
-                                                <div class="kit-puesta-a-tierra-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 kit-puesta-a-tierra-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="kit-puesta-a-tierra-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1 kit-puesta-a-tierra-eliminar-requeridos">
-                                                    <div class="col-xl-1 kit-puesta-a-tierra-eliminar-cotizador text-danger" onclick="eliminar_requerimientos('ground_security_kit_needed')"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 kit-puesta-a-tierra-reiniciar-requeridos" onclick="reagregar_requerimientos('ground_security_kit_needed')">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <hr size="2px" color="green" />
-
-                                            <div class="row requerimiento-individualmente-productos">
-                                                <div style="font-size:13px;" class="col-xl-3 rack-soporte-baterias-requeridos">
-                                                    <h6>Rack Soporte Baterias </h6>
-                                                    <div class="rack-soporte-baterias-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-3 rack-soporte-baterias-tipo-requeridos">
-                                                    <h6>Tipo</h6>
-                                                    <div class="rack-soporte-baterias-tipo-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 rack-soporte-baterias-precio-requeridos">
-                                                    <h6>U/Precio</h6>
-                                                <div class="rack-soporte-baterias-precio-requeridos1"></div>
-                                                </div>
-                                                <div style="font-size:13px;" class="col-xl-2 rack-soporte-baterias-precio-total-requeridos">
-                                                    <h6>P/Total</h6>
-                                                    <div class="rack-soporte-baterias-precio-total-requeridos1"></div>
-                                                </div>
-                                                <div class="col-xl-1   rack-soporte-eliminar-requeridos">
-                                                    <div class="col-xl-2 reguladores-cotizador text-danger"> ❌ </div>
-                                                </div>
-                                                <div class="col-xl-1 rack-soporte-reiniciar-requeridos">
-                                                    <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            {% comment %} {% endcomment %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                                <div class="col-md-12 descargar pdf">
-                                    
-                                    {% if usuario %}
-                                    <a class="btn btn-success rounded-pill d-block mx-auto mt-2 mb-2"  onclick="createandsendpdf('{{usuario.name}}','{{usuario.email}}','{{usuario.lastname}}')" >descargar pdf</a> 
-                                    {% endif %}
-                                        
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            </section>
+<!-- poner aquiii el buen0 -->
 
             <section class="row class pagination">
                 <nav class="row">
@@ -1150,7 +1115,7 @@
 
 
         <footer class="row">
-                <div class="col-12 mt-1 mb-5 footer">
+                <div class="col-12 footer">
                     <div class="d-flex flex-column h-100">
         
                         <!-- FOR DEMO PURPOSE -->
@@ -1171,7 +1136,7 @@
                             <div class="container py-4">
                                 <div class="row gy-4 gx-5">
                                     <div class="col-lg-4 col-md-6">
-                                        <h5 class="h1 text-white">CODENSOLAR</h5>
+                                        <p class="footer-tittle"><a href="#"> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a></p>
                                         <h6 class="small text-muted">Somos una empresa comprometida con el media ambiente.</h6>
                                         <h6 class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">ELIT IT</a></h6>
                                     </div>

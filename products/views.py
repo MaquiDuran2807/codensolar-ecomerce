@@ -238,7 +238,7 @@ class ShoppingCar(LoginRequiredMixin, ListView):
     template_name       = 'products/html/nuevos/NVProducts1.html'
     model               = Products
     context_object_name = 'products'
-    paginate_by         = 6
+    paginate_by         = 4
     login_url           = reverse_lazy('users_app:user-login')
 
     def get_queryset(self):
