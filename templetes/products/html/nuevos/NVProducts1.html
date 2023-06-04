@@ -70,14 +70,15 @@
                                 </a>
         
                                 <ul class="dropdown-menu" aria-labelledby="dropdown-menu" style="background-color: #1E293B;">
-                                    <li><a href="#" class="dropdown-item">Paneles</a></li>
-                                    <li><a href="#" class="dropdown-item">Kits Solares</a></li>
-                                    <li><a href="#" class="dropdown-item">Electrodomesticos</a></li>
+                                    <li><a href="https://codensolar.com/paneles-solares/" target="_blank" class="dropdown-item">Paneles</a></li>
+                                    <li><a href="https://codensolar.com/kits/" target="_blank" class="dropdown-item">kits</a></li>
+                                    <li><a href="https://codensolar.com/electrodomesticos/" target="_blank" class="dropdown-item">Electrodomesticos</a></li>
+
                                 </ul>
                             </li>
         
-                            <li class="nav-item"><a href="#" class="nav-link" >  Blog</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+                            <li class="nav-item"><a href="https://codensolar.com/" class="nav-link" >  Blog</a></li>
+                            <li class="nav-item"><a href="https://codensolar.com/contacto/" class="nav-link">Contacto</a></li>
                         </ul>
         
                         <div class="btn btn-outline-success btn1 ">
@@ -273,8 +274,74 @@
                         <div class="col-md-12 informacion-producto-caracteristicas ">
                             <div class="col-12 mt-2 mb-2  products-view justify-content">
         
-                                <div class="row row-cols-2 row-cols-md-2 g-3">
+                                <div class="row row-cols-1 row-cols-md-1 g-3">
 
+                                        <div class="card h-100">
+                                            
+                                            <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px; max-width: 350px; max-height: 400px; width: 100%; height: 100%; overflow: hidden;" class="rounded mx-auto d-block" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
+
+                                            <div class="card-body">
+        
+                                                <div class="card-title">
+                                                    <div class="row primary-inf ">
+                                                        <div class="col-md-7 titulo-producto">
+                                                            <h5 class="npsolitario"> nombre {{h6.name}} </h5>
+                                                        </div>
+                                                        <div class="col-md-5 precio-producto">
+                                                            <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="card-text">
+                                                    <div class="row linea">
+                                            
+                                                        <div class="row secundary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 descripcion-producto">
+                                                                <h5>Descripcion</h5>
+                                                                <h5 class="pp"> {{h6.description}} </h5>
+                                                            </div>
+                                                        </div>
+        
+                                                        <div class="row tertiary-inf mt-1 mb-1">
+                                                            <div class="col-md-12 caracteristicas-producto">
+                                                                <h5>Caracteristicas</h5>
+                                                                <h6 class="pp">{{h6.caracteristicas}}</h6>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+        
+                                                <small class="text-muted">
+                                                    <div class="row linea">
+                                                        <div class="row quaternary-inf pt-1">
+                                                                <div class="col-md-12 horas-sol-producto">
+                                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
+                                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
+                                                                    <input type="range" class="form-range input-range" min="1" max="24">
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </small>
+                                                <div class="card-footer">
+                                                    <div class="row five-inf">
+                                                        <!-- logica eliminar -->
+                                                        
+                                                        <div class="col-md-6 agregar-producto">
+                                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
+                                                        </div>
+                
+                                                        <div class="col-md-6 agregar-producto">
+                                                                <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+    
+                                        </div>
+<!-- 
                                         <div class="card h-100">
                                             
                                             <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px; max-width: 350px; max-height: 400px; width: 100%; height: 100%; overflow: hidden;" class="rounded mx-auto d-block" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
@@ -325,7 +392,7 @@
                                                 </small>
                                                 <div class="card-footer">
                                                     <div class="row five-inf">
-                                                        <!-- logica eliminar -->
+                                                        
                                                         
                                                         <div class="col-md-6 agregar-producto">
                                                             <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
@@ -339,74 +406,7 @@
                                             </div>
         
     
-                                        </div>
-
-                                                                                <div class="card h-100">
-                                            
-                                            <img style="border-radius:10px; border: 2px solid #40C92A; margin:px 2px; max-width: 350px; max-height: 400px; width: 100%; height: 100%; overflow: hidden;" class="rounded mx-auto d-block" src="http://127.0.0.1:8000{{h6.image.url}}" alt="../media/{{h6.image.url}}">
-
-                                            <div class="card-body">
-        
-                                                <div class="card-title">
-                                                    <div class="row primary-inf ">
-                                                        <div class="col-md-7 titulo-producto">
-                                                            <h5 class="npsolitario"> nombre {{h6.name}} </h5>
-                                                        </div>
-                                                        <div class="col-md-5 precio-producto">
-                                                            <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-        
-                                                <div class="card-text">
-                                                    <div class="row linea">
-                                            
-                                                        <div class="row secundary-inf mt-1 mb-1">
-                                                            <div class="col-md-12 descripcion-producto">
-                                                                <h5>Descripcion</h5>
-                                                                <h6 class="pp"> {{h6.description}} </h6>
-                                                            </div>
-                                                        </div>
-        
-                                                        <div class="row tertiary-inf mt-1 mb-1">
-                                                            <div class="col-md-12 caracteristicas-producto">
-                                                                <h5>Caracteristicas</h5>
-                                                                <h6 class="pp">{{h6.caracteristicas}}</h6>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-        
-                                                <small class="text-muted">
-                                                    <div class="row linea">
-                                                        <div class="row quaternary-inf pt-1">
-                                                                <div class="col-md-12 horas-sol-producto">
-                                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
-                                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
-                                                                    <input type="range" class="form-range input-range" min="1" max="24">
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                </small>
-                                                <div class="card-footer">
-                                                    <div class="row five-inf">
-                                                        <!-- logica eliminar -->
-                                                        
-                                                        <div class="col-md-6 agregar-producto">
-                                                            <a class="btn btn-danger rounded-pill d-block mx-auto mb-1 mt-1" onclick="delToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Eliminar del cotizador">eliminar</a>
-                                                        </div>
-                
-                                                        <div class="col-md-6 agregar-producto">
-                                                                <a class="btn btn-success rounded-pill d-block mx-auto mb-1 mt-1" onclick="addToQuote('{{h6.id}}','{{h6.name}}','{{h6.price}}')" title="Agregar al cotizador">Agregar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-    
-                                        </div>
-
+                                        </div> -->
 
                                 </div>
         
@@ -582,11 +582,11 @@
                                         <h6>Tipo</h6>
                                         <div class="reguladores-tipo-requeridos1"></div>
                                     </div>
-                                    <div class="col-xl-2  paneles-precio-unitario-requeridos">
+                                    <!-- <div class="col-xl-2  paneles-precio-unitario-requeridos">
                                         <h6>P/Unitario</h6>
                                         <div class="paneles-precio-unitario-requeridos1"></div>
-                                    </div>
-                                    <div class="col-xl-2  reguladores-precio-requeridos">
+                                    </div> -->
+                                    <div class="col-xl-4  reguladores-precio-requeridos">
                                         <h6>P/total</h6>
                                         <div class="reguladores-precio-requeridos1"></div>
                                     </div>
