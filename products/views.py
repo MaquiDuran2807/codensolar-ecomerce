@@ -243,10 +243,12 @@ class ShoppingCar(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         print("get_queryset=====================")
+        ip_dir="http://127.0.0.1:8000/"
         id = self.kwargs['id']
         print(id)
         if list(Products.objects.filter(category=id).values())==[]:
             print("existe")
+            
             return Products.objects.all()
         return Products.objects.filter(category=id)
     
