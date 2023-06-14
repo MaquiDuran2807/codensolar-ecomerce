@@ -3,6 +3,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -55,8 +56,11 @@ class UserRegisterView(FormView):
         asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
         email_remitente = 'informacion@codensolar.com'
+        
+        email=EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
+        email.send()        
         #
-        send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
+        #send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
         # redirigir a pantalla de valdiacion
 
         return HttpResponseRedirect(
@@ -106,10 +110,10 @@ class ForgotpasswordView(FormView):
         
         asunto = 'Recuperar contraseña'
         mensaje = 'Contraseña provisional: ' + codigo
-        email_remitente = 'migue2807.maqd@gmail.com'
+        email_remitente = 'informacion@codensolar.com'
         #
         if user:
-            send_mail(asunto, mensaje, email_remitente, [email,])
+            email=EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
             user.set_password(codigo)
             user.save()
             
