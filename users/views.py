@@ -54,7 +54,7 @@ class UserRegisterView(FormView):
         # enviar el codigo al email del user
         asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
-        email_remitente = 'migue2807.maqd@gmail.com'
+        email_remitente = 'informacion@codensolar.com'
         #
         send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
         # redirigir a pantalla de valdiacion
