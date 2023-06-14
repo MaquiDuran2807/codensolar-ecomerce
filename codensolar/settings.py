@@ -132,10 +132,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # EMAIL SETTINGS
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "migue2807.maqd@gmail.com"
-EMAIL_HOST_PASSWORD = "erwtcjilbiqdguko"
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_HOST_USER = "informacion@codensolar.com"
+EMAIL_HOST_PASSWORD = "Y!$Toc92k9e4EH"
 EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 
 # Internationalization
@@ -158,7 +161,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = 'staticfiles/'
+STATIC_ROOT = 'statics/staticfiles/'
 STATICFILES_DIRS=[(os.path.join(BASE_DIR,"statics"))]
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')

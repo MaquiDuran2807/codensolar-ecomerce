@@ -52,7 +52,7 @@ class UserRegisterView(FormView):
             codregistro=codigo
         )
         # enviar el codigo al email del user
-        asunto = 'Confrimacion d eemail'
+        asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
         email_remitente = 'migue2807.maqd@gmail.com'
         #
