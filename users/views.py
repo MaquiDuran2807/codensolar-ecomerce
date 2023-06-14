@@ -56,8 +56,14 @@ class UserRegisterView(FormView):
         asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
         email_remitente = 'informacion@codensolar.com'
+        usuario_new=[form.cleaned_data['email']]
+        print(usuario_new)
+
         
-        email=EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
+        email=EmailMessage(asunto, 
+                           mensaje, 
+                           email_remitente, 
+                           [form.cleaned_data['email']])
         email.send()        
         #
         #send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
