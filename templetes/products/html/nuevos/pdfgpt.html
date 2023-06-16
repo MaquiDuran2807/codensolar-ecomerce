@@ -164,10 +164,10 @@
                             {{rc.amount}}
                         </td>
                         <td style="background-color: #7b8faf; color:azure; font-weight:bold; ">
-                           $ {{rc.rubberized_cable_needed_precio_u}}
+                        $ {{rc.rubberized_cable_needed_precio_u}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                           $ {{rc.rubberized_cable_needed_precio_t}}
+                        $ {{rc.rubberized_cable_needed_precio_t}}
                         </td>
                     </tr>
                     <tr>
@@ -178,26 +178,31 @@
                             {{sp.amount}}
                         </td>
                         <td style=" background-color: #7b8faf; color:azure; font-weight:bold; ">
-                           $ {{sp.soporte_panel_precio_u}}
+                        $ {{sp.soporte_panel_precio_u}}
                         </td>
                         <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                           $ {{sp.soporte_panel_precio_t}}
+                        $ {{sp.soporte_panel_precio_t}}
                         </td>
                     </tr>
+<!-- aqui  -->
+
                     <tr>
-                        <td style="width: 50%; background-color: #7b8faf; color:azure; font-weight:bold; ">
-                            {{cm.centralized_modules_needed}}
+                        <td style="width: 50%; background-color:#7b8faf; color:azure; font-weight:bold; ">
+                            {{gsk.ground_security_kit_needed}}
                         </td>
-                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                            {{cm.amount}}
+                        <td style="background-color: #5e6d85; color:azure; font-weight:bold; ">
+                            {{gsk.amount}}
                         </td>
                         <td style=" background-color: #7b8faf; color:azure; font-weight:bold; ">
-                        $ {{cm.centralized_modules_needed_precio_u}}
+                            $ {{gsk.ground_security_kit_needed_precio_u}}
                         </td>
-                        <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                        $ {{cm.centralized_modules_needed_precio_t}}
+                        <td style="background-color: #5e6d85; color:azure; font-weight:bold; ">
+                            $ {{gsk.ground_security_kit_needed_precio_t}}
                         </td>
+                    </tr>
+
                         <tr>
+
                             <td style="width: 50%; background-color: #7b8faf; color:azure; font-weight:bold; ">
                                 {{pu.power_units_needed}}
                             </td>
@@ -254,19 +259,20 @@
                             </td>
                         </tr>
 
+<!-- aqui  -->
 
                         <tr>
                             <td style="width: 50%; background-color: #7b8faf; color:azure; font-weight:bold; ">
-                                {{gsk.ground_security_kit_needed}}
+                                {{cm.centralized_modules_needed}}
                             </td>
-                            <td style="background-color: #5e6d85; color:azure; font-weight:bold; ">
-                                {{gsk.amount}}
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                                {{cm.amount}}
                             </td>
                             <td style=" background-color: #7b8faf; color:azure; font-weight:bold; ">
-                                $ {{gsk.ground_security_kit_needed_precio_u}}
+                            $ {{cm.centralized_modules_needed_precio_u}}
                             </td>
-                            <td style="background-color: #5e6d85; color:azure; font-weight:bold; ">
-                                $ {{gsk.ground_security_kit_needed_precio_t}}
+                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                            $ {{cm.centralized_modules_needed_precio_t}}
                             </td>
                         </tr>
 
@@ -274,17 +280,24 @@
 
 
 
+
                         <tr>
-                            <th style="margin: 5px;background-color: #1e293b; color:azure; font-weight:bold;">
-                                <h1>total</h1>
+                            <th style="margin: 5px;background-color: #7b8faf; color:azure; font-weight:bold;">
+                                <h3>Precio Premium M. Centralizado </h3>
                             </th>
                             <td style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
-                                {{c.amount}}
+                                $ {{total.total_u}}  
+
+
+                                <!-- poner precio premium  -->
+
+
+                                
                             </td>
                             <td style="margin: 5px;background-color: #1e293b; color:azure; font-weight:bold;">
-                                $ {{total.total_u}}
+                                <h1>total</h1>
                             </td>
-                            <td  style="margin: 5px; background-color: #5e6d85; color:azure; font-weight:bold; ">
+                            <td  style="margin: 5px; background-color:#1e293b; color:azure; font-weight:bold; ">
                                 $ {{total.total}}
                             </td>
                         </tr>
