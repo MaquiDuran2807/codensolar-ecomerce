@@ -204,15 +204,14 @@
                         <div class="btn boton-filtro"> <a href="http://127.0.0.1:8000/products/shopping_car/23">Ventiladores</a></div>
                         <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/22">Licuadoras</a></div>
                         <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/21">Televisores</a></div>
-                        <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/4">Refrigeradores</a></div>
+                        <div class="btn boton-filtro"><a href="http://127.0.0.1:8000/products/shopping_car/4">Congeladores</a></div>
                             <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <a href="">Kits</a>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><button class="dropdown-item" type="button">Kit basico</button></li>
-                                <li><button class="dropdown-item" type="button">Kit familiar</button></li>
-                                <li><button class="dropdown-item" type="button">Kit recomendado</button></li>
-                                <li><button class="dropdown-item" type="button">Kit x</button></li>
+                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
+                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
+                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
                             </ul>
                     </div>
                 </div>
@@ -285,10 +284,10 @@
                                                 <div class="card-title">
                                                     <div class="row primary-inf ">
                                                         <div class="col-md-7 titulo-producto">
-                                                            <h5 class="npsolitario"> nombre {{h6.name}} </h5>
+                                                            <h5 class="npsolitario"> Nombre: {{h6.name}} </h5>
                                                         </div>
                                                         <div class="col-md-5 precio-producto">
-                                                            <h6 class="price-ajuste">$ Precio  {{h6.price}} </h6>
+                                                            <h6 class="price-ajuste">$ Precio:  {{h6.price}} </h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,14 +297,14 @@
                                             
                                                         <div class="row secundary-inf mt-1 mb-1">
                                                             <div class="col-md-12 descripcion-producto">
-                                                                <h5>Descripcion</h5>
+                                                                <h5 style="font-weight: bolder;">Descripcion</h5>
                                                                 <h5 class="pp"> {{h6.description}} </h5>
                                                             </div>
                                                         </div>
         
                                                         <div class="row tertiary-inf mt-1 mb-1">
                                                             <div class="col-md-12 caracteristicas-producto">
-                                                                <h5>Caracteristicas</h5>
+                                                                <h5 style="font-weight: bolder;">Caracteristicas</h5>
                                                                 <h6 class="pp">{{h6.caracteristicas}}</h6>
                                                             </div>
                                                         </div>
@@ -317,8 +316,8 @@
                                                     <div class="row linea">
                                                         <div class="row quaternary-inf pt-1">
                                                                 <div class="col-md-12 horas-sol-producto">
-                                                                    <h5> Horas a usar: <strong class="hours-to-use"></strong> </h5>
-                                                                    <label for="customRange2" class="form-label">Mueve la barra para verificar las horas</label>
+                                                                    <h4 style="color:#0F172A; background-color:#3fc92aab; border-radius:10px;"> Horas a usar: <strong class="hours-to-use"></strong> </h4>
+                                                                    <label for="customRange2" class="form-label"> <h4 style="color:#0F172A"> Mueve la barra para verificar las horas</h4></label>
                                                                     <input type="range" class="form-range input-range" min="1" max="24">
                                                                 </div>
                                                         </div>
@@ -461,7 +460,7 @@
                         </div>
                         <div class="col-md-6 consumo-acumulado-total">
                             <div class="row">
-                                <div class="col-md-12 consumo-total "> <h6>consumo total</h6> </div>
+                                <div class="col-md-12 consumo-total "> <h6>Precio Premium </h6> </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 consumo-total-id">id</div>
@@ -1149,7 +1148,7 @@
                                             <li><a href="#">Contactar</a></li>
                                         </ul>
                                     </div>
-                                    <div class="col-lg-2 col-md-6">
+                                    <div class="col-lg-2 col-md-12">
                                         <h5 class="text-white mb-3">Redes Sociales</h5>
                                         <ul class="list-unstyled text-muted">
                                             <li><a href="#">Facebook</a></li>
@@ -1158,16 +1157,25 @@
                                             <li><a href="#">Otros</a></li>
                                         </ul>
                                     </div>
-                                    <div class="col-lg-4 col-md-6">
+                                    <div class="col-lg-2 col-md-12">
+                                        <h6 class="text-white mb-3">COMPROMETIDOS CON EL MEDIO AMBIENTE</h6>
+                                        <ul class="list-unstyled text-muted">
+                                            <li><a href="#">Responsabilidad</a></li>
+                                            <li><a href="#">Equidad</a></li>
+                                            <li><a href="#">Compromiso</a></li>
+                                            <li><a href="#">Corazon</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- <div class="col-lg-4 col-md-6">
                                         <h5 class="text-white mb-3">Cotizador</h5>
-                                        <h6 class="small text-muted">Recuerda que por Registrarte a nuestra web o correotienes un 10% de descuento </h6>
+                                        <h6 class="small text-muted">Registrarte </h6>
                                         <form action="#">
                                             <div class="input-group mb-3">
                                                 <input class="form-control" type="text" placeholder="Correo" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <button class="btn btn-success" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </footer>
