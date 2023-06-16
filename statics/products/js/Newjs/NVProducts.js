@@ -9,7 +9,7 @@ let mas_cantidad=false
 let del_requeriments=[];
 let eliminador=false;
 let data1=0;
-const url="http://54.173.145.183/products/"
+const url="http://127.0.0.1:8000/products/"
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
@@ -240,6 +240,9 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       document.querySelector(".rack-soporte-baterias-precio-total-requeridos1").textContent = formatearNumero(quotation.rack_bateria.price*quotation.rack_bateria.amount).toString();
       
       total_precio += parseInt(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
+      total_precio -= parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
+      premiun = total_precio ;
+      premiun -= parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
       console.log("total_precio",total_precio);
       // total de la cotizacion
       console.log(total_precio,"total precio");
@@ -275,6 +278,8 @@ async function createandsendpdf(nombre, email,apellido) {
     console.log(data);
     // alerta
     alert("Se ha enviado el pdf a su correo", data);
+    //window.location.href = url + "pdf_vista";
+    window.open(url + "pdf_vista", '_blank');
   }) 
 }
 
