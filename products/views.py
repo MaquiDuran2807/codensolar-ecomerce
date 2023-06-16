@@ -54,6 +54,11 @@ class vistaprueba(View):
         products_consumptions=[]
         total_consumo_productos=0
         productos=[]
+        inversor_need={
+            "amount":0,
+            "name":"",
+            "price":0,
+        }
         for d in data:
             print(d)
             product=Products.objects.get(id=d["product_id"])
@@ -78,6 +83,17 @@ class vistaprueba(View):
                 "id":product.id,
                 "hours_used":d["hours"],
             })
+            print(d["product_id"],"id producto 18 es inversor antes de if")
+            if d["product_id"]=="18":
+                print("entro al if inversor",d["product_id"])
+                inversor=Inversores.objects.get(id=9)
+                inversor_need={
+                    "amount":1,
+                    "name":inversor.name,
+                    "price":inversor.price,
+                
+                }
+                
         # PANEL APROPIADO=======================================================
 
         panel_need,panel_apropiado,contador_paneles=paneles(total_consumo_productos)
@@ -143,6 +159,8 @@ class vistaprueba(View):
         rack_bateria=rack_baterias(bateria_apropiada["amount"])
 
 
+
+
         print(f"""       ===============================
         **data**
         {data}
@@ -181,6 +199,8 @@ class vistaprueba(View):
         {electric_material}
         **cable de tierra**
         {groundCable}
+        inverosr
+        {inversor_need}
 
                ================================= """)
         print(data[-1]["eliminar_requeimientos"],"eliminar requirements")
@@ -202,6 +222,7 @@ class vistaprueba(View):
                              "productos":productos,
                              "eliminar_requirements":data[-1]["eliminar_requeimientos"],
                              "rack_bateria":rack_bateria,
+                             "inversor":inversor_need,
                              }
         
 
