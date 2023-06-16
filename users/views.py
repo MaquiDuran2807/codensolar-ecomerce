@@ -3,6 +3,7 @@
 # Create your views here.
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -52,11 +53,20 @@ class UserRegisterView(FormView):
             codregistro=codigo
         )
         # enviar el codigo al email del user
-        asunto = 'Confrimacion d eemail'
+        asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
-        email_remitente = 'migue2807.maqd@gmail.com'
+        email_remitente = 'informacion@codensolar.com'
+        usuario_new=[form.cleaned_data['email']]
+        print(usuario_new)
+
+        
+        email=EmailMessage(asunto, 
+                           mensaje, 
+                           email_remitente, 
+                           [form.cleaned_data['email']])
+        email.send()        
         #
-        send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
+        #send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
         # redirigir a pantalla de valdiacion
 
         return HttpResponseRedirect(
@@ -71,7 +81,8 @@ class UserRegisterView(FormView):
 class LoginUser(FormView):
     template_name = 'users/login1.html'
     form_class = LoginForm
-    success_url = 'http://127.0.0.1:8000/products/shopping_car/0'
+    success_url = reverse_lazy('Products_app:shopping_car', args=[0] )
+    
 
     def form_valid(self, form):
         user = authenticate(
@@ -106,10 +117,10 @@ class ForgotpasswordView(FormView):
         
         asunto = 'Recuperar contraseña'
         mensaje = 'Contraseña provisional: ' + codigo
-        email_remitente = 'migue2807.maqd@gmail.com'
+        email_remitente = 'informacion@codensolar.com'
         #
         if user:
-            send_mail(asunto, mensaje, email_remitente, [email,])
+            email=EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
             user.set_password(codigo)
             user.save()
             
@@ -153,6 +164,7 @@ class CodeVerificationView(FormView):
     template_name = 'users/activate.html'
     form_class = VerificationForm
     success_url = '/login'
+    
 
     def get_form_kwargs(self):
         kwargs = super(CodeVerificationView, self).get_form_kwargs()
@@ -169,4 +181,5 @@ class CodeVerificationView(FormView):
             is_active=True
         )
         
-        return super(CodeVerificationView, self).form_valid(form)
+        
+        return  super(CodeVerificationView, self).form_valid(form)
