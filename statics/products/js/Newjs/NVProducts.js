@@ -9,7 +9,9 @@ let mas_cantidad=false
 let del_requeriments=[];
 let eliminador=false;
 let data1=0;
-const url="http://127.0.0.1:8000/products/"
+//http://54.173.145.183
+//127.0.0.1:8000
+const url="http://54.173.145.183/products/"
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
@@ -240,14 +242,18 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       document.querySelector(".rack-soporte-baterias-precio-total-requeridos1").textContent = formatearNumero(quotation.rack_bateria.price*quotation.rack_bateria.amount).toString();
       
       total_precio += parseInt(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
+      total_precio += parseInt(quotation.rack_bateria.price*quotation.rack_bateria.amount);
+      premiun = total_precio ;
       total_precio -= parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
       premiun = total_precio ;
       premiun -= parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
       console.log("total_precio",total_precio);
       // total de la cotizacion
       console.log(total_precio,"total precio");
-      let totales=document.getElementById("totales");
+      let totales=document.getElementById("premiun");
       totales.textContent="$ "+formatearNumero(total_precio).toString();
+      let totales_premiun=document.getElementById("totales");
+      totales_premiun.textContent="$ "+formatearNumero(premiun).toString();
 
       return quoteReturn
   
