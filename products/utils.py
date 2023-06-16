@@ -22,7 +22,7 @@ def generate_pdf(email,templete,data,nombre,apellido):
     total_consumo=0
     for i in data["products"]:
         producto= Products.objects.get(id=i["product_id"])
-        print('{}{}'.format(" http://127.0.0.1:8000",producto.image),"esto es la imagen=====================================================================================================")
+        dir_ip = "http://54.173.145.183/"
         productos={
             "id":producto.id,
             "name":producto.name,
@@ -153,7 +153,7 @@ def generate_pdf(email,templete,data,nombre,apellido):
 
     # Obtener la plantilla HTML
     template = get_template(templete)
-    html = template.render({"productos":product,"p":panel,"b":bateria,"r":regulador,"br":breakers,"rc":rubberized_cable_needed,"sp":soporte_panel,"cm":centralized_modules_needed,"pu":power_units_needed,"tr":terminals_needed,"co":connector_needed,"vc":vehicle_cable_needed,"em":electric_materials_needed,"gsk":ground_security_kit_needed,"total":total,"consumos":consumos})
+    html = template.render({"productos":product,"p":panel,"b":bateria,"r":regulador,"br":breakers,"rc":rubberized_cable_needed,"sp":soporte_panel,"cm":centralized_modules_needed,"pu":power_units_needed,"tr":terminals_needed,"co":connector_needed,"vc":vehicle_cable_needed,"em":electric_materials_needed,"gsk":ground_security_kit_needed,"total":total,"consumos":consumos,"direccion_ip":dir_ip})
     # Crear un archivo PDF
     result = BytesIO()
     pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
@@ -162,7 +162,7 @@ def generate_pdf(email,templete,data,nombre,apellido):
     email = EmailMessage(
         f'Cotización de productos {hoy}',
         f'Hola {nombre} {apellido}, adjunto la cotización de los productos solicitados.',
-        'codensolar@codensolar.com',
+        'informacion@codensolar.com',
         [email]
     )
     email.attach('archivo.pdf', result.getvalue(), 'application/pdf')

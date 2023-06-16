@@ -1,5 +1,6 @@
 # database
-`db.sqlite3`
+#`db.sqlite3`
+media/
 
 
 
@@ -63,7 +64,7 @@ cubrir /
 # Cosas de Django:
 * .registro
 configuración_local.py
-db.sqlite3
+#db.sqlite3
 db.sqlite3-journal
 
 # Cosas del matraz:
