@@ -81,7 +81,8 @@ class UserRegisterView(FormView):
 class LoginUser(FormView):
     template_name = 'users/login1.html'
     form_class = LoginForm
-    success_url = 'http://54.173.145.183/products/shopping_car/0'
+    success_url = reverse_lazy('Products_app:shopping_car', args=[0] )
+    
 
     def form_valid(self, form):
         user = authenticate(
@@ -163,6 +164,7 @@ class CodeVerificationView(FormView):
     template_name = 'users/activate.html'
     form_class = VerificationForm
     success_url = '/login'
+    
 
     def get_form_kwargs(self):
         kwargs = super(CodeVerificationView, self).get_form_kwargs()
@@ -179,4 +181,5 @@ class CodeVerificationView(FormView):
             is_active=True
         )
         
-        return super(CodeVerificationView, self).form_valid(form)
+        
+        return  super(CodeVerificationView, self).form_valid(form)
