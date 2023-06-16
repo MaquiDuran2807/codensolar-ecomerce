@@ -218,21 +218,15 @@ class vistaprueba(View):
 # prueba
 
 class PdfViewPage(View):
-    template_name       = 'products/html/nuevos/pdfgpt.html'
+    
     def get(self,request):
+        usuario=request.user
+        data  = cache.get(f"respuesta{usuario.username}")
+        print(f"sending email...a {usuario} y la data es {data}")
+        pdf   = generate_pdf_view('products/html/nuevos/pdfgpt.html',data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
-        return render(
-            request,
-            self.template_name,
-            {"productos":{
-            "id":1,
-            "name":"mla",
-            "imagen":"producto.image.url",
-            "price":"producto.price",
-            "amount":2,
-            "total":2
-        }}
-            )    
+        
 
 class ShoppingCar(LoginRequiredMixin, ListView):
     template_name       = 'products/html/nuevos/NVProducts1.html'
@@ -386,7 +380,7 @@ class SendEmail(View):
         data  = cache.get(f"respuesta{usuario.username}")
         print(f"sending email...a {email} y la data es {data}")
         pdf   = generate_pdf(email,'products/html/nuevos/pdfgpt.html',data,nombre,apellido)
-        return JsonResponse({"msg":pdf})
+        return JsonResponse({"msg":"sended"})
     
 
 class GeneratePdf(View):
