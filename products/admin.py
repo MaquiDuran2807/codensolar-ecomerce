@@ -20,4 +20,7 @@ admin.site.register(CentralizedModule)
 admin.site.register(UnityPower)
 admin.site.register(ElectricMaterials)
 admin.site.register(KitHogar)
+admin.site.register(Connectors)
+admin.site.register(Terminals)
+admin.site.register(GroundSecurityKits)
 
