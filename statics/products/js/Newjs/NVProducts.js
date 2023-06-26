@@ -11,7 +11,7 @@ let eliminador=false;
 let data1=0;
 //http://54.173.145.183
 //127.0.0.1:8000
-const url="http://127.0.0.1:8000/products/"
+const url="http://54.173.145.183/products/"
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
