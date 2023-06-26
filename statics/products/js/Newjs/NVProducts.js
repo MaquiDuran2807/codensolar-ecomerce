@@ -11,7 +11,7 @@ let eliminador=false;
 let data1=0;
 //http://54.173.145.183
 //127.0.0.1:8000
-const url="http://54.173.145.183/products/"
+const url="http://127.0.0.1:8000/products/"
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
@@ -505,3 +505,23 @@ const consumptions =  fetch(url+"vista_prueba",{
 }).catch(error => {
   console.log(error)
 })
+
+function Show_category(){
+  fetch(url+"show_Category",{
+    method: "GET",
+    headers: { 'Content-Type': 'application/json' },
+
+}).then(response => response.json()).then(data => {
+  console.log(data)
+  filtros=document.getElementById("filtro")
+  data.forEach(element => {
+    console.log(element.name,"element.name");
+    id_category=parseInt(element.category_id)
+    // crear botones de filtros
+    filtros.innerHTML+=` <div class="btn boton-filtro"><a href="${url}shopping_car/${id_category}">${element.name}</a></div>`
+
+    });
+})
+}
+
+Show_category()

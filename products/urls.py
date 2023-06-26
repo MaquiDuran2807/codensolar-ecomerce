@@ -9,8 +9,7 @@ urlpatterns = [
     path('pdf-page', PdfViewPage.as_view(), name='pdf'),
     path('quote', PdfViewPage.as_view(), name='pdfPage'),
     path('sendQuote', SendEmail.as_view(), name='email'),
-    #path('products/<int:id>', ProductListView.as_view(), name='products'),
-    
+    path('show_Category', ShowCategoryView.as_view(), name='show_Category'),
     path('shopping_car/<int:id>', ShoppingCar.as_view(), name='shopping_car'),
     path('vista_prueba', vistaprueba.as_view(), name='vista_prueba'),
     path('pdf_vista',PdfViewPage.as_view(), name='pdf_vista'),

@@ -264,7 +264,7 @@ class ShoppingCar(LoginRequiredMixin, ListView):
         if list(Products.objects.filter(category=id).values())==[]:
             print("existe")
             
-            return Products.objects.all()
+            return Products.objects.all().order_by("category")
         return Products.objects.filter(category=id)
     
 
@@ -282,36 +282,11 @@ class ShoppingCar(LoginRequiredMixin, ListView):
         print(context, "contexto")
         return context
     
-"""lass ProductListView(LoginRequiredMixin,ListView):
-    template_name       = 'products/html/nuevos/NVProducts1.html'
-    model               = Products
-    context_object_name = 'products'
-    paginate_by         = 5
-    login_url           = reverse_lazy('users_app:user-login')
-
-    def get_queryset(self):
-        print("get_queryset=====================")
-        id = self.kwargs['id']
-        print(id)
-        if list(Products.objects.filter(category=id).values())==[]:
-            print("existe")
-            return Products.objects.all()
-        return Products.objects.filter(category=id)
-    
-
-
-    def get_context_data(self, **kwargs):
-        print("get_context_data=====================")
-        id = self.kwargs['id']
-        print(id)
-        productos = Products.objects.filter(category=id)
-        print(productos, "productos=====================")
-        context = super().get_context_data(**kwargs)
-        usuario=self.request.user
-        context['usuario'] = usuario
-        context['productos'] = productos
-        print(context, "contexto")
-        return context"""
+class ShowCategoryView(View):
+    def get(self,request):
+        categories=list(ShowCategory.objects.all().values())
+        print(categories)
+        return JsonResponse(categories,safe=False)
     
     
 class ProductView(View):

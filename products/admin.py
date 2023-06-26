@@ -23,4 +23,5 @@ admin.site.register(KitHogar)
 admin.site.register(Connectors)
 admin.site.register(Terminals)
 admin.site.register(GroundSecurityKits)
+admin.site.register(ShowCategory)
 
