@@ -10,6 +10,13 @@ class Category(models.Model):
 
     def __str__(self):
         return str(self.id) +") "+self.name
+    
+class ShowCategory (models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name= models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.id) +") "+self.category.name
 
 class Products (models.Model):
     name = models.CharField(max_length=50)
