@@ -17,6 +17,63 @@
 }
 
 
+/* BANNER DE BIENVENIDA  */
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .banner-content {
+    position: relative;
+    width: 80%;
+    height: 80%;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    font-weight: bolder;
+    right: 10px;
+    font-size: 44px;
+    color: #d40d0d;
+    cursor: pointer;
+  }
+  
+  video {
+    width: 100%;
+    height: 100%;
+  }
+  
+ 
+
+   /* prueba 2 */
+
+   /* #banner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  
+  #cerrar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  } */
+
+
 
 
 .navbar a{
@@ -275,6 +332,28 @@
     overflow: auto;
 }
 
+/* botones dinamicos */
+
+.botones-dinamicos {
+    text-align: right; /* Alinea el texto de los botones a la derecha */
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    padding: 5px 5px;
+    z-index: 1; /* Asegura que los botones estén por encima del contenido */
+}
+
+.boton {
+    margin-bottom: 10px;
+
+}
+
+.botones-dinamicos-dentro{
+    background-color: #ffffff33;
+    height: min-content;
+    padding-top:  5px;
+}
+
 .cotizador1::-webkit-scrollbar{
     display: none;
 }
@@ -289,7 +368,7 @@
     }
 
     .acumulador-precio{
-        background-color: azure;
+        background-color: rgba(240, 255, 255, 0);
         color: #1E293B;
         /* border: 2px solid #00ff00; */
         font-weight: bolder;
@@ -309,7 +388,7 @@
     }
 
     .consumo-total{
-        background-color: azure;
+        background-color: rgba(240, 255, 255, 0);
         color: #1E293B;
         /* border: 2px solid #00ff00; */
         font-weight: bolder;
@@ -326,6 +405,40 @@
         padding: 10px 10px;
         margin: 5px 5px;
         border-radius: 5px;
+    }
+
+
+    .titulo-normal{
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        font-weight: bolder;
+        background: linear-gradient(to left, rgb(15, 23, 42), rgb(46, 221, 23), rgb(149, 156, 255));
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    .titulo-premium{
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+        font-weight: bolder;
+        background: linear-gradient(to left, rgb(236, 196, 64), rgb(255, 250, 138), rgb(221, 172, 23), rgb(255, 255, 149));
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+
+    /* boton de interrogante */
+    .svg-interrogante{
+        width: 30px;
+        height: 30px;
+    }
+
+    .svg-interrogante{
+        fill: blue  ;
     }
 
 
@@ -707,6 +820,9 @@
         }
 
         .producto{
+            
+        }
+        .botones-dinamicos-dentro{
             
         }
     }
