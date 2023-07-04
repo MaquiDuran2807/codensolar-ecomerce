@@ -1,7 +1,7 @@
 # database
 `db.sqlite3`
 media/
-
+migrations/
 
 
 # Archivos compilados por bytes / optimizados / DLL
