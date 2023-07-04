@@ -2,6 +2,8 @@ const inputs = document.querySelectorAll(".horas-sol-producto");
 const quoteTemplate = document.getElementById("quote-template").content;
 const quoteContainer = document.querySelector(".acumulador-cotizador");
 let cantidad_html=document.getElementById(`cantidades`);
+let general=document.getElementById("general")
+let banner = document.getElementById("banner")
 let contador=0;
 let productsToquote = [];
 let cotizacion_enviar;
@@ -11,11 +13,14 @@ let eliminador=false;
 let data1=0;
 //http://54.173.145.183
 //127.0.0.1:8000
-const url="http://54.173.145.183/products/"
+const url="http://127.0.0.1:8000/products/"
+
+
 
 inputs.forEach(div => {
   div.querySelector("input").addEventListener('change', ()=>{
     div.querySelector("strong").textContent = div.querySelector("input").value;
+    console.log(div,"==================================================================================");
   })
   div.querySelector("input").value = 24;
   div.querySelector("strong").textContent = div.querySelector("input").value;
@@ -474,7 +479,17 @@ const consumptions =  fetch(url+"vista_prueba",{
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({}),
 }).then(response => response.json()).then(data => {
-  console.log(data)
+  if (data.error == "no hay datos") {
+    console.log("no hay datos");
+    let banner=document.createElement("div")
+    banner.classList.add("banner")
+    general.appendChild(banner)
+    
+    banner.innerHTML = `<div class="banner-content">
+    <video src="{% static 'products/carrusel/' %}" autoplay controls muted></video>
+    <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
+    </div>`
+  }
   contador_productos = 0;
   data.eliminar_requirements.forEach(element => {
     console.log(element,"element");
@@ -498,8 +513,6 @@ const consumptions =  fetch(url+"vista_prueba",{
   });
   console.log(data.eliminar_requirements,"eliminar_requirements");
   
-
-  
   return data
 }).catch(error => {
   console.log(error)
@@ -511,16 +524,34 @@ function Show_category(){
     headers: { 'Content-Type': 'application/json' },
 
 }).then(response => response.json()).then(data => {
-  console.log(data)
   filtros=document.getElementById("filtro")
-  data.forEach(element => {
-    console.log(element.name,"element.name");
+  data.botones.forEach(element => {
     id_category=parseInt(element.category_id)
     // crear botones de filtros
     filtros.innerHTML+=` <div class="btn boton-filtro"><a href="${url}shopping_car/${id_category}">${element.name}</a></div>`
-
+    
     });
+    let input_range=document.getElementsByTagName("input")
+
+data.categorias.forEach(element => {
+  let id_category=parseInt(element.id)
+  for (let i = 0; i < input_range.length; i++) {
+    let este_rango=`range-${id_category}`
+    if (input_range[i].id==este_rango) {
+      input_range[i].value=element.tiempo_uso
+      inputs[i].querySelector("strong").textContent = input_range[i].value;
+    }
+  }
+});
 })
+
+  
 }
 
 Show_category()
+
+function cloceVideo(){
+  let banner=document.querySelector(".banner")
+  general.removeChild(banner)
+}
+

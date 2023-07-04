@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'products/css/NVProducts.css' %}">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="general">
     
         <nav class="row">
             <!-- <div class="row anun1">
@@ -95,12 +95,11 @@
         <!-- BANER DE BIENVENIDA -->
 
         <!-- prueba 1 -->
-        <div id="banner" class="banner">
-            <div class="banner-content">
-            <video src="{% static 'products/carrusel/' %}" autoplay controls muted></video>
-            <span id="close-btn" class="close-btn " title="cerrar video">&times;</span>
-            </div>
-        </div>
+        
+        
+            
+        
+        
 <!-- 
         <div id="banner">
             <img src="{% static 'products/carrusel/carrusel1.jpeg' %}" alt="Banner de bienvenida">
@@ -296,8 +295,8 @@
                                                         <div class="col-md-7 titulo-producto">
                                                             <h5 class="npsolitario"> Nombre: {{h6.name}} </h5>
                                                         </div>
-                                                        <div class="col-md-5 precio-producto">
-                                                            <h6 class="price-ajuste">$ Precio:  {{h6.price}} </h6>
+                                                        <div class="col-md-5 precio-producto" >
+                                                            <h6 class="price-ajuste" onchange="formatear('{{h6.price}}')">$ Precio:  {{h6.price}} </h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -325,10 +324,10 @@
                                                 <small class="text-muted">
                                                     <div class="row linea">
                                                         <div class="row quaternary-inf pt-1">
-                                                                <div class="col-md-12 horas-sol-producto">
+                                                                <div class="col-md-12 horas-sol-producto" id="range">
                                                                     <h4 style="color:#0F172A; background-color:#3fc92aab; border-radius:10px;"> Horas a usar: <strong class="hours-to-use"></strong> </h4>
                                                                     <label for="customRange2" class="form-label"> <h4 style="color:#0F172A"> Mueve la barra para verificar las horas</h4></label>
-                                                                    <input type="range" class="form-range input-range" min="1" max="24">
+                                                                    <input type="range" class="form-range input-range" min="1" max="24" id="range-{{h6.category_id}}">
                                                                 </div>
                                                         </div>
                                                     </div>
@@ -1071,9 +1070,9 @@
                                                     <div class="rack-soporte-baterias-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-xl-1   rack-soporte-eliminar-requeridos">
-                                                    <div class="col-xl-2 reguladores-cotizador text-danger"> ❌ </div>
+                                                    <div class="col-xl-2 reguladores-cotizador text-danger" onclick="eliminar_requerimientos('rack_bateria')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 rack-soporte-reiniciar-requeridos">
+                                                <div class="col-xl-1 rack-soporte-reiniciar-requeridos" onclick="reagregar_requerimientos('rack_bateria')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -1103,9 +1102,9 @@
                                                     <div class="inversores-precio-total-requeridos1"></div>
                                                 </div>
                                                 <div class="col-xl-1   inversiores-eliminar-requeridos">
-                                                    <div class="col-xl-2 inversores-cotizador text-danger"> ❌ </div>
+                                                    <div class="col-xl-2 inversores-cotizador text-danger" onclick="eliminar_requerimientos('inversor')"> ❌ </div>
                                                 </div>
-                                                <div class="col-xl-1 inversores-reiniciar-requeridos">
+                                                <div class="col-xl-1 inversores-reiniciar-requeridos" onclick="reagregar_requerimientos('inversor')">
                                                     <button type="button" class="btn btn-success btn-sm" title="Volver a agregar el producto">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>

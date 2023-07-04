@@ -84,9 +84,9 @@ class vistaprueba(View):
                 "hours_used":d["hours"],
             })
             print(d["product_id"],"id producto 18 es inversor antes de if")
-            if d["product_id"]=="18":
-                print("entro al if inversor",d["product_id"])
-                inversor=Inversores.objects.get(id=9)
+            if product.category_id==19:
+                print("entro al if inversor",d["product_id"],d,product.category_id)
+                inversor=Inversores.objects.get(id=11)
                 inversor_need={
                     "amount":1,
                     "name":inversor.name,
@@ -226,7 +226,7 @@ class vistaprueba(View):
                              }
         
 
-        llaves=["panel_needed","battery_needed","regulator_needed","breaker_needed","rubberized_cable_needed","panel_support_needed","centralized_modules_needed","power_units_needed","terminals_needed","connector_needed","vehicle_cable_needed","electric_materials_needed","ground_security_kit_needed"]
+        llaves=["panel_needed","battery_needed","regulator_needed","breaker_needed","rubberized_cable_needed","panel_support_needed","centralized_modules_needed","power_units_needed","terminals_needed","connector_needed","vehicle_cable_needed","electric_materials_needed","ground_security_kit_needed","rack_bateria","inversor"]
         for i in llaves:
             if i in data[-1]["eliminar_requeimientos"]:
                 print(i,"esta es la i =====================")
@@ -285,8 +285,9 @@ class ShoppingCar(LoginRequiredMixin, ListView):
 class ShowCategoryView(View):
     def get(self,request):
         categories=list(ShowCategory.objects.all().values())
-        print(categories)
-        return JsonResponse(categories,safe=False)
+        categorias=list(Category.objects.all().values())
+        
+        return JsonResponse({"botones":categories,"categorias":categorias},safe=False)
     
     
 class ProductView(View):
@@ -400,3 +401,29 @@ class GeneratePdf(View):
         except Exception as e:
             print('An exception occurred: ',e)
             return JsonResponse({"msg":f"couldn't be sended: {e}"})"""
+        
+
+class ShowVideos(View):
+    def get(self,request):
+        usuario=request.user
+        Cuenta=0
+        try:
+            Cuenta=cache.get(usuario.username+"video")
+            print(Cuenta)
+            if Cuenta==None:
+                Cuenta=0
+                cache.set(usuario.username+"video",Cuenta)
+                print("se creo la cuenta")
+            else:
+                Cuenta+=1
+                cache.set(usuario.username,Cuenta,1)
+                print("se sumo a la cuenta")
+        except Exception as e:
+            print(e)
+        print(Cuenta)
+        print(usuario.username+"video")
+
+        if Cuenta>=0:
+            return JsonResponse({"msg":False})
+        else:
+            return JsonResponse({"msg":True})
