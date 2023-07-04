@@ -6,6 +6,7 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     perdida= models.FloatField(blank=True, null=True, default=39)
+    tiempo_uso = models.IntegerField(default=6)
     image = models.ImageField(upload_to='media/category',blank=True, null=True)
 
     def __str__(self):

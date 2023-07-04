@@ -14,4 +14,5 @@ urlpatterns = [
     path('vista_prueba', vistaprueba.as_view(), name='vista_prueba'),
     path('pdf_vista',PdfViewPage.as_view(), name='pdf_vista'),
     path('gen_pdf', GeneratePdf.as_view(), name='gen_pdf'),
+    path('show_video', ShowVideos.as_view(), name='show_video'),
 ]
