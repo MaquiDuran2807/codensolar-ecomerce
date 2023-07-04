@@ -247,7 +247,6 @@ async function makeQuote(quotation,product_id,product_name,product_price,hours_u
       document.querySelector(".inversores-precio-total-requeridos1").textContent = formatearNumero(quotation.inversor.price*quotation.ground_security_kit_needed.amount).toString();
       total_precio += parseInt( quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
 
-      total_precio += parseInt(quotation.ground_security_kit_needed.price*quotation.ground_security_kit_needed.amount);
       total_precio += parseInt(quotation.rack_bateria.price*quotation.rack_bateria.amount);
       premiun = total_precio ;
       total_precio -= parseInt( quotation.power_units_needed.price*quotation.power_units_needed.amount);   
