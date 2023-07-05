@@ -486,7 +486,7 @@ const consumptions =  fetch(url+"vista_prueba",{
     general.appendChild(banner)
     
     banner.innerHTML = `<div class="banner-content">
-    <video src="{% static 'products/carrusel/' %}" autoplay controls muted></video>
+    <video src="https://www.youtube.com/watch?v=tFbvziGkuLg" autoplay controls muted></video>
     <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
     </div>`
   }
