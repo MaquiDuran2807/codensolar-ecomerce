@@ -13,7 +13,7 @@ let eliminador=false;
 let data1=0;
 //http://54.173.145.183
 //127.0.0.1:8000
-const url="http://127.0.0.1:8000/products/"
+const url="http://54.173.145.183/products/"
 
 
 
@@ -486,7 +486,7 @@ const consumptions =  fetch(url+"vista_prueba",{
     general.appendChild(banner)
     
     banner.innerHTML = `<div class="banner-content">
-    <video src="https://www.youtube.com/watch?v=tFbvziGkuLg" autoplay controls muted></video>
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/h_371lpgZCM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
     </div>`
   }
