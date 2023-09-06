@@ -59,6 +59,7 @@ class vistaprueba(View):
             "name":"",
             "price":0,
         }
+        precios_productos=0
         for d in data:
             print(d)
             product=Products.objects.get(id=d["product_id"])
@@ -66,6 +67,7 @@ class vistaprueba(View):
             porcentaje_perdidas=(Category.objects.get(id=product.category_id).perdida)
             calculo_perdidas=(calculo_diario*porcentaje_perdidas)/100
             total_consumo_productos+=(calculo_diario+calculo_perdidas)*d["amount"]
+            precios_productos+=product.price*d["amount"]
             comsumtion={
                 "consumption_hr":product.consume,
                 "consumption_day":calculo_diario,
@@ -157,8 +159,36 @@ class vistaprueba(View):
         # rack de baterias========================================================
 
         rack_bateria=rack_baterias(bateria_apropiada["amount"])
+        respuesta={"consumptions":products_consumptions,
+                             "panel_needed":panel_need,
+                             "battery_needed":bateria_apropiada,
+                             "regulator_needed":regulador_apropiado,
+                             "breaker_needed":breaker_apropiado,
+                             "rubberized_cable_needed":cable_encauchetado_apropiado,
+                             "panel_support_needed":soporte_panel,
+                             "centralized_modules_needed":modulo_centralizado,
+                             "power_units_needed":unidad_potencia_adeacuada,
+                             "terminals_needed":terminal,
+                             "connector_needed":conector_apropiado,
+                             "vehicle_cable_needed":cable_vehicular_apropiado,
+                             "electric_materials_needed":electric_material,
+                             "ground_security_kit_needed":groundCable,
+                             "products":data,
+                             "productos":productos,
+                             "eliminar_requirements":data[-1]["eliminar_requeimientos"],
+                             "rack_bateria":rack_bateria,
+                             "inversor":inversor_need,
+                             }
 
-
+        totalPrecios=panel_need["price"]+bateria_apropiada["price"]+regulador_apropiado["price"]+breaker_apropiado["price"]+cable_encauchetado_apropiado["price"]+soporte_panel["price"]+modulo_centralizado["price"]+unidad_potencia_adeacuada["price"]+terminal["price"]+conector_apropiado["price"]+cable_vehicular_apropiado["price"]+electric_material["price"]+groundCable["price"]+rack_bateria["price"]+inversor_need["price"]
+        respuesta["totalPrecios"]=totalPrecios
+        respuesta["totalConsumo"]=total_consumo_productos
+        total_final=panel_need["price"]*panel_need["amount"]+bateria_apropiada["price"]*bateria_apropiada["amount"]+regulador_apropiado["price"]*regulador_apropiado["amount"]+breaker_apropiado["price"]*breaker_apropiado["amount"]+cable_encauchetado_apropiado["price"]*cable_encauchetado_apropiado["amount"]+soporte_panel["price"]*soporte_panel["amount"]+modulo_centralizado["price"]*modulo_centralizado["amount"]+unidad_potencia_adeacuada["price"]*unidad_potencia_adeacuada["amount"]+terminal["price"]*terminal["amount"]+conector_apropiado["price"]*conector_apropiado["amount"]+cable_vehicular_apropiado["price"]*cable_vehicular_apropiado["amount"]+electric_material["price"]*electric_material["amount"]+groundCable["price"]*groundCable["amount"]+rack_bateria["price"]*rack_bateria["amount"]+inversor_need["price"]*inversor_need["amount"]
+        premium= total_final-modulo_centralizado["price"]*modulo_centralizado["amount"]
+        basic=total_final-unidad_potencia_adeacuada["price"]*unidad_potencia_adeacuada["amount"]
+        respuesta["total_final_premiun"]=premium
+        respuesta["total_final_basic"]=basic
+        respuesta["total_precios"]=precios_productos
 
 
         print(f"""       ===============================
@@ -201,29 +231,18 @@ class vistaprueba(View):
         {groundCable}
         inverosr
         {inversor_need}
+        **rack bateria**
+        {rack_bateria}
+        **total precios**
+        {totalPrecios}
+        **total consumo**
+        {total_consumo_productos}
+        **total final**
+        {total_final}
 
                ================================= """)
         print(data[-1]["eliminar_requeimientos"],"eliminar requirements")
-        respuesta={"consumptions":products_consumptions,
-                             "panel_needed":panel_need,
-                             "battery_needed":bateria_apropiada,
-                             "regulator_needed":regulador_apropiado,
-                             "breaker_needed":breaker_apropiado,
-                             "rubberized_cable_needed":cable_encauchetado_apropiado,
-                             "panel_support_needed":soporte_panel,
-                             "centralized_modules_needed":modulo_centralizado,
-                             "power_units_needed":unidad_potencia_adeacuada,
-                             "terminals_needed":terminal,
-                             "connector_needed":conector_apropiado,
-                             "vehicle_cable_needed":cable_vehicular_apropiado,
-                             "electric_materials_needed":electric_material,
-                             "ground_security_kit_needed":groundCable,
-                             "products":data,
-                             "productos":productos,
-                             "eliminar_requirements":data[-1]["eliminar_requeimientos"],
-                             "rack_bateria":rack_bateria,
-                             "inversor":inversor_need,
-                             }
+        
         
 
         llaves=["panel_needed","battery_needed","regulator_needed","breaker_needed","rubberized_cable_needed","panel_support_needed","centralized_modules_needed","power_units_needed","terminals_needed","connector_needed","vehicle_cable_needed","electric_materials_needed","ground_security_kit_needed","rack_bateria","inversor"]
@@ -231,6 +250,8 @@ class vistaprueba(View):
             if i in data[-1]["eliminar_requeimientos"]:
                 print(i,"esta es la i =====================")
                 respuesta[i]["price"]=0
+        
+       
 
 
         cache.set(f"respuesta{usuario.username}",respuesta,timeout=900)

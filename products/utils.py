@@ -8,6 +8,7 @@ from .models import Products
 from django.conf import settings
 #importar datetime
 from datetime import datetime
+import re
 
 
 def generate_pdf(email,templete,data,nombre,apellido):
@@ -22,20 +23,25 @@ def generate_pdf(email,templete,data,nombre,apellido):
     total_consumo=0
     for i in data["products"]:
         producto= Products.objects.get(id=i["product_id"])
+        #dir_ip = "http://127.0.0.1:8000/"
         dir_ip = "http://54.173.145.183/"
+        precio=formatear_valores(producto.price)
+        totalPrecio=formatear_valores(producto.price*i["amount"])
+        print(totalPrecio, "esto es el total de cada producto =====================================================================================================")
         productos={
             "id":producto.id,
             "name":producto.name,
             "imagen":producto.image,
-            "price":producto.price,
+            "price":precio,
             "amount":i["amount"],
-            "total":producto.price*i["amount"],
+            "total":totalPrecio,
             "consumo_h":data["consumptions"][contador]["consumption_hr"],
             "consumo_D":data["consumptions"][contador]["consumption_day"] ,
             "porcentaje":data["consumptions"][contador]["loss_percentaje"] ,
             "perdidas":data["consumptions"][contador]["loss_consumption"],
             "total_MP":data["consumptions"][contador]["total_consumption_day"],    
         }
+        print(formatear_valores(producto.price*i["amount"]), "esto es el total de cada producto =====================================================================================================")
         product.append(productos)
         totalp+=producto.price*i["amount"]
         totalup +=producto.price
@@ -51,17 +57,17 @@ def generate_pdf(email,templete,data,nombre,apellido):
     }
     panel={
         "panel":data["panel_needed"]["name"],
-        "panel_precio_u":data["panel_needed"]["price"],
+        "panel_precio_u":formatear_valores(data["panel_needed"]["price"]),
         "amount":data["panel_needed"]["amount"],
-        "panel_precio_t":data["panel_needed"]["price"]*data["panel_needed"]["amount"],
+        "panel_precio_t":formatear_valores(data["panel_needed"]["price"]*data["panel_needed"]["amount"]),
         "panel_potencia":data["panel_needed"]["production"] ["production_hr"],
         "panel_potencia_dia":data["panel_needed"]["production"]["production_day"]*data["panel_needed"]["amount"] ,
     }
     bateria={
         "bateria":data["battery_needed"]["name"],
-        "bateria_precio_u":data["battery_needed"]["price"],
+        "bateria_precio_u":formatear_valores(data["battery_needed"]["price"]),
         "amount":data["battery_needed"]["amount"],
-        "bateria_precio_t":data["battery_needed"]["price"]*data["battery_needed"]["amount"],
+        "bateria_precio_t":formatear_valores(data["battery_needed"]["price"]*data["battery_needed"]["amount"]),
         "bateria_capacidad":data["battery_needed"]["capacity"] ,
         "bateria_capacidad_t":data["battery_needed"]["capacity"]/data["battery_needed"]["amount"],
     }
@@ -70,86 +76,88 @@ def generate_pdf(email,templete,data,nombre,apellido):
     
     regulador={
         "regulador":data["regulator_needed"]["name"],
-        "regulador_precio_u":data["regulator_needed"]["price"],
+        "regulador_precio_u":formatear_valores(data["regulator_needed"]["price"]),
         "amount":data["regulator_needed"]["amount"],
-        "regulador_precio_t":data["regulator_needed"]["price"]*data["regulator_needed"]["amount"],
+        "regulador_precio_t":formatear_valores(data["regulator_needed"]["price"]*data["regulator_needed"]["amount"]),
         # verificar
     }
     
     breakers={
         "breakers":data["breaker_needed"]["name"],
-        "breakers_precio_u":data["breaker_needed"]["price"],
+        "breakers_precio_u":formatear_valores(data["breaker_needed"]["price"]),
         "amount":data["breaker_needed"]["amount"],
-        "breakers_precio_t":data["breaker_needed"]["price"]*data["breaker_needed"]["amount"],
+        "breakers_precio_t":formatear_valores(data["breaker_needed"]["price"]*data["breaker_needed"]["amount"]),
         # verificar
     }
     rubberized_cable_needed = {
         "rubberized_cable_needed":data["rubberized_cable_needed"]["name"],
-        "rubberized_cable_needed_precio_u":data["rubberized_cable_needed"]["price"],
+        "rubberized_cable_needed_precio_u":formatear_valores(data["rubberized_cable_needed"]["price"]),
         "amount":data["rubberized_cable_needed"]["amount"],
-        "rubberized_cable_needed_precio_t":data["rubberized_cable_needed"]["price"]*data["rubberized_cable_needed"]["amount"],
+        "rubberized_cable_needed_precio_t":formatear_valores(data["rubberized_cable_needed"]["price"]*data["rubberized_cable_needed"]["amount"]),
         # verificar
     }
     soporte_panel = {
         "soporte_panel":data["panel_support_needed"]["name"],
-        "soporte_panel_precio_u":data["panel_support_needed"]["price"],
+        "soporte_panel_precio_u":formatear_valores(data["panel_support_needed"]["price"]),
         "amount":data["panel_support_needed"]["amount"],
-        "soporte_panel_precio_t":data["panel_support_needed"]["price"]*data["panel_support_needed"]["amount"],
+        "soporte_panel_precio_t":formatear_valores(data["panel_support_needed"]["price"]*data["panel_support_needed"]["amount"]),
         # verificar
     }
     centralized_modules_needed = {
         "centralized_modules_needed":data["centralized_modules_needed"]["name"],
-        "centralized_modules_needed_precio_u":data["centralized_modules_needed"]["price"],
+        "centralized_modules_needed_precio_u":formatear_valores (data["centralized_modules_needed"]["price"]),
         "amount":data["centralized_modules_needed"]["amount"],
-        "centralized_modules_needed_precio_t":data["centralized_modules_needed"]["price"]*data["centralized_modules_needed"]["amount"],
+        "centralized_modules_needed_precio_t":formatear_valores(data["centralized_modules_needed"]["price"]*data["centralized_modules_needed"]["amount"]),
         # verificar
     }
     power_units_needed= {
         "power_units_needed":data["power_units_needed"]["name"],
-        "power_units_needed_precio_u":data["power_units_needed"]["price"],
+        "power_units_needed_precio_u":formatear_valores(data["power_units_needed"]["price"]),
         "amount":data["power_units_needed"]["amount"],
-        "power_units_needed_precio_t":data["power_units_needed"]["price"]*data["power_units_needed"]["amount"],
+        "power_units_needed_precio_t":formatear_valores(data["power_units_needed"]["price"]*data["power_units_needed"]["amount"]),
         # verificar
     }
     terminals_needed= {
         "terminals_needed":data["terminals_needed"]["name"],
-        "terminals_needed_precio_u":data["terminals_needed"]["price"],
+        "terminals_needed_precio_u":formatear_valores(data["terminals_needed"]["price"]),
         "amount":data["terminals_needed"]["amount"],
-        "terminals_needed_precio_t":data["terminals_needed"]["price"]*data["terminals_needed"]["amount"],
+        "terminals_needed_precio_t":formatear_valores(data["terminals_needed"]["price"]*data["terminals_needed"]["amount"]),
         # verificar
     }
     connector_needed= {
         "connector_needed":data["connector_needed"]["name"],
-        "connector_needed_precio_u":data["connector_needed"]["price"],
+        "connector_needed_precio_u":formatear_valores(data["connector_needed"]["price"]),
         "amount":data["connector_needed"]["amount"],
-        "connector_needed_precio_t":data["connector_needed"]["price"]*data["connector_needed"]["amount"],
+        "connector_needed_precio_t":formatear_valores(data["connector_needed"]["price"]*data["connector_needed"]["amount"]),
         # verificar
     }
     vehicle_cable_needed= {
         "vehicle_cable_needed":data["vehicle_cable_needed"]["name"],
-        "vehicle_cable_needed_precio_u":data["vehicle_cable_needed"]["price"],
+        "vehicle_cable_needed_precio_u":formatear_valores(data["vehicle_cable_needed"]["price"]),
         "amount":data["vehicle_cable_needed"]["amount"],
-        "vehicle_cable_needed_precio_t":data["vehicle_cable_needed"]["price"]*data["vehicle_cable_needed"]["amount"],
+        "vehicle_cable_needed_precio_t":formatear_valores(data["vehicle_cable_needed"]["price"]*data["vehicle_cable_needed"]["amount"]),
         # verificar
     }
     electric_materials_needed= {
         "electric_materials_needed":data["electric_materials_needed"]["name"],
-        "electric_materials_needed_precio_u":data["electric_materials_needed"]["price"],
+        "electric_materials_needed_precio_u":formatear_valores(data["electric_materials_needed"]["price"]),
         "amount":data["electric_materials_needed"]["amount"],
-        "electric_materials_needed_precio_t":data["electric_materials_needed"]["price"]*data["electric_materials_needed"]["amount"],
+        "electric_materials_needed_precio_t":formatear_valores(data["electric_materials_needed"]["price"]*data["electric_materials_needed"]["amount"]),
         # verificar
     }
     ground_security_kit_needed= {
         "ground_security_kit_needed":data["ground_security_kit_needed"]["name"],
-        "ground_security_kit_needed_precio_u":data["ground_security_kit_needed"]["price"],
+        "ground_security_kit_needed_precio_u":formatear_valores(data["ground_security_kit_needed"]["price"]),
         "amount":data["ground_security_kit_needed"]["amount"],
-        "ground_security_kit_needed_precio_t":data["ground_security_kit_needed"]["price"]*data["ground_security_kit_needed"]["amount"],
+        "ground_security_kit_needed_precio_t":formatear_valores(data["ground_security_kit_needed"]["price"]*data["ground_security_kit_needed"]["amount"]),
         # verificar
     }
+    basic=data["total_final_basic"]+data["total_precios"]
+    premium=data["total_final_premiun"]+data["total_precios"]
     total = {
-        "total":totalp+panel["panel_precio_t"]+bateria["bateria_precio_t"]+regulador["regulador_precio_t"]+breakers["breakers_precio_t"]+rubberized_cable_needed["rubberized_cable_needed_precio_t"]+soporte_panel["soporte_panel_precio_t"]+centralized_modules_needed["centralized_modules_needed_precio_t"]+power_units_needed["power_units_needed_precio_t"]+terminals_needed["terminals_needed_precio_t"]+connector_needed["connector_needed_precio_t"]+vehicle_cable_needed["vehicle_cable_needed_precio_t"]+electric_materials_needed["electric_materials_needed_precio_t"]+ground_security_kit_needed["ground_security_kit_needed_precio_t"],
-        "total_u": totalup+panel["panel_precio_u"]+bateria["bateria_precio_u"]+regulador["regulador_precio_u"]+breakers["breakers_precio_u"]+rubberized_cable_needed["rubberized_cable_needed_precio_u"]+soporte_panel["soporte_panel_precio_u"]+centralized_modules_needed["centralized_modules_needed_precio_u"]+power_units_needed["power_units_needed_precio_u"]+terminals_needed["terminals_needed_precio_u"]+connector_needed["connector_needed_precio_u"]+vehicle_cable_needed["vehicle_cable_needed_precio_u"]+electric_materials_needed["electric_materials_needed_precio_u"]+ground_security_kit_needed["ground_security_kit_needed_precio_u"]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    }
+            "basic":formatear_valores(basic),
+            "premium":formatear_valores(premium),
+     }
 
     # Obtener la plantilla HTML
     template = get_template(templete)
@@ -182,20 +190,25 @@ def generate_pdf_view(templete,data):
     total_consumo=0
     for i in data["products"]:
         producto= Products.objects.get(id=i["product_id"])
+        #dir_ip = "http://127.0.0.1:8000/"
         dir_ip = "http://54.173.145.183/"
+        precio=formatear_valores(producto.price)
+        totalPrecio=formatear_valores(producto.price*i["amount"])
+        print(totalPrecio, "esto es el total de cada producto =====================================================================================================")
         productos={
             "id":producto.id,
             "name":producto.name,
             "imagen":producto.image,
-            "price":producto.price,
+            "price":precio,
             "amount":i["amount"],
-            "total":producto.price*i["amount"],
+            "total":totalPrecio,
             "consumo_h":data["consumptions"][contador]["consumption_hr"],
             "consumo_D":data["consumptions"][contador]["consumption_day"] ,
             "porcentaje":data["consumptions"][contador]["loss_percentaje"] ,
             "perdidas":data["consumptions"][contador]["loss_consumption"],
             "total_MP":data["consumptions"][contador]["total_consumption_day"],    
         }
+        print(formatear_valores(producto.price*i["amount"]), "esto es el total de cada producto =====================================================================================================")
         product.append(productos)
         totalp+=producto.price*i["amount"]
         totalup +=producto.price
@@ -211,17 +224,17 @@ def generate_pdf_view(templete,data):
     }
     panel={
         "panel":data["panel_needed"]["name"],
-        "panel_precio_u":data["panel_needed"]["price"],
+        "panel_precio_u":formatear_valores(data["panel_needed"]["price"]),
         "amount":data["panel_needed"]["amount"],
-        "panel_precio_t":data["panel_needed"]["price"]*data["panel_needed"]["amount"],
+        "panel_precio_t":formatear_valores(data["panel_needed"]["price"]*data["panel_needed"]["amount"]),
         "panel_potencia":data["panel_needed"]["production"] ["production_hr"],
         "panel_potencia_dia":data["panel_needed"]["production"]["production_day"]*data["panel_needed"]["amount"] ,
     }
     bateria={
         "bateria":data["battery_needed"]["name"],
-        "bateria_precio_u":data["battery_needed"]["price"],
+        "bateria_precio_u":formatear_valores(data["battery_needed"]["price"]),
         "amount":data["battery_needed"]["amount"],
-        "bateria_precio_t":data["battery_needed"]["price"]*data["battery_needed"]["amount"],
+        "bateria_precio_t":formatear_valores(data["battery_needed"]["price"]*data["battery_needed"]["amount"]),
         "bateria_capacidad":data["battery_needed"]["capacity"] ,
         "bateria_capacidad_t":data["battery_needed"]["capacity"]/data["battery_needed"]["amount"],
     }
@@ -230,86 +243,88 @@ def generate_pdf_view(templete,data):
     
     regulador={
         "regulador":data["regulator_needed"]["name"],
-        "regulador_precio_u":data["regulator_needed"]["price"],
+        "regulador_precio_u":formatear_valores(data["regulator_needed"]["price"]),
         "amount":data["regulator_needed"]["amount"],
-        "regulador_precio_t":data["regulator_needed"]["price"]*data["regulator_needed"]["amount"],
+        "regulador_precio_t":formatear_valores(data["regulator_needed"]["price"]*data["regulator_needed"]["amount"]),
         # verificar
     }
     
     breakers={
         "breakers":data["breaker_needed"]["name"],
-        "breakers_precio_u":data["breaker_needed"]["price"],
+        "breakers_precio_u":formatear_valores(data["breaker_needed"]["price"]),
         "amount":data["breaker_needed"]["amount"],
-        "breakers_precio_t":data["breaker_needed"]["price"]*data["breaker_needed"]["amount"],
+        "breakers_precio_t":formatear_valores(data["breaker_needed"]["price"]*data["breaker_needed"]["amount"]),
         # verificar
     }
     rubberized_cable_needed = {
         "rubberized_cable_needed":data["rubberized_cable_needed"]["name"],
-        "rubberized_cable_needed_precio_u":data["rubberized_cable_needed"]["price"],
+        "rubberized_cable_needed_precio_u":formatear_valores(data["rubberized_cable_needed"]["price"]),
         "amount":data["rubberized_cable_needed"]["amount"],
-        "rubberized_cable_needed_precio_t":data["rubberized_cable_needed"]["price"]*data["rubberized_cable_needed"]["amount"],
+        "rubberized_cable_needed_precio_t":formatear_valores(data["rubberized_cable_needed"]["price"]*data["rubberized_cable_needed"]["amount"]),
         # verificar
     }
     soporte_panel = {
         "soporte_panel":data["panel_support_needed"]["name"],
-        "soporte_panel_precio_u":data["panel_support_needed"]["price"],
+        "soporte_panel_precio_u":formatear_valores(data["panel_support_needed"]["price"]),
         "amount":data["panel_support_needed"]["amount"],
-        "soporte_panel_precio_t":data["panel_support_needed"]["price"]*data["panel_support_needed"]["amount"],
+        "soporte_panel_precio_t":formatear_valores(data["panel_support_needed"]["price"]*data["panel_support_needed"]["amount"]),
         # verificar
     }
     centralized_modules_needed = {
         "centralized_modules_needed":data["centralized_modules_needed"]["name"],
-        "centralized_modules_needed_precio_u":data["centralized_modules_needed"]["price"],
+        "centralized_modules_needed_precio_u":formatear_valores (data["centralized_modules_needed"]["price"]),
         "amount":data["centralized_modules_needed"]["amount"],
-        "centralized_modules_needed_precio_t":data["centralized_modules_needed"]["price"]*data["centralized_modules_needed"]["amount"],
+        "centralized_modules_needed_precio_t":formatear_valores(data["centralized_modules_needed"]["price"]*data["centralized_modules_needed"]["amount"]),
         # verificar
     }
     power_units_needed= {
         "power_units_needed":data["power_units_needed"]["name"],
-        "power_units_needed_precio_u":data["power_units_needed"]["price"],
+        "power_units_needed_precio_u":formatear_valores(data["power_units_needed"]["price"]),
         "amount":data["power_units_needed"]["amount"],
-        "power_units_needed_precio_t":data["power_units_needed"]["price"]*data["power_units_needed"]["amount"],
+        "power_units_needed_precio_t":formatear_valores(data["power_units_needed"]["price"]*data["power_units_needed"]["amount"]),
         # verificar
     }
     terminals_needed= {
         "terminals_needed":data["terminals_needed"]["name"],
-        "terminals_needed_precio_u":data["terminals_needed"]["price"],
+        "terminals_needed_precio_u":formatear_valores(data["terminals_needed"]["price"]),
         "amount":data["terminals_needed"]["amount"],
-        "terminals_needed_precio_t":data["terminals_needed"]["price"]*data["terminals_needed"]["amount"],
+        "terminals_needed_precio_t":formatear_valores(data["terminals_needed"]["price"]*data["terminals_needed"]["amount"]),
         # verificar
     }
     connector_needed= {
         "connector_needed":data["connector_needed"]["name"],
-        "connector_needed_precio_u":data["connector_needed"]["price"],
+        "connector_needed_precio_u":formatear_valores(data["connector_needed"]["price"]),
         "amount":data["connector_needed"]["amount"],
-        "connector_needed_precio_t":data["connector_needed"]["price"]*data["connector_needed"]["amount"],
+        "connector_needed_precio_t":formatear_valores(data["connector_needed"]["price"]*data["connector_needed"]["amount"]),
         # verificar
     }
     vehicle_cable_needed= {
         "vehicle_cable_needed":data["vehicle_cable_needed"]["name"],
-        "vehicle_cable_needed_precio_u":data["vehicle_cable_needed"]["price"],
+        "vehicle_cable_needed_precio_u":formatear_valores(data["vehicle_cable_needed"]["price"]),
         "amount":data["vehicle_cable_needed"]["amount"],
-        "vehicle_cable_needed_precio_t":data["vehicle_cable_needed"]["price"]*data["vehicle_cable_needed"]["amount"],
+        "vehicle_cable_needed_precio_t":formatear_valores(data["vehicle_cable_needed"]["price"]*data["vehicle_cable_needed"]["amount"]),
         # verificar
     }
     electric_materials_needed= {
         "electric_materials_needed":data["electric_materials_needed"]["name"],
-        "electric_materials_needed_precio_u":data["electric_materials_needed"]["price"],
+        "electric_materials_needed_precio_u":formatear_valores(data["electric_materials_needed"]["price"]),
         "amount":data["electric_materials_needed"]["amount"],
-        "electric_materials_needed_precio_t":data["electric_materials_needed"]["price"]*data["electric_materials_needed"]["amount"],
+        "electric_materials_needed_precio_t":formatear_valores(data["electric_materials_needed"]["price"]*data["electric_materials_needed"]["amount"]),
         # verificar
     }
     ground_security_kit_needed= {
         "ground_security_kit_needed":data["ground_security_kit_needed"]["name"],
-        "ground_security_kit_needed_precio_u":data["ground_security_kit_needed"]["price"],
+        "ground_security_kit_needed_precio_u":formatear_valores(data["ground_security_kit_needed"]["price"]),
         "amount":data["ground_security_kit_needed"]["amount"],
-        "ground_security_kit_needed_precio_t":data["ground_security_kit_needed"]["price"]*data["ground_security_kit_needed"]["amount"],
+        "ground_security_kit_needed_precio_t":formatear_valores(data["ground_security_kit_needed"]["price"]*data["ground_security_kit_needed"]["amount"]),
         # verificar
     }
+    basic=data["total_final_basic"]+data["total_precios"]
+    premium=data["total_final_premiun"]+data["total_precios"]
     total = {
-        "total":totalp+panel["panel_precio_t"]+bateria["bateria_precio_t"]+regulador["regulador_precio_t"]+breakers["breakers_precio_t"]+rubberized_cable_needed["rubberized_cable_needed_precio_t"]+soporte_panel["soporte_panel_precio_t"]+centralized_modules_needed["centralized_modules_needed_precio_t"]+power_units_needed["power_units_needed_precio_t"]+terminals_needed["terminals_needed_precio_t"]+connector_needed["connector_needed_precio_t"]+vehicle_cable_needed["vehicle_cable_needed_precio_t"]+electric_materials_needed["electric_materials_needed_precio_t"]+ground_security_kit_needed["ground_security_kit_needed_precio_t"],
-        "total_u": totalup+panel["panel_precio_u"]+bateria["bateria_precio_u"]+regulador["regulador_precio_u"]+breakers["breakers_precio_u"]+rubberized_cable_needed["rubberized_cable_needed_precio_u"]+soporte_panel["soporte_panel_precio_u"]+centralized_modules_needed["centralized_modules_needed_precio_u"]+power_units_needed["power_units_needed_precio_u"]+terminals_needed["terminals_needed_precio_u"]+connector_needed["connector_needed_precio_u"]+vehicle_cable_needed["vehicle_cable_needed_precio_u"]+electric_materials_needed["electric_materials_needed_precio_u"]+ground_security_kit_needed["ground_security_kit_needed_precio_u"]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    }
+            "basic":formatear_valores(basic),
+            "premium":formatear_valores(premium),
+     }
 
     # Obtener la plantilla HTML
     template = get_template(templete)
@@ -321,3 +336,17 @@ def generate_pdf_view(templete,data):
     hoy = datetime.now()
     
     return HttpResponse(result.getvalue(), content_type='application/pdf')
+
+def formatear_valores(valor):
+    # poner u punto cada 3 cifras
+    valor=int(valor)
+    valor = str(valor)
+    cantidad=len(valor)
+    # poner un punto cada 3 cifras
+    while cantidad > 0:
+        valor = valor[:cantidad] + "." + valor[cantidad:]
+        cantidad = cantidad - 3
+    # quitar el punto del final
+    valor=valor[:-1]
+    return valor
+   
