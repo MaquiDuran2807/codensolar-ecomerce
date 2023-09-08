@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-08bxeiejtkzl$0^b_-wuir*duf8@p+k0g%n7x5mk%xv2s_$_fr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','10.0.2.2','192.168.39.157','cotizadorcodensolar.azurewebsites.net']
+ALLOWED_HOSTS = ['*','10.0.2.2','192.168.39.157','www.codensolar.com','codensolar.com',]
 CSRF_TRUSTED_ORIGINS = ['https://*.azurewebsites.net','https://*.127.0.0.1']
 
 # Application definition
