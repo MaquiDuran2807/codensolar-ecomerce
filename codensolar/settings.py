@@ -131,12 +131,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # EMAIL SETTINGS
-EMAIL_USE_TLS = True
-EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_HOST_USER = "informacion@codensolar.com"
 EMAIL_HOST_PASSWORD = "Y!$Toc92k9e4EH"
-EMAIL_PORT = 587
+EMAIL_PORT = 465
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 

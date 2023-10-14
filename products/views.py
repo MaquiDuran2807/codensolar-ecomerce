@@ -279,7 +279,6 @@ class ShoppingCar(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         print("get_queryset=====================")
-        ip_dir="http://127.0.0.1:8000/"
         id = self.kwargs['id']
         print(id)
         if list(Products.objects.filter(category=id).values())==[]:
@@ -307,6 +306,7 @@ class ShowCategoryView(View):
     def get(self,request):
         categories=list(ShowCategory.objects.all().values())
         categorias=list(Category.objects.all().values())
+        print(categories)
         
         return JsonResponse({"botones":categories,"categorias":categorias},safe=False)
     
