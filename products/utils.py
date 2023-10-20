@@ -170,7 +170,7 @@ def generate_pdf(email,templete,data,nombre,apellido):
     email = EmailMessage(
         f'Cotización de productos {hoy}',
         f'Hola {nombre} {apellido}, adjunto la cotización de los productos solicitados.',
-        'informacion@codensolar.com',
+        'comercial@codensolar.com',
         [email]
     )
     email.attach('archivo.pdf', result.getvalue(), 'application/pdf')
