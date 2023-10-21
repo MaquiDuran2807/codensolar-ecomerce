@@ -55,7 +55,7 @@ class UserRegisterView(FormView):
         # enviar el codigo al email del user
         asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
-        email_remitente = 'informacion@codensolar.com'
+        email_remitente = 'comercial@codensolar.com'
         usuario_new=[form.cleaned_data['email']]
         print(usuario_new)
 
@@ -117,7 +117,7 @@ class ForgotpasswordView(FormView):
         
         asunto = 'Recuperar contraseña'
         mensaje = 'Contraseña provisional: ' + codigo
-        email_remitente = 'informacion@codensolar.com'
+        email_remitente = 'comercial@codensolar.com'
         #
         if user:
             email=EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
