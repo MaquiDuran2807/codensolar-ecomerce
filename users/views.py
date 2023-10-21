@@ -163,7 +163,7 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 class CodeVerificationView(FormView):
     template_name = 'users/activate.html'
     form_class = VerificationForm
-    success_url = 'user/login'
+    success_url = '/user/login'
     
 
     def get_form_kwargs(self):
