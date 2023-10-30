@@ -20,11 +20,11 @@ def generate_pdf(email,templete,data,nombre,apellido):
     total_consumo_hr=0
     total_consumo_day=0
     total_perdidas=0
-    total_consumo=0
+    #dir_ip = "http://127.0.0.1:8000/"
+    dir_ip = "http://52.2.55.132/"
     for i in data["products"]:
         producto= Products.objects.get(id=i["product_id"])
-        #dir_ip = "http://127.0.0.1:8000/"
-        dir_ip = "http://52.2.55.132/"
+        
         precio=formatear_valores(producto.price)
         totalPrecio=formatear_valores(producto.price*i["amount"])
         print(totalPrecio, "esto es el total de cada producto =====================================================================================================")
@@ -187,11 +187,12 @@ def generate_pdf_view(templete,data):
     total_consumo_hr=0
     total_consumo_day=0
     total_perdidas=0
-    total_consumo=0
+    #dir_ip = "http://127.0.0.1:8000/"
+    dir_ip = "http://52.2.55.132/"
+    
     for i in data["products"]:
         producto= Products.objects.get(id=i["product_id"])
-        #dir_ip = "http://127.0.0.1:8000/"
-        dir_ip = "http://52.2.55.132/"
+        
         precio=formatear_valores(producto.price)
         totalPrecio=formatear_valores(producto.price*i["amount"])
         print(totalPrecio, "esto es el total de cada producto =====================================================================================================")

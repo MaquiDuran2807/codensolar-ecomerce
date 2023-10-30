@@ -281,6 +281,13 @@
     font-weight: bolder;
     text-decoration: none;
 }
+.show-password {
+    position: absolute;
+    right: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 2;
+}
 
 @media (min-width: 800px) {
     

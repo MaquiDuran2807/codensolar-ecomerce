@@ -95,7 +95,7 @@ class vistaprueba(View):
                     "price":inversor.price,
                 
                 }
-                
+        print(total_consumo_productos,"total consumo productos ===================================================")
         # PANEL APROPIADO=======================================================
 
         panel_need,panel_apropiado,contador_paneles=paneles(total_consumo_productos)
@@ -106,7 +106,8 @@ class vistaprueba(View):
 
         # BATERIAS APROPIADAS===================================================
 
-        bateria_apropiada=baterias(calculo_diario ,total_consumo_productos,voltage_sistema)
+        bateria_apropiada=baterias(
+            total_consumo_productos,voltage_sistema)
 
         # AMPERIOS REQUERIDOS====================================================
 

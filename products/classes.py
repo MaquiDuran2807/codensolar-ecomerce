@@ -9,6 +9,7 @@ def paneles(total_consumo_productos):
     paneles=sorted(paneles, key=lambda panel: panel["production"],reverse=False)
     panel_apropiado=0
     contador_paneles=0
+    total_consumo_productos=total_consumo_productos+200
     while panel_apropiado==0:
         contador_paneles +=1
         for p in paneles:
@@ -31,13 +32,12 @@ def paneles(total_consumo_productos):
 
 # BATERIAS =====================================================================================
 
-def baterias(calculo_diario,total_consumo_productos,voltage_sistema):
+def baterias(total_consumo_productos,voltage_sistema):
     # traer una lista de todas las baterias
     baterias=list(Battery.objects.all().values())
     bateria_apropiada=0
     contardor_baterias=0
     baterias=sorted(baterias, key=lambda bateria: bateria["capacity"],reverse=False)
-    loss_bat=calculo_diario*0.65
     while bateria_apropiada==0:
         contardor_baterias +=1
         for b in baterias:
