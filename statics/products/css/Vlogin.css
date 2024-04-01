@@ -302,3 +302,20 @@
         max-width: 100%;
     }
 } */
+
+.btn-google {
+    /* boton inicio de sesion de google */
+    background-color: #4285F4;
+    color: #ffffff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
+}
