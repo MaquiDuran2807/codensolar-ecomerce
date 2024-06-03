@@ -34,7 +34,7 @@
                     <a href="#" class="navbar-brand "> Coden <b style="color: rgb(4, 253, 4);">S</b>olar </a>
                     <!-- Boton para el menu movil -->
                     <button 
-                        class="navbar-toggler"
+                        class="navbar-toggler bg-white"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#menu"
@@ -42,7 +42,7 @@
                         aria-expanded="false"
                         aria-label="Mostrar / Ocultar Menu"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon text-white"></span>
                     </button>
         
                     <!-- Menu de navegacion -->
@@ -214,15 +214,15 @@
                     </div> -->
                     <div class="col-md-12 grupo-botones d-flex  justify-content-evenly" id="filtro">
                         <div class="btn boton-filtro"><a href="http://52.2.55.132/products/shopping_car/0">todos</a></div>
-                            <!-- <button class="btn btn-secondary dropdown-toggle categorias-hijo1" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                                <a href="">Kits</a>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
-                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
-                                <li><button class="dropdown-item" type="button"> <a href="https://codensolar.com/kits/"></a>Kit</button></li>
-                            </ul> -->
+                        
                     </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 pregunta-instructivo my-2" ></div>
+                            <button class="btn btn-success btn-lg" type="button" onclick="show_video()"
+                            >¿Necesitas ayuda para usar el aplicativo?</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -235,8 +235,6 @@
 
         <section class=" logic d-flex  justify-content-around margin ">  
             {% comment %} products {% endcomment %}
-
-            
 
         
         <section class="row padre">
@@ -1294,7 +1292,7 @@
 <script src="{% static 'products/js/Newjs/bootstrap.bundle.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{% static 'products/js/Newjs/NVProducts.js' %}"></script>
-<script src="{% static 'products/js/welcome.js' %}"></script>
+<!-- <script src="{% static 'products/js/welcome.js' %}"></script> -->
 
 </body>
 </html>

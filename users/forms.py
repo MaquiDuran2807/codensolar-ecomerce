@@ -97,6 +97,8 @@ class VerificationForm(forms.Form):
 
     def clean_codregistro(self):
         codigo = self.cleaned_data['codregistro']
+        # eliminar esacios 
+        codigo = codigo.replace(' ', '')
 
         if len(codigo) == 6:
             # verificamos si el codigo y el id de usuario son validos:

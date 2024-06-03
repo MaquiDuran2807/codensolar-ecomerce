@@ -480,14 +480,14 @@ const consumptions =  fetch(url+"vista_prueba",{
 }).then(response => response.json()).then(data => {
   if (data.error == "no hay datos") {
     console.log("no hay datos");
-    let banner=document.createElement("div")
-    banner.classList.add("banner")
-    general.appendChild(banner)
+    // let banner=document.createElement("div")
+    // banner.classList.add("banner")
+    // general.appendChild(banner)
     
-    banner.innerHTML = `<div class="banner-content">
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/h_371lpgZCM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
-    </div>`
+    // banner.innerHTML = `<div class="banner-content">
+    // <iframe width="100%" height="100%" src="https://www.youtube.com/embed/h_371lpgZCM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    // <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
+    // </div>`
   }
   contador_productos = 0;
   data.eliminar_requirements.forEach(element => {
@@ -552,5 +552,16 @@ Show_category()
 function cloceVideo(){
   let banner=document.querySelector(".banner")
   general.removeChild(banner)
+}
+
+function show_video(){
+  let banner=document.createElement("div")
+    banner.classList.add("banner")
+    general.appendChild(banner)
+    
+    banner.innerHTML = `<div class="banner-content">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/h_371lpgZCM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <span id="close-btn" class="close-btn " title="cerrar video" onclick="cloceVideo()" >&times;</span>
+    </div>`
 }
 
