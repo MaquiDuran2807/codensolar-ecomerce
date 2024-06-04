@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib import messages
 #
 from .models import User
 
@@ -34,7 +35,9 @@ class UserRegisterForm(forms.ModelForm):
     
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
+            print('no son iguales=========Asxcnakjsbxkajs')
             self.add_error('password2', 'Las contraseñas no son iguales')
+
 
 
 class LoginForm(forms.Form):

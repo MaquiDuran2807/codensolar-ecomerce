@@ -32,6 +32,7 @@ from .forms import (
 from .models import User
 # 
 from .functions import code_generator
+from django.contrib import messages
 
 
 class UserRegisterView(FormView):
@@ -48,26 +49,25 @@ class UserRegisterView(FormView):
             form.cleaned_data['email'],
             form.cleaned_data['password1'],
             name=form.cleaned_data['name'],
-            lastname =form.cleaned_data['lastname'],
+            lastname=form.cleaned_data['lastname'],
             telephone=form.cleaned_data['telephone'],
             codregistro=codigo
         )
+       
         # enviar el codigo al email del user
         asunto = 'Confrimacion de email'
         mensaje = 'Codigo de verificacion: ' + codigo
         email_remitente = 'comercial@codensolar.com'
-        usuario_new=[form.cleaned_data['email']]
+        usuario_new = [form.cleaned_data['email']]
         print(usuario_new)
 
         
-        email=EmailMessage(asunto, 
-                           mensaje, 
-                           email_remitente, 
-                           [form.cleaned_data['email']])
+        email = EmailMessage(asunto, mensaje, email_remitente, [form.cleaned_data['email']])
         email.send()        
         #
         #send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
         # redirigir a pantalla de valdiacion
+        messages.success(self.request, 'Usuario creado correctamente')
 
         return HttpResponseRedirect(
             reverse(
@@ -75,6 +75,10 @@ class UserRegisterView(FormView):
                 kwargs={'pk': usuario.id}
             )
         )
+    
+    def form_invalid(self, form):
+        messages.error(self.request, 'Error al registrar el usuario')
+        return super().form_invalid(form)
 
 
 
@@ -180,6 +184,7 @@ class CodeVerificationView(FormView):
         ).update(
             is_active=True
         )
+        
         
         
         return  super(CodeVerificationView, self).form_valid(form)
